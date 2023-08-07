@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2022-05-13">
+<meta name="description" content="Las áreas verdes de las ciudades mexicanas reciben aves migratorias que llegan del norte del continenta a pasar el invierno. ¿Cuáles de sus características las fomentan?.">
+
+<title>R. Pacheco Muñoz - Biofilia Urbana y Enlace de Información - Aves migratorias en área verdes de la CDMX</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+<meta name="twitter:title" content="R. Pacheco Muñoz - Biofilia Urbana y Enlace de Información - Aves migratorias en área verdes de la CDMX">
+<meta name="twitter:description" content="Las áreas verdes de las ciudades mexicanas reciben aves migratorias que llegan del norte del continenta a pasar el invierno. ¿Cuáles de sus características las fomentan?.">
+<meta name="twitter:image" content="https://static.inaturalist.org/photos/28605354/medium.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">R. Pacheco Muñoz - <em>Biofilia Urbana y Enlace de Información</em></span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/Pachecovv" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Rodpach/" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../proyectos.html" rel="" target="">
+ <span class="menu-text">Proyectos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../divulgacion.html" rel="" target="">
+ <span class="menu-text">Comunicación científica</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../publicaciones_cientificas.html" rel="" target="">
+ <span class="menu-text">Publicaciones</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Aves migratorias en área verdes de la CDMX</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Análisis espacial</div>
+    <div class="quarto-category">Ecología Urbana</div>
+    <div class="quarto-category">Manejo urbano</div>
+    <div class="quarto-category">Manejo de fauna</div>
+    <div class="quarto-category">Áreas verdes</div>
+    <div class="quarto-category">Ecología</div>
+    <div class="quarto-category">Aves</div>
+    <div class="quarto-category">Ciencia de datos</div>
+    <div class="quarto-category">Machine learning</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <em>Las áreas verdes de las ciudades mexicanas reciben aves migratorias que llegan del norte del continenta a pasar el invierno. ¿Cuáles de sus características las fomentan?.</em>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 13, 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/RPM2022a_web.jpg" class="img-fluid figure-img" width="400"></p>
+<figcaption class="figure-caption">Autoretrato con dron aereo, mientras caracterizaba en el área verde denomidada “A13”, en la Reserva del Pedregal de San Ángel, CDMX. Tomada de Pacheco-Muñoz et. al., (2022)</figcaption>
+</figure>
+</div>
+<p><br>
+Las aves migratorias del continenta americano se reproducen en la regiones templadas al norte del continente y en invierno migran a la región tropical de México, y de países en Centroamérica y Sudamerica. Lamentablemente la gran mayoría de las aves migratorias tienen poblaciones en declive desde hace más de 50 años. El cambio de uso de suelo y el cambio climático son sus principales amenzas.</p>
+<p>Las ciudades pueden albergar una biodiversidad considerable. Por ello, es crucial entender que organismos aprovechan las ciudades y cuáles son las características urbanas que los limitan y fomentan. Algunas aves migratorias invernan en ciudades mexicanas, siendo las áreas verdes lo que más aprovechan. Este proyecto se enfocó en entender el papel que juegan las áreas verdes para las aves migratorias en una mega ciudad como la CDMX.</p>
+<p>Para evaluarlo elegimos y visitamos distintas áreas verdes del Pedregal de San Ángel. Integrarlas requirió la coordinación con 8 instituciones públicas, privadas y de organizaciones civiles. Luego, en cada área verde realizamos censos de aves y medimos sus características espaciales, de vegetación y de cobertura de uso de suelo. La vegetación la caraterizamos generando mapas de alta resolución a través de vuelos de <em>dron</em>. La cobertura de uso de suelo adentro y alrededor del área la obtuvimos desarrollando un modelo de <em>Machine learning</em> (<a href="https://www.nvidia.com/en-us/glossary/data-science/xgboost/"><em>xgboost</em></a>), que clasificó imágenes satelitales <a href="https://www.usgs.gov/landsat-missions/landsat-8">Landsat 8</a> (Fig. 1). Las características espaciales como el tamaño del área y la distancia que había entre ellas las obtuvimos calculándolas con Sistemas de Información Geográfica. Finalmente, las asociaciones entre los censos de aves y las características que medimos de las áreas verdes las evaluamos con Modelos Lineales Generalizados.</p>
+<p><br>
+</p>
+
+
+
+  <title>Before and After Image Slider</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      position: relative;
+      width: 513px;
+      height: 580px;
+      border: 1px solid white;
+    }
+
+    .img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: 580px 100%;
+    }
+
+    .background-img {
+      background-image: url('images/RPM2022a3a.png');
+    }
+
+    .foreground-img {
+      background-image: url('images/RPM2022a3b.png');
+      width: 50%;
+    }
+
+    @mixin center() {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slider {
+      position: absolute;
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 100%;
+      background: rgba(242, 242, 242, 0.3);
+      outline: none;
+      margin: 0;
+      transition: all 0.2s;
+      @include center;
+    }
+
+    .slider:hover {
+      background: rgba(242, 242, 242, 0.1);
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 6px;
+      height: 600px;
+      background: white;
+      cursor: pointer;
+    }
+
+    .slider-button {
+      $size: 30px;
+      pointer-events: none;
+      position: absolute;
+      width: $size;
+      height: $size;
+      border-radius: 50%;
+      background-color: white;
+      left: calc(50% - 18px);
+      top: calc(50% - 18px);
+      @include center;
+
+      @mixin arrow-helper() {
+        content: '';
+        padding: 3px;
+        display: inline-block;
+        border: solid #5D5D5D;
+        border-width: 0 2px 2px 0;
+      }
+
+      &:after {
+        @include arrow-helper();
+        transform: rotate(-45deg);
+      }
+
+      &:before {
+        @include arrow-helper();
+        transform: rotate(135deg);
+      }
+    }
+  </style>
+
+
+  <div class="container">
+    <div class="img background-img"></div>
+    <div class="img foreground-img"></div>
+    <input type="range" min="1" max="100" value="50" class="slider" name="slider" id="slider">
+    <div class="slider-button"></div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#slider").on("input change", function (e) {
+        const sliderPos = e.target.value;
+        // Update the width of the foreground image
+        $('.foreground-img').css('width', `${sliderPos}%`);
+        // Update the position of the slider button
+        $('.slider-button').css('left', `calc(${sliderPos}% - 18px)`);
+      });
+    });
+  </script>
+
+
+<p><em><strong>Figura 1</strong>. Haz click en la imagen interactiva y desliza la barra en dirección horizontal. Este panel muestra parte de nuestra área de estudio para ejemplificar la clasificación de coberturas de uso de suelo que realizamos en la CDMX. Cercano al centro se puede ver Ciudad Universitaria. La clasificación la hicimos utilizando nuestro modelo de Machine learning xgboost. Al modelo lo entrenamos para clasificar imágenes satelitales Landsat 8. Para fines didácticos usé una imagen satelital de google maps y no corresponde a la imagen <strong>Landsat 8</strong> que el modelo clasificó pero la imagen digitalizada si corresponde a la capa clasificada por nuestro modelo xgboost de cobertura usos de suelo.</em></p>
+<p>Con nuestra evaluación descubrimos que las áreas verdes pueden albergar una biodiversidad considerable de aves migratorias invernantes, al representar el 25% de la diversidad de aves de invierno en la CDMX. La principal características de las áreas verdes asociadas a las aves migratorias son los árboles urbanos y son cruciales. Entre más había, las especies de aves migratorias incrementaban. La ubicación y el tamaño de las áreas verdes no imprtó, ya no hubi distincion entre las especies que encontramos.</p>
+<p><br>
+</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://linkinghub.elsevier.com/retrieve/pii/S1618866722001571"><img src="images/RPM2022a2_web.jpg" class="img-fluid figure-img" width="350"></a></p>
+<figcaption class="figure-caption">Figura 2. Asociación positiva de la riqueza (número de especies) y abundancia (individuos) de aves migratorias con las características de los árboles dentro de las áreas verdes. El panel superior muestra la relación entre la riqueza de especies de aves migratorias y la densidad de árboles que había en cada área verde. El panel inferior muestra la relación entre la abundancia de aves migratorias y la proporción de cobertura arbórea. Las líneas en ambas figuras representan los valores estimados dados por su respectivo modelos lineales generalizados. El ave posada en el panel inferior es una perlita gris azulada (Polioptila caerulea), una especie que se encuentra con frecuencia en las áreas verdes. Tomado de Pacheco-Muñoz et. al., (2022).</figcaption>
+</figure>
+</div>
+<p><br>
+</p>
+<p>Esto indica que incluso mega ciudades como la CDMX pueden contribuir con hábitat para aves migratorias a través de sus áreas verdes. Un enfoque que las fomente se debe de centrar en aumentar y conservar los árboles que contienen. Además, la falta de impacto de las características espaciales es una gran noticia debido a la limitación del espacio para áreas verdes en la ciudad (Fig. 3 y Fig. 4). ¡Areas verdes pequeñas y aisladas pueden enriquecerse con árboles!, lo cual es fantástico para las aves migratorias y los urbanitas.</p>
+<p><br>
+</p>
+<div class="columns">
+<div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/RPM2022a4.png" class="img-fluid figure-img" width="422"></p>
+<figcaption class="figure-caption">Figura 3. La distancias entre las áreas verdes la consideramos como un atributo espacial y este modelo muestra el concepto sobre como medimos esta caracterísitca de las áreas verdes.</figcaption>
+</figure>
+</div>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/RPM2022a4b.png" class="img-fluid figure-img" width="413"></p>
+<figcaption class="figure-caption">Figura 4. Esta distribución de puntos es la prueba de decaimiento de similitud de especies por incremento de distancia. El valor B-sim (<a href="https://es.wikipedia.org/wiki/%C3%8Dndice_de_Simpson">índice de Simpson</a>) del eje vertical indica que tan similares son las especies entre dos áreas y el eje horizontal es la distancia en metros que hay entre esas áreas. La ausencia de un patrón indica que la distancia entre ellas no implica que tengan especies distintas. Tomado de Pacheco-Muñoz (2022).</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><br>
+</p>
+<p>---</p>
+<p><br>
+</p>
+<p><em>Este proyecto lo realicé como parte de mi proyecto de posgrado en el <a href="https://www.iies.unam.mx/laboratorios/ecologia-funcional/">laboratorio de Ecología Funcional, del Instituo de Investigaciones en Ecosistemas de la UNAM</a>.</em> <em>Mi participación involucró su concepción, coordinación, administración de fondos, colecta de datos, análisis, interpretación de resultados y la redacción del reporte</em>.</p>
+<p><em>Sus resultados se publicaron en la revista <a href="https://linkinghub.elsevier.com/retrieve/pii/S1618866722001571">Urban Forestry &amp; Urban Greening</a> en junio de 2022. Lo puedes descargar <a href="https://drive.google.com/file/d/1CmXslpbxTO_OZSRyGPzg21lk7pzTmJ73/view?usp=drive_link">aquí</a>.</em></p>
+<p><strong>Cita</strong>: Pacheco-Muñoz, R., Aguilar-Gómez, M.Á., Schondube, J.E., 2022. Overwintering in a megacity: Urban green areas and migratory birds in Mexico City. Urban Forestry &amp; Urban Greening 73, 127614. <a href="https://doi.org/10.1016/j.ufug.2022.127614" class="uri">https://doi.org/10.1016/j.ufug.2022.127614</a></p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">Powered by <a href="https://quarto.org/">Quarto</a>. <br>Copyright 2023, Rodrigo Pacheco Muñoz.<br><a href="index.qmd">Home</a> | <a href="about.qmd">About</a> | <a href="./proyectos.html">Proyectos</a> | <a href="divulgacion.qmd">Comunicación Científica</a> | <a href="publicaciones_cientificas.qmd">Publicaciones</a></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
