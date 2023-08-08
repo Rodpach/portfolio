@@ -96,6 +96,11 @@ ul.task-list li input[type="checkbox"] {
 </i> 
  <span class="menu-text"></span></a>
   </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:rodpachecom@gmail.com" rel="" target=""><i class="bi bi-envelope-at" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
@@ -181,9 +186,9 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 <p><br>
-Las aves migratorias del continenta americano se reproducen en la regiones templadas al norte del continente y en invierno migran a la región tropical de México, y de países en Centroamérica y Sudamerica. Lamentablemente la gran mayoría de las aves migratorias tienen poblaciones en declive desde hace más de 50 años. El cambio de uso de suelo y el cambio climático son sus principales amenzas.</p>
+Las aves migratorias del continente americano se reproducen en la regiones templadas al norte del continente y en invierno migran a la región tropical de México, y de países en Centroamérica y Sudamérica. Lamentablemente la gran mayoría de las aves migratorias tienen poblaciones en declive desde hace más de 50 años. El cambio de uso de suelo y el cambio climático son sus principales amenazas.</p>
 <p>Las ciudades pueden albergar una biodiversidad considerable. Por ello, es crucial entender que organismos aprovechan las ciudades y cuáles son las características urbanas que los limitan y fomentan. Algunas aves migratorias invernan en ciudades mexicanas, siendo las áreas verdes lo que más aprovechan. Este proyecto se enfocó en entender el papel que juegan las áreas verdes para las aves migratorias en una mega ciudad como la CDMX.</p>
-<p>Para evaluarlo elegimos y visitamos distintas áreas verdes del Pedregal de San Ángel. Integrarlas requirió la coordinación con 8 instituciones públicas, privadas y de organizaciones civiles. Luego, en cada área verde realizamos censos de aves y medimos sus características espaciales, de vegetación y de cobertura de uso de suelo. La vegetación la caraterizamos generando mapas de alta resolución a través de vuelos de <em>dron</em>. La cobertura de uso de suelo adentro y alrededor del área la obtuvimos desarrollando un modelo de <em>Machine learning</em> (<a href="https://www.nvidia.com/en-us/glossary/data-science/xgboost/"><em>xgboost</em></a>), que clasificó imágenes satelitales <a href="https://www.usgs.gov/landsat-missions/landsat-8">Landsat 8</a> (Fig. 1). Las características espaciales como el tamaño del área y la distancia que había entre ellas las obtuvimos calculándolas con Sistemas de Información Geográfica. Finalmente, las asociaciones entre los censos de aves y las características que medimos de las áreas verdes las evaluamos con Modelos Lineales Generalizados.</p>
+<p>Para evaluarlo elegimos y visitamos distintas áreas verdes del Pedregal de San Ángel. Integrarlas requirió la coordinación con 8 instituciones públicas, privadas y de organizaciones civiles. Luego, en cada área verde realizamos censos de aves y medimos sus características espaciales, de vegetación y de cobertura de uso de suelo. La vegetación la caracterizamos generando mapas de alta resolución a través de vuelos de <em>dron</em>. La cobertura de uso de suelo adentro y alrededor del área la obtuvimos desarrollando un modelo de <em>Machine learning</em> (<a href="https://www.nvidia.com/en-us/glossary/data-science/xgboost/"><em>xgboost</em></a>), que clasificó imágenes satelitales <a href="https://www.usgs.gov/landsat-missions/landsat-8">Landsat 8</a> (Fig. 1). Las características espaciales como el tamaño del área y la distancia que había entre ellas las obtuvimos calculándolas con Sistemas de Información Geográfica. Finalmente, las asociaciones entre los censos de aves y las características que medimos de las áreas verdes las evaluamos con Modelos Lineales Generalizados.</p>
 
 
 
@@ -307,22 +312,22 @@ Las aves migratorias del continenta americano se reproducen en la regiones templ
 
 
 <div class="text-secondary">
-<p>Figura 1. Haz click en la imagen interactiva y desliza la barra en dirección horizontal. Este panel muestra parte de nuestra área de estudio para ejemplificar la clasificación de coberturas de uso de suelo que realizamos en la CDMX. Cercano al centro se puede ver Ciudad Universitaria. La clasificación la hicimos utilizando nuestro modelo de Machine learning xgboost. Al modelo lo entrenamos para clasificar imágenes satelitales Landsat 8. Para fines didácticos usé una imagen satelital de google maps y no corresponde a la imagen <strong>Landsat 8</strong> que el modelo clasificó pero la imagen digitalizada si corresponde a la capa clasificada por nuestro modelo xgboost de cobertura usos de suelo.</p>
+<p>Figura 1. Haz click en la imagen interactiva y desliza la barra en dirección horizontal. Este panel muestra parte de nuestra área de estudio para ejemplificar la clasificación de coberturas de uso de suelo que realizamos en la CDMX. Cercano al centro se puede ver Ciudad Universitaria. La clasificación la hicimos utilizando nuestro modelo de Machine learning xgboost. Al modelo lo entrenamos para clasificar imágenes satelitales Landsat 8. Para fines didácticos usé una imagen satelital de <em>google maps</em> y no corresponde a la imagen <strong>Landsat 8</strong> que el modelo clasificó pero la imagen digitalizada si corresponde a la capa clasificada por nuestro modelo xgboost de cobertura usos de suelo.</p>
 </div>
 <p><br>
 </p>
-<p>Con nuestra evaluación descubrimos que las áreas verdes pueden albergar una biodiversidad considerable de aves migratorias invernantes, al representar el 25% de la diversidad de aves de invierno en la CDMX. La principal características de las áreas verdes asociadas a las aves migratorias son los árboles urbanos y son cruciales. Entre más había, las especies de aves migratorias incrementaban. La ubicación y el tamaño de las áreas verdes no imprtó, ya no hubi distincion entre las especies que encontramos.</p>
+<p>Con nuestra evaluación descubrimos que las áreas verdes pueden albergar una biodiversidad considerable de aves migratorias invernantes, al representar el 25% de la diversidad de aves de invierno en la CDMX. La principal características de las áreas verdes asociadas a las aves migratorias son los árboles urbanos y son cruciales. Entre más había, las especies de aves migratorias incrementaban. La ubicación y el tamaño de las áreas verdes no importó, ya no hubo distinción entre las especies que encontramos.</p>
 <p><br>
 </p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="https://linkinghub.elsevier.com/retrieve/pii/S1618866722001571"><img src="images/RPM2022a2_web.jpg" class="img-fluid figure-img" width="350"></a></p>
-<figcaption class="figure-caption">Figura 2. Asociación positiva de la riqueza (número de especies) y abundancia (individuos) de aves migratorias con las características de los árboles dentro de las áreas verdes. El panel superior muestra la relación entre la riqueza de especies de aves migratorias y la densidad de árboles que había en cada área verde. El panel inferior muestra la relación entre la abundancia de aves migratorias y la proporción de cobertura arbórea. Las líneas en ambas figuras representan los valores estimados dados por su respectivo modelos lineales generalizados. El ave posada en el panel inferior es una perlita gris azulada (Polioptila caerulea), una especie que se encuentra con frecuencia en las áreas verdes. Tomado de Pacheco-Muñoz et. al., (2022).</figcaption>
+<figcaption class="figure-caption">Figura 2. Asociación positiva de la riqueza (número de especies) y abundancia (individuos) de aves migratorias con las características de los árboles dentro de las áreas verdes. El panel superior muestra la relación entre la riqueza de especies de aves migratorias y la densidad de árboles que había en cada área verde. El panel inferior muestra la relación entre la abundancia de aves migratorias y la proporción de cobertura arbórea. Las líneas en ambas figuras representan los valores estimados dados por su respectivo modelos lineales generalizados. El ave posada en el panel inferior es una perlita gris azulada (<em>Polioptila caerulea</em>), una especie que se encuentra con frecuencia en las áreas verdes. Tomado de Pacheco-Muñoz et. al., (2022).</figcaption>
 </figure>
 </div>
 <p><br>
 </p>
-<p>Esto indica que incluso mega ciudades como la CDMX pueden contribuir con hábitat para aves migratorias a través de sus áreas verdes. Un enfoque que las fomente se debe de centrar en aumentar y conservar los árboles que contienen. Además, la falta de impacto de las características espaciales es una gran noticia debido a la limitación del espacio para áreas verdes en la ciudad (Fig. 3 y Fig. 4). ¡Areas verdes pequeñas y aisladas pueden enriquecerse con árboles!, lo cual es fantástico para las aves migratorias y los urbanitas.</p>
+<p>Esto indica que incluso mega ciudades como la CDMX pueden contribuir con hábitat para aves migratorias a través de sus áreas verdes. Un enfoque que las fomente se debe de centrar en aumentar y conservar los árboles que contienen. Además, la falta de impacto de las características espaciales es una gran noticia debido a la limitación del espacio para áreas verdes en la ciudad (Fig. 3 y Fig. 4). ¡Áreas verdes pequeñas y aisladas pueden enriquecerse con árboles!, lo cual es fantástico para las aves migratorias y los urbanitas.</p>
 <p><br>
 </p>
 <div class="columns">
@@ -330,7 +335,7 @@ Las aves migratorias del continenta americano se reproducen en la regiones templ
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/RPM2022a4.png" class="img-fluid figure-img" width="422"></p>
-<figcaption class="figure-caption">Figura 3. La distancias entre las áreas verdes la consideramos como un atributo espacial y este modelo muestra el concepto sobre como medimos esta caracterísitca de las áreas verdes.</figcaption>
+<figcaption class="figure-caption">Figura 3. La distancias entre las áreas verdes la consideramos como un atributo espacial y este modelo muestra el concepto sobre como medimos esta característica de las áreas verdes.</figcaption>
 </figure>
 </div>
 </div><div class="column">
@@ -347,7 +352,7 @@ Las aves migratorias del continenta americano se reproducen en la regiones templ
 <p>---</p>
 <p><br>
 </p>
-<p><em>Este proyecto lo realicé como parte de mi proyecto de posgrado en el <a href="https://www.iies.unam.mx/laboratorios/ecologia-funcional/">laboratorio de Ecología Funcional, del Instituo de Investigaciones en Ecosistemas de la UNAM</a>.</em> <em>Mi participación involucró su concepción, coordinación, administración de fondos, colecta de datos, análisis, interpretación de resultados y la redacción del reporte</em>.</p>
+<p><em>Este proyecto lo realicé como parte de mi proyecto de posgrado en el <a href="https://www.iies.unam.mx/laboratorios/ecologia-funcional/">laboratorio de Ecología Funcional, del Instituto de Investigaciones en Ecosistemas de la UNAM</a>.</em> <em>Mi participación involucró su concepción, coordinación, administración de fondos, colecta de datos, análisis, interpretación de resultados y la redacción del reporte</em>.</p>
 <div class="text-secondary">
 <p>Sus resultados se publicaron en la revista <a href="https://linkinghub.elsevier.com/retrieve/pii/S1618866722001571">Urban Forestry &amp; Urban Greening</a> en junio de 2022. Lo puedes descargar <a href="https://drive.google.com/file/d/1CmXslpbxTO_OZSRyGPzg21lk7pzTmJ73/view?usp=drive_link">aquí</a>.</p>
 <p><strong>Cita</strong>: Pacheco-Muñoz, R., Aguilar-Gómez, M.Á., Schondube, J.E., 2022. Overwintering in a megacity: Urban green areas and migratory birds in Mexico City. Urban Forestry &amp; Urban Greening 73, 127614. <a href="https://doi.org/10.1016/j.ufug.2022.127614" class="uri">https://doi.org/10.1016/j.ufug.2022.127614</a></p>
@@ -595,7 +600,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center">Powered by <a href="https://quarto.org/">Quarto</a>. <br>Copyright 2023, Rodrigo Pacheco Muñoz.<br><a href="../../../../../index.html">Home</a> | <a href="about.qmd">About</a> | <a href="../../../../../proyectos.html">Proyectos</a> | <a href="../../../../../divulgacion.html">Comunicación Científica</a> | <a href="../../../../../publicaciones_cientificas.html">Publicaciones</a></div>
+    <div class="nav-footer-center">Powered by <a href="https://quarto.org/">Quarto</a>. <br>Copyright 2023, Rodrigo Pacheco Muñoz.<br><a href="../../../../../index.html">Home</a> | <a href="about.qmd">About</a> | <a href="../../../../../proyectos.html">Proyectos</a> | <a href="../../../../../divulgacion.html">Comunicación Científica</a> | <a href="../../../../../publicaciones_cientificas.html">Publicaciones</a> | <a href="mailto:rodpachecom@gmail.com">Contacto</a></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
