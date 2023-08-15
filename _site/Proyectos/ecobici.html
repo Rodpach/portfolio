@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2017-11-20">
+<meta name="description" content="La información de Ecobici en CDMX permite explorar las principales rutas que toman los usuarios y la dinámica que tienen al usar el servicio. ¡Explóralo en la app!">
+
+<title>Ecología Urbana y Aproximaciones Analíticas - Ecobici</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../styles.css">
+<meta name="twitter:title" content="Ecología Urbana y Aproximaciones Analíticas - Ecobici">
+<meta name="twitter:description" content="La información de Ecobici en CDMX permite explorar las principales rutas que toman los usuarios y la dinámica que tienen al usar el servicio. ¡Explóralo en la app!">
+<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/0/01/Ecobici_Mec%C3%A1nica.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Ecología Urbana y Aproximaciones Analíticas</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/Pachecovv" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Rodpach/" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:rodpachecom@gmail.com" rel="" target=""><i class="bi bi-envelope-at" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../proyectos.html" rel="" target="">
+ <span class="menu-text">Proyectos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../divulgacion.html" rel="" target="">
+ <span class="menu-text">Comunicación científica</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../publicaciones_cientificas.html" rel="" target="">
+ <span class="menu-text">Publicaciones</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="mailto:rodpachecom@gmail.com" rel="" target="">
+ <span class="menu-text">Contacto</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#los-datos-de-las-bicis" id="toc-los-datos-de-las-bicis" class="nav-link active" data-scroll-target="#los-datos-de-las-bicis">Los datos de las bicis</a></li>
+  <li><a href="#qué-rutas-toman" id="toc-qué-rutas-toman" class="nav-link" data-scroll-target="#qué-rutas-toman">¿Qué rutas toman?</a></li>
+  <li><a href="#ecobici-shiny-app" id="toc-ecobici-shiny-app" class="nav-link" data-scroll-target="#ecobici-shiny-app">Ecobici Shiny app</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Ecobici</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Análisis espacial</div>
+    <div class="quarto-category">Manejo urbano</div>
+    <div class="quarto-category">Transporte urbano</div>
+    <div class="quarto-category">Ciencia de datos</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <em>La información de Ecobici en CDMX permite explorar las principales rutas que toman los usuarios y la dinámica que tienen al usar el servicio. ¡Explóralo en la app!</em>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 20, 2017</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Ecobici_Mec%C3%A1nica.jpg" class="img-fluid figure-img" width="1199"></p>
+</figure>
+</div>
+<p>La CDMX cuenta con una red de transporte público ciclista Ecobici. Esta red ha hecho más ameno el traslado por la ciudad por la actividad física, la experiencia y su rapidez en distancias cortas y medianas, relativo al coche u otras alternativas públicas. Además, los distintos gobiernos han mantenido un esfuerzo por ofertar la información de sus servicios y la demografía de sus usuarios de forma transparente en su <a href="https://www.ecobici.cdmx.gob.mx/es">portal</a> y API. Esto permite explorar y entender el servicio para reconocer oportunidades estratégicas en sus procesos.</p>
+<p>El programa Ecobici inicio en 2010 y sus servicios se ido extendiendo. En su primer año había 10,000 usuarios por día y en un lustro se triplicó a 30,000 usuarios al día. Al momento de esta nota, el servicio cuenta con 452 estaciones y cubre 32 km2.</p>
+<p>En este proyecto evalué el uso de las bicis en junio de 2017 y evalué las rutas más concurridas y las velocidades a las que transitan a lo largo del día desglosado por la edad y el sexo de los usuarios. Luego generé <a href="https://datapach.shinyapps.io/rutas_ecobici_jun2017/">una app</a> para cada quien explore esta información como quiera.</p>
+<section id="los-datos-de-las-bicis" class="level2">
+<h2 class="anchored" data-anchor-id="los-datos-de-las-bicis">Los datos de las bicis</h2>
+<p>Trabajar solo con el mes de junio de 2017 permite ejemplificar un marco de trabajo dinámico y extrapolable. También economiza en recursos computacionales.</p>
+<p>En la siguiente tabla muestro los datos que constituyen la información que oferta el gobierno sobre Ecobici. De izquierda a derecha los datos proporcionan el sexo (Femenino o masculino), la edad, el número de bici, la estación en la que inician su recorrido y donde lo terminan, así como la hora y el día en que la dejan. El total de viajes que muestran estas ocho variables en junio son de 853,651.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
+<div class="table-responsive">
+<table class="table table-striped table-hover table-condensed table-sm small" data-quarto-postprocess="true">
+<caption>Datos de viajes de ecobici en junio de 2017</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Genero_Usuario</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Edad_Usuario</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Bici</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Ciclo_Estacion_Retiro</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Fecha_Retiro</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Hora_Retiro</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Ciclo_Estacion_Arribo</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Fecha_Arribo</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Hora_Arribo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">9287</td>
+<td style="text-align: right;">449</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:00:14</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:13:57</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">9379</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:00:32</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:03:55</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">2365</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:01:24</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:10:04</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">7931</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:01:45</td>
+<td style="text-align: right;">73</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:29:44</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">8512</td>
+<td style="text-align: right;">384</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:01:51</td>
+<td style="text-align: right;">299</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:19:40</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">2812</td>
+<td style="text-align: right;">340</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:02:11</td>
+<td style="text-align: right;">349</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:15:30</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">9888</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:02:20</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:12:19</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">9804</td>
+<td style="text-align: right;">363</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:02:34</td>
+<td style="text-align: right;">276</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:26:22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">7522</td>
+<td style="text-align: right;">231</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:03:02</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:32:48</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">10049</td>
+<td style="text-align: right;">401</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:03:43</td>
+<td style="text-align: right;">401</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:07:03</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">9468</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:04:32</td>
+<td style="text-align: right;">172</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:12:42</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">1907</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:05:11</td>
+<td style="text-align: right;">79</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:29:36</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">2571</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:05:22</td>
+<td style="text-align: right;">79</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:29:25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">2091</td>
+<td style="text-align: right;">225</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:05:38</td>
+<td style="text-align: right;">255</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:18:00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">3962</td>
+<td style="text-align: right;">257</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:05:40</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:11:55</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">7985</td>
+<td style="text-align: right;">246</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:05:48</td>
+<td style="text-align: right;">246</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:33:44</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">8071</td>
+<td style="text-align: right;">136</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:05:53</td>
+<td style="text-align: right;">133</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:10:59</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">2967</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:05:55</td>
+<td style="text-align: right;">173</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:11:32</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">2200</td>
+<td style="text-align: right;">221</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:06:01</td>
+<td style="text-align: right;">127</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:20:56</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">3834</td>
+<td style="text-align: right;">116</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:06:03</td>
+<td style="text-align: right;">264</td>
+<td style="text-align: left;">01/06/2017</td>
+<td style="text-align: left;">00:10:46</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+<p>La localización de las estaciones se encuentra en otro tabla y la información requiere relacionarse.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:100%; ">
+<div class="table-responsive">
+<table class="table table-striped table-hover table-condensed table-sm small" data-quarto-postprocess="true">
+<caption>Informacion de estaciones de ecobici CDMX</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">id</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">zipCode</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">districtCode</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">stationType</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">st1</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">st2</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">st3</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">st4</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">lat</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">lon</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">448</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">BIKE,TPV</td>
+<td style="text-align: right;">448</td>
+<td style="text-align: right;">448</td>
+<td style="text-align: right;">448</td>
+<td style="text-align: right;">448</td>
+<td style="text-align: right;">19.42661</td>
+<td style="text-align: right;">-99.14447</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">443</td>
+<td style="text-align: left;">3340</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">BIKE</td>
+<td style="text-align: right;">432</td>
+<td style="text-align: right;">442</td>
+<td style="text-align: right;">444</td>
+<td style="text-align: right;">432</td>
+<td style="text-align: right;">19.35966</td>
+<td style="text-align: right;">-99.16202</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">416</td>
+<td style="text-align: left;">3104</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">BIKE</td>
+<td style="text-align: right;">390</td>
+<td style="text-align: right;">391</td>
+<td style="text-align: right;">415</td>
+<td style="text-align: right;">390</td>
+<td style="text-align: right;">19.37131</td>
+<td style="text-align: right;">-99.17761</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">437</td>
+<td style="text-align: left;">3240</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">BIKE</td>
+<td style="text-align: right;">423</td>
+<td style="text-align: right;">436</td>
+<td style="text-align: right;">438</td>
+<td style="text-align: right;">423</td>
+<td style="text-align: right;">19.36481</td>
+<td style="text-align: right;">-99.17602</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">438</td>
+<td style="text-align: left;">3240</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">BIKE</td>
+<td style="text-align: right;">434</td>
+<td style="text-align: right;">435</td>
+<td style="text-align: right;">437</td>
+<td style="text-align: right;">434</td>
+<td style="text-align: right;">19.36480</td>
+<td style="text-align: right;">-99.17458</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">440</td>
+<td style="text-align: left;">3330</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">BIKE</td>
+<td style="text-align: right;">433</td>
+<td style="text-align: right;">439</td>
+<td style="text-align: right;">441</td>
+<td style="text-align: right;">433</td>
+<td style="text-align: right;">19.36065</td>
+<td style="text-align: right;">-99.16867</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">347</td>
+<td style="text-align: left;">3710</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">BIKE,TPV</td>
+<td style="text-align: right;">334</td>
+<td style="text-align: right;">346</td>
+<td style="text-align: right;">348</td>
+<td style="text-align: right;">334</td>
+<td style="text-align: right;">19.38438</td>
+<td style="text-align: right;">-99.17610</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">350</td>
+<td style="text-align: left;">3710</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">BIKE</td>
+<td style="text-align: right;">349</td>
+<td style="text-align: right;">352</td>
+<td style="text-align: right;">349</td>
+<td style="text-align: right;">352</td>
+<td style="text-align: right;">19.38406</td>
+<td style="text-align: right;">-99.18148</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">356</td>
+<td style="text-align: left;">3100</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">BIKE</td>
+<td style="text-align: right;">355</td>
+<td style="text-align: right;">357</td>
+<td style="text-align: right;">372</td>
+<td style="text-align: right;">355</td>
+<td style="text-align: right;">19.38129</td>
+<td style="text-align: right;">-99.17017</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">361</td>
+<td style="text-align: left;">3100</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">BIKE</td>
+<td style="text-align: right;">354</td>
+<td style="text-align: right;">369</td>
+<td style="text-align: right;">370</td>
+<td style="text-align: right;">354</td>
+<td style="text-align: right;">19.38045</td>
+<td style="text-align: right;">-99.17622</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">368</td>
+<td style="text-align: left;">3740</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">BIKE</td>
+<td style="text-align: right;">366</td>
+<td style="text-align: right;">367</td>
+<td style="text-align: right;">369</td>
+<td style="text-align: right;">366</td>
+<td style="text-align: right;">19.37925</td>
+<td style="text-align: right;">-99.17934</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">369</td>
+<td style="text-align: left;">3740</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">BIKE,TPV</td>
+<td style="text-align: right;">367</td>
+<td style="text-align: right;">368</td>
+<td style="text-align: right;">367</td>
+<td style="text-align: right;">368</td>
+<td style="text-align: right;">19.37988</td>
+<td style="text-align: right;">-99.17748</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">372</td>
+<td style="text-align: left;">3104</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">BIKE,TPV</td>
+<td style="text-align: right;">373</td>
+<td style="text-align: right;">378</td>
+<td style="text-align: right;">379</td>
+<td style="text-align: right;">373</td>
+<td style="text-align: right;">19.37797</td>
+<td style="text-align: right;">-99.17029</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">379</td>
+<td style="text-align: left;">3104</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">BIKE</td>
+<td style="text-align: right;">378</td>
+<td style="text-align: right;">380</td>
+<td style="text-align: right;">395</td>
+<td style="text-align: right;">378</td>
+<td style="text-align: right;">19.37575</td>
+<td style="text-align: right;">-99.17084</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">402</td>
+<td style="text-align: left;">3310</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">BIKE,TPV</td>
+<td style="text-align: right;">401</td>
+<td style="text-align: right;">403</td>
+<td style="text-align: right;">405</td>
+<td style="text-align: right;">401</td>
+<td style="text-align: right;">19.37095</td>
+<td style="text-align: right;">-99.15872</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">06500</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">BIKE,TPV</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">19.43165</td>
+<td style="text-align: right;">-99.15867</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">06500</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">BIKE</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">19.43231</td>
+<td style="text-align: right;">-99.16160</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">13</td>
+<td style="text-align: left;">06500</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">BIKE,TPV</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">19.42378</td>
+<td style="text-align: right;">-99.17556</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16</td>
+<td style="text-align: left;">06500</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">BIKE</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">19.42653</td>
+<td style="text-align: right;">-99.16916</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">17</td>
+<td style="text-align: left;">06500</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">BIKE,TPV</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">19.42750</td>
+<td style="text-align: right;">-99.16712</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+<section id="qué-rutas-toman" class="level2">
+<h2 class="anchored" data-anchor-id="qué-rutas-toman">¿Qué rutas toman?</h2>
+<p>La información permite relacionar donde inician y terminan el servicio, y contamos con la localización de todas las estaciones. Estos datos permiten generar las rutas más probables por las cuáles transitan. Sin embargo, antes de obtener las rutas se requiere verificar que todos los datos nos sean útiles para ello.</p>
+<p>Al revisar la información me percaté de retiros y devoluciones que ocurren en la misma estación. Al ser el movimiento entre estaciones nuestro interés no los consideré. Además, al existir tantas estaciones también existen muchas combinaciones de salidas y llegadas. Sin embargo, el 90% de los viajes se constituye de 49,189 combinaciones de salidas y llegadas.</p>
+<p>La API de google maps permite obtener una ruta ciclista proporcionando una salida y una llegada. Este servicio permite solicitar 2,000 rutas, por lo que se requerían 24 días para obtener 49,189 rutas, en caso de no realizar un pago que no realicé. Por ello solo solicité las rutas más concurridas y que acumulan el 64.41% de los viajes (535,523 viajes).</p>
+<p>Cada viajes contiene su fecha y hora. La ruta que me proporciona google es la ruta más probable y me permite obtener una distancia. Esta información permite estimar la velocidad del viaje por edad, sexo y hora del día:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/uso_eco_2fps.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>El gif resume el resultado de nuestra evaluación de los datos ofertados por Ecobici a las distintas horas del día en en que ocurrieron los viajes. Las velocidades por las mañanas son mejores y decrecen a eso de las 11:00 am, con pocos usuarios durante la noche.</p>
+<p>También hay más variabilidad en las velocidades entre los 20 y los 40 años y este intervalo el que más usuarios tiene. Al parecer los usuarios más veloces rondan los 30’s. Es muy notorio que predomina el color azul, que denota una mayoría de usuarios del sexo masculino. Además, las rutas más usadas cruzan av. Reforma y las calles de la Condesa.</p>
+</section>
+<section id="ecobici-shiny-app" class="level2">
+<h2 class="anchored" data-anchor-id="ecobici-shiny-app">Ecobici Shiny app</h2>
+<p>Este esquema de evaluación de rutas se puede explorar al gusto del usuario a través de la aplicación interactiva <a href="https://datapach.shinyapps.io/rutas_ecobici_jun2017/"><em>Shiny</em></a><em>.</em> Da click para usarla (Ten un poco de paciencia si la aplicación demora en desplegarse, ya que muestra todos los viajes disponibles). La siguiente imagen muestra un ejemplo de la interfaz de la aplicación.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/app.jpg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p><br>
+</p>
+<p>---</p>
+<p><br>
+</p>
+<p><em>Este proyecto lo realicé con el propósito de desarrollar mis habilidades en aplicaciones Shiny y en técnicas de análisis espacial</em></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">Powered by <a href="https://quarto.org/">Quarto</a>. <br>Copyright 2023, Rodrigo Pacheco Muñoz.<br><a href="../../../../../index.html">Home</a> | <a href="about.qmd">About</a> | <a href="../../../../../proyectos.html">Proyectos</a> | <a href="../../../../../divulgacion.html">Comunicación Científica</a> | <a href="../../../../../publicaciones_cientificas.html">Publicaciones</a> | <a href="mailto:rodpachecom@gmail.com">Contacto</a></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
