@@ -9,7 +9,7 @@
 <meta name="dcterms.date" content="2017-11-20">
 <meta name="description" content="La información de Ecobici en CDMX permite explorar las principales rutas que toman los usuarios y la dinámica que tienen al usar el servicio. ¡Explóralo en la app!">
 
-<title>Ecología Urbana y Aproximaciones Analíticas - Ecobici</title>
+<title>Aproximaciones Analíticas Desde la Ciencia y la Ecología Urbana - ¿Quiénes son y a donde pedalean?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +66,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta name="twitter:title" content="Ecología Urbana y Aproximaciones Analíticas - Ecobici">
+<meta name="twitter:title" content="Aproximaciones Analíticas Desde la Ciencia y la Ecología Urbana - ¿Quiénes son y a donde pedalean?">
 <meta name="twitter:description" content="La información de Ecobici en CDMX permite explorar las principales rutas que toman los usuarios y la dinámica que tienen al usar el servicio. ¡Explóralo en la app!">
 <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/0/01/Ecobici_Mec%C3%A1nica.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -80,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Ecología Urbana y Aproximaciones Analíticas</span>
+    <span class="navbar-title">Aproximaciones Analíticas Desde la Ciencia y la Ecología Urbana</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -149,6 +149,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#los-datos-de-las-bicis" id="toc-los-datos-de-las-bicis" class="nav-link active" data-scroll-target="#los-datos-de-las-bicis">Los datos de las bicis</a></li>
   <li><a href="#qué-rutas-toman" id="toc-qué-rutas-toman" class="nav-link" data-scroll-target="#qué-rutas-toman">¿Qué rutas toman?</a></li>
   <li><a href="#ecobici-shiny-app" id="toc-ecobici-shiny-app" class="nav-link" data-scroll-target="#ecobici-shiny-app">Ecobici Shiny app</a></li>
+  <li><a href="#conclusión" id="toc-conclusión" class="nav-link" data-scroll-target="#conclusión">Conclusión</a></li>
   </ul>
 </nav>
     </div>
@@ -157,7 +158,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Ecobici</h1>
+<h1 class="title">¿Quiénes son y a donde pedalean?</h1>
   <div class="quarto-categories">
     <div class="quarto-category">Análisis espacial</div>
     <div class="quarto-category">Manejo urbano</div>
@@ -720,14 +721,16 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="qué-rutas-toman" class="level2">
 <h2 class="anchored" data-anchor-id="qué-rutas-toman">¿Qué rutas toman?</h2>
-<p>La información permite relacionar donde inician y terminan el servicio, y contamos con la localización de todas las estaciones. Estos datos permiten generar las rutas más probables por las cuáles transitan. Sin embargo, antes de obtener las rutas se requiere verificar que todos los datos nos sean útiles para ello.</p>
-<p>Al revisar la información me percaté de retiros y devoluciones que ocurren en la misma estación. Al ser el movimiento entre estaciones nuestro interés no los consideré. Además, al existir tantas estaciones también existen muchas combinaciones de salidas y llegadas. Sin embargo, el 90% de los viajes se constituye de 49,189 combinaciones de salidas y llegadas.</p>
-<p>La API de google maps permite obtener una ruta ciclista proporcionando una salida y una llegada. Este servicio permite solicitar 2,000 rutas, por lo que se requerían 24 días para obtener 49,189 rutas, en caso de no realizar un pago que no realicé. Por ello solo solicité las rutas más concurridas y que acumulan el 64.41% de los viajes (535,523 viajes).</p>
-<p>Cada viajes contiene su fecha y hora. La ruta que me proporciona google es la ruta más probable y me permite obtener una distancia. Esta información permite estimar la velocidad del viaje por edad, sexo y hora del día:</p>
+<p>La información permite relacionar donde inician y terminan el servicio. Estos permite generar las rutas más probables por las cuáles transitan. No obstante, es necesario verificar que todos los datos nos sean útiles para entenderlo.</p>
+<p>Al revisar la información me percaté de retiros y devoluciones que ocurren en la misma estación. Al ser el movimiento entre estaciones nuestro interés no los consideré. Luego, a través de la API de google maps obtuve la ruta ciclista más probable ente cada salida y cada llegada. Sin embargo, ya que este servicio solo permite solicitar 2,000 rutas cada 24 horas, solo solicité las rutas más concurridas y que acumulan el 64.41% de los viajes (535,523 viajes).</p>
+<p>Cada viajes contiene su fecha y hora. Con la ruta proporcionada por google obtengo la ruta más probable y también me permite obtener una distancia. A través de esta información pude estimar la velocidad del viaje por edad, sexo y hora del día:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/uso_eco_2fps.gif" class="img-fluid figure-img"></p>
 </figure>
+</div>
+<div class="text-secondary">
+<p>Figura 1. El panel de la izquierda muestra las rutas más concurridas de la ciudad a distintas horas del día. El panel de la derecha muestra en el eje horizontal la velocidad de los usuarios y en el eje vertical la edad de los usuarios. Los usuarios se muestran por sexo autodenominado (femenino en rojo y Masculono en azul) a distintas horas del día,</p>
 </div>
 <p>El gif resume el resultado de nuestra evaluación de los datos ofertados por Ecobici a las distintas horas del día en en que ocurrieron los viajes. Las velocidades por las mañanas son mejores y decrecen a eso de las 11:00 am, con pocos usuarios durante la noche.</p>
 <p>También hay más variabilidad en las velocidades entre los 20 y los 40 años y este intervalo el que más usuarios tiene. Al parecer los usuarios más veloces rondan los 30’s. Es muy notorio que predomina el color azul, que denota una mayoría de usuarios del sexo masculino. Además, las rutas más usadas cruzan av. Reforma y las calles de la Condesa.</p>
@@ -737,11 +740,14 @@ ul.task-list li input[type="checkbox"] {
 <p>Este esquema de evaluación de rutas se puede explorar al gusto del usuario a través de la aplicación interactiva <a href="https://datapach.shinyapps.io/rutas_ecobici_jun2017/"><em>Shiny</em></a><em>.</em> Da click para usarla (Ten un poco de paciencia si la aplicación demora en desplegarse, ya que muestra todos los viajes disponibles). La siguiente imagen muestra un ejemplo de la interfaz de la aplicación.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/app.jpg" class="img-fluid figure-img"></p>
+<p><a href="https://datapach.shinyapps.io/rutas_ecobici_jun2017/"><img src="images/app.jpg" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
-<p><br>
-</p>
+<p><a href="https://datapach.shinyapps.io/rutas_ecobici_jun2017/">Da click aquí o en la imagen para visitarla</a>.</p>
+</section>
+<section id="conclusión" class="level2">
+<h2 class="anchored" data-anchor-id="conclusión">Conclusión</h2>
+<p>Esta herramienta permite identificar las rutas más transitadas, el perfil demográfico de los usuarios de dichas rutas, así como su dinámica a lo largo del día. Además, permite identificar y brindar atención focalizada a las bicicletas más usadas, dando un estimado de la distancia que han recorrido acotado a rutas explícitas. Así, esta herramienta puede permitir un manejo estratégico de los recursos y el servicio de ecobici.</p>
 <p>---</p>
 <p><br>
 </p>
