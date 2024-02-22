@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-06-01">
-<meta name="description" content="Desarrollamos un método y esquema para evaluar espacio-temporalmente invasiones biológicas con ciencia ciudadana e información de acceso libre.">
+<meta name="dcterms.date" content="2017-11-22">
+<meta name="description" content="Como prueba de conepto, esta aplicación permite explorar espacial y gráficamente votaciones electorales. ¡Prueba en la app!">
 
-<title>Desde la Ciencia y la Ecología Urbana - Monitoreo colectivo y masivo de especies invasoras</title>
+<title>Desde la Ciencia y la Ecología Urbana – Dashboard interactivo para explorar elecciones</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -78,13 +78,13 @@ gtag('config', 'G-HVF2WPFB5W', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Desde la Ciencia y la Ecología Urbana - Monitoreo colectivo y masivo de especies invasoras">
-<meta property="og:description" content="Desarrollamos un método y esquema para evaluar espacio-temporalmente invasiones biológicas con ciencia ciudadana e información de acceso libre.">
-<meta property="og:image" content="images/ecd.gif">
+<meta property="og:title" content="Desde la Ciencia y la Ecología Urbana - Dashboard interactivo para explorar elecciones">
+<meta property="og:description" content="_Como prueba de conepto, esta aplicación permite explorar espacial y gráficamente votaciones electorales. ¡Prueba en la app!_">
+<meta property="og:image" content="edomex17.png">
 <meta property="og:site-name" content="Desde la Ciencia y la Ecología Urbana">
-<meta name="twitter:title" content="Desde la Ciencia y la Ecología Urbana - Monitoreo colectivo y masivo de especies invasoras">
-<meta name="twitter:description" content="Desarrollamos un método y esquema para evaluar espacio-temporalmente invasiones biológicas con ciencia ciudadana e información de acceso libre.">
-<meta name="twitter:image" content="images/ecd.gif">
+<meta name="twitter:title" content="Desde la Ciencia y la Ecología Urbana - Dashboard interactivo para explorar elecciones">
+<meta name="twitter:description" content="_Como prueba de conepto, esta aplicación permite explorar espacial y gráficamente votaciones electorales. ¡Prueba en la app!_">
+<meta name="twitter:image" content="edomex17.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -158,27 +158,31 @@ gtag('config', 'G-HVF2WPFB5W', { 'anonymize_ip': true});
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#haz-click-en-el-municipio-de-tu-elección-y-explora-los-votos" id="toc-haz-click-en-el-municipio-de-tu-elección-y-explora-los-votos" class="nav-link active" data-scroll-target="#haz-click-en-el-municipio-de-tu-elección-y-explora-los-votos">¡Haz click en el municipio de tu elección y explora los votos!</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Monitoreo colectivo y masivo de especies invasoras</h1>
+<h1 class="title">Dashboard interactivo para explorar elecciones</h1>
   <div class="quarto-categories">
     <div class="quarto-category">Análisis espacial</div>
-    <div class="quarto-category">Manejo de fauna</div>
-    <div class="quarto-category">Invasión de especies</div>
-    <div class="quarto-category">Ecología</div>
-    <div class="quarto-category">Aves</div>
+    <div class="quarto-category">App interactiva</div>
     <div class="quarto-category">Ciencia de datos</div>
+    <div class="quarto-category">Dashboard</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    <em>Desarrollamos un método y esquema para evaluar espacio-temporalmente invasiones biológicas con ciencia ciudadana e información de acceso libre.</em>
+    <em>Como prueba de conepto, esta aplicación permite explorar espacial y gráficamente votaciones electorales. ¡Prueba en la app!</em>
   </div>
 </div>
 
@@ -189,7 +193,7 @@ gtag('config', 'G-HVF2WPFB5W', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 1, 2023</p>
+      <p class="date">November 22, 2017</p>
     </div>
   </div>
   
@@ -199,89 +203,21 @@ gtag('config', 'G-HVF2WPFB5W', { 'anonymize_ip': true});
 
 </header>
 
-<div class="columns">
-<div class="column">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://inaturalist-open-data.s3.amazonaws.com/photos/256616785/original.jpg" class="img-fluid figure-img" width="350"></p>
-<figcaption class="figure-caption">Figura 1. Estornino Pinto (Sturnus vulgaris). <a href="https://www.naturalista.mx/observations/148963005">Fotografía de iNaturalista, tomada por el usuario stevem4560.</a></figcaption>
-</figure>
+<p>A continuación muestro el concepto de implementación de un <em>Dashboard</em> donde visualizamos información espacial y gŕafica de forma interactiva. Este <em>Dashboard</em> es una <a href="https://shiny.posit.co/"><em>shiny app</em></a>.</p>
+<p>Para demostrar el concepto de implementación de la app, usé los datos electorales de las elecciones de junio de 2017 del Estado de México. Estos los obtuve del <a href="http://www.prepieem.org.mx/rptDistrital.html"><strong>IEEM</strong></a>. También obtuve la información de los distritos electorales que provee el INEGI. Esta es la última versión del conteo de votos que se emitió. <strong>La aplicación permite explorar de forma interactiva el voto en cada municipio.</strong></p>
+<section id="haz-click-en-el-municipio-de-tu-elección-y-explora-los-votos" class="level2">
+<h2 class="anchored" data-anchor-id="haz-click-en-el-municipio-de-tu-elección-y-explora-los-votos">¡Haz click en el municipio de tu elección y explora los votos!</h2>
+<p><iframe height="900" width="100%" frameborder="yes" src=" https://datapach.shinyapps.io/EdoMex/" <="" iframe=""></p>
+<div id="quarto-navigation-envelope" class="hidden">
+<p><span class="hidden" data-render-id="quarto-int-sidebar-title">Desde la Ciencia y la Ecología Urbana</span> <span class="hidden" data-render-id="quarto-int-navbar-title">Desde la Ciencia y la Ecología Urbana</span> <span class="hidden" data-render-id="quarto-int-navbar:https://twitter.com/Pachecovv">https://twitter.com/Pachecovv</span> <span class="hidden" data-render-id="quarto-int-navbar:https://github.com/Rodpach/">https://github.com/Rodpach/</span> <span class="hidden" data-render-id="quarto-int-navbar:mailto:rodpachecom@gmail.com">mailto:rodpachecom@gmail.com</span> <span class="hidden" data-render-id="quarto-int-navbar:Home">Home</span> <span class="hidden" data-render-id="quarto-int-navbar:/index.html">/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:About">About</span> <span class="hidden" data-render-id="quarto-int-navbar:/about.html">/about.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Proyectos">Proyectos</span> <span class="hidden" data-render-id="quarto-int-navbar:/proyectos.html">/proyectos.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Comunicación científica">Comunicación científica</span> <span class="hidden" data-render-id="quarto-int-navbar:/divulgacion.html">/divulgacion.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Publicaciones">Publicaciones</span> <span class="hidden" data-render-id="quarto-int-navbar:/publicaciones_cientificas.html">/publicaciones_cientificas.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Contacto">Contacto</span> <span class="hidden" data-render-id="footer-center">Powered by <a href="https://quarto.org/">Quarto</a>. <br />Copyright 2024, Rodrigo Pacheco Muñoz.<br /><a href="../../../../../index.html">Home</a> | <a href="about.qmd">About</a> | <a href="../../../../../proyectos.html">Proyectos</a> | <a href="../../../../../divulgacion.html">Comunicación Científica</a> | <a href="../../../../../publicaciones_cientificas.html">Publicaciones</a> | <a href="mailto:rodpachecom@gmail.com">Contacto</a></span></p>
 </div>
-</div><div class="column">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://static.inaturalist.org/photos/61919353/large.jpeg" class="img-fluid figure-img" width="350"></p>
-<figcaption class="figure-caption">Figura 2. Paloma de Collar Turca (Streptopelia decaocto). <a href="https://www.naturalista.mx/observations/39021293">Fotografía de iNaturalista, tomada por el usuario sosar</a></figcaption>
-</figure>
+<div id="quarto-meta-markdown" class="hidden">
+<p><span class="hidden" data-render-id="quarto-metatitle">Desde la Ciencia y la Ecología Urbana - Dashboard interactivo para explorar elecciones</span> <span class="hidden" data-render-id="quarto-twittercardtitle">Desde la Ciencia y la Ecología Urbana - Dashboard interactivo para explorar elecciones</span> <span class="hidden" data-render-id="quarto-ogcardtitle">Desde la Ciencia y la Ecología Urbana - Dashboard interactivo para explorar elecciones</span> <span class="hidden" data-render-id="quarto-metasitename">Desde la Ciencia y la Ecología Urbana</span> <span class="hidden" data-render-id="quarto-twittercarddesc"><em>Como prueba de conepto, esta aplicación permite explorar espacial y gráficamente votaciones electorales. ¡Prueba en la app!</em></span> <span class="hidden" data-render-id="quarto-ogcardddesc"><em>Como prueba de conepto, esta aplicación permite explorar espacial y gráficamente votaciones electorales. ¡Prueba en la app!</em></span></p>
 </div>
-</div>
-</div>
-<p><br>
-</p>
-<p>Las invasiones biológicas son uno de los principales conductores de la pérdida de biodivesidad. En este proyecto desarrollamos un método y proponemos un esquema para dar seguimiento y entender invasiones biológicas a grandes escala espaciales y temporales. Nuestro método para dar seguimiento a la invasión lo desarrollamos con registros públicos que comparten usuarios en plataformas masivas de ciencia ciudadana (<a href="https://ebird.org/home">eBirds</a> e <a href="https://www.inaturalist.org/">iNatulista</a>). Nuestro esquema para entender el proceso de invasión asocia los resultados de nuestro método con variables ambientales de escala global y de acceso libre. Esta evaluación permite entender la dinámica temporal de la invasión y si existen condiciones ambientales que las fomentan o limitan. También plantea un manejo estratégico para invasiones biológicas a partir de entender información de acceso abierto y reduciendo costos.</p>
-<p>Para el proyecto utilizamos como modelo la invasión de dos especies de aves en México: el Estornino Pinto (<em>Sturnus Vulgaris</em>; FIg. 1) la Paloma de Collar Turca (<em>Streptopelia decaocto</em>; FIg. 2). Ambas especies son nativas en Europa y el este de Asia e invadieron México en distintos en el siglo veinte (S. XX). Además, las dos especies se asocian a ambientes antropizados, siendo particularmente abundantes en zonas productivas/agrícolas, donde ocasionan pérdidas millonarias al alimentarse. Que sus poblaciones y sus territorios crezcan implica la perdida de biodiversidad y un reto añadido al campo para lograr un buen rendimiento de los cultivos. Por ello, su monitoreo y manejo es un reto del cambio global que la <a href="https://www.iucn.org/our-work/topic/invasive-alien-species">Unión por la Conservación de la Naturaleza</a> (IUCN, por sus siglas en inglés) y la <a href="https://www.ipbes.net/invasive-alien-species-assessment">Plataforma Intergubernamental para la Biodiversidad y los Servicios Ecosistémicos</a> (IPBES, por sus siglas en inglés) lo señalan como un tema prioritario.</p>
-<p>El método considera un territorio (México) segmentado en gradillas. Luego, con los registros de ciencia ciudadana de cada especie evaluamos cada elemento de la gradilla respecto a cuando fue invadido y cuántos vecinos invadidos tenía cuando ocurrió.</p>
-<p><br>
-</p>
-<div class="columns">
-<div class="column">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/es.gif" class="img-fluid figure-img" width="350"></p>
-<figcaption class="figure-caption">Figura 3. Dinámica espacio-temporal de la invasión del <strong>Estornino Pinto</strong> (<em>Sturnus vulgaris</em>) en México, a través de los registros de plataformas masivas de ciencia ciudadana.</figcaption>
-</figure>
-</div>
-</div><div class="column">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/ecd.gif" class="img-fluid figure-img" width="350"></p>
-<figcaption class="figure-caption">Figura 4. Dinámica espacio-temporal de la invasión de la <strong>Paloma de Collar Turca</strong> (<em>Streptopelia decaocto</em>) en México, a través de los registros de plataformas masivas de ciencia ciudadana.</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p><br>
-</p>
-<p>También acompañamos nuestro método desarrollando herramientas para evaluar si la expansión de la invasión se explica por el azar: con una tasa de crecimiento aleatoria o una fija obtenida a partir de la tasa observada en los registros de ciencia ciudadana.</p>
-<p><br>
-</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://raw.githubusercontent.com/Rodpach/Invasion_process/master/simulated_invasion_Svulg_sim_random.gif" class="img-fluid figure-img" width="350"></p>
-<figcaption class="figure-caption">Figura 5. Simulación de invasión de especie aleatoria con dos celdas invadidas al inicio y con una tasa de crecimiento fija, obtenida a partir de los registros de ciencia ciudadana.</figcaption>
-</figure>
-</div>
-<p><br>
-</p>
-<p>Esta información permite ajustar un modelo binomial que permite un valor sobre que tan probable es que un elemento de la gradilla sea invadido (Fig. 6). Finalmente, esta probabilidad de invasión la asociamos con variables climáticas como la temperatura y la precipitación para entender si existen condiciones que favorecen o limitan la invasión. En nuestras especies modelo hallamos que al estornino se limita a áreas frías y secas del país. A la paloma len importa poco y su expansión va tan acelerado que quizá esté cerca de invadir casi todo el país.</p>
-<p><br>
-</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/RPM2022b5_web.jpg" class="img-fluid figure-img" width="600"></p>
-<figcaption class="figure-caption">Figura 6. Patrón de la <strong>probabilidad de invasión</strong> (eje vertical) de cada especie evaluada, dada por sus respectivos modelos binomiales, resultado de la interacción la variables espacio-temporales (el color indica número de celdas vecinas invadidas en la invasión de una determinada celda y el eje horizontal el número de meses transcurridos desde la primera invasión de una celda vecina)</figcaption>
-</figure>
-</div>
-<p><br>
-</p>
-<p>El método para realizar el seguimiento de especies invasoras con ciencia ciudadana lo ofrecemos a través de dos funciones que programé en el lenguaje R. Tanto las funciones como un tutorial del esquema de trabajo los ofrecemos abiertamente en mi repositorio de de <a href="#0">Github</a>. Esperamos que esta propuesta ofrezca información estratégica y puntual para dar seguimiento a la invasión de especies a escalas espacio-temporales medianas y grandes.</p>
-<p><br>
-</p>
-<hr>
-<p><br>
-</p>
-<p><em>Mi participación en este proyecto fue como coordinador y colaborador en el <a href="https://www.iies.unam.mx/laboratorios/ecologia-funcional/">laboratorio de Ecología Funcional, del Instituto de Investigaciones en Ecosistemas de la UNAM</a>, como parte del proyecto PAPIT de Especies Invasoras. Mi participación involucró su concepción, coordinación, desarrolló de código en R, colecta y visualización de datos, análisis, interpretación de resultados, y la redacción del reporte.</em></p>
-<p><br>
-</p>
-<div class="text-secondary">
-<p>Sus resultados se publicaron en la revista <a href="https://www.sciencedirect.com/science/article/pii/S2213305423000322">Anthropocene</a> en junio de 2023. Lo puedes descargar <a href="https://drive.google.com/file/d/1x7luyleXDjC0DwMi-ltY7w7YQMqd0WFc/view?usp=drive_link">aquí</a>.</p>
-<p><strong>Cita</strong>: Ceja-Madrigal, A., Pacheco-Muñoz, R., Navarro-Sigüenza, A.G., Rodríguez, P., Jiménez-Cruz, M., Schondube, J.E., 2023. Factors affecting invasion process of a megadiverse country by two exotic bird species. Anthropocene 43, 100399. <a href="https://doi.org/10.1016/j.ancene.2023.100399" class="uri">https://doi.org/10.1016/j.ancene.2023.100399</a></p>
-</div>
-
-
+</section>
 
 </main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+<script id = "quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -520,13 +456,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center">Powered by <a href="https://quarto.org/">Quarto</a>. <br>Copyright 2024, Rodrigo Pacheco Muñoz.<br><a href="../../../../../index.html">Home</a> | <a href="about.qmd">About</a> | <a href="../../../../../proyectos.html">Proyectos</a> | <a href="../../../../../divulgacion.html">Comunicación Científica</a> | <a href="../../../../../publicaciones_cientificas.html">Publicaciones</a> | <a href="mailto:rodpachecom@gmail.com">Contacto</a></div>
+    <div class="nav-footer-center">
+      <div class='footer-contents'>Powered by [Quarto](https://quarto.org/). <br />Copyright 2024, Rodrigo Pacheco Muñoz.<br />[Home](../../../../../index.html) | [About](about.qmd) | [Proyectos](../../../../../proyectos.html) | [Comunicación Científica](../../../../../divulgacion.html) | [Publicaciones](../../../../../publicaciones_cientificas.html) | [Contacto](mailto:rodpachecom@gmail.com)</div>  
+    </div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
 
+</body>
 
-
-</body></html>
+</html></iframe></p></section></main></div></body></html>
