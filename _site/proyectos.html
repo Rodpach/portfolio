@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Desde la Ciencia y la Ecología Urbana - Proyectos</title>
+<title>Proyectos – Desde la Ciencia y la Ecología Urbana</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -37,17 +37,23 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-8bc6c463a316898f0a4ae8298c0950d9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -56,6 +62,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -97,22 +104,44 @@ ul.task-list li input[type="checkbox"] {
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
- 
-  gtag('consent', 'default', {
-    'ad_storage': 'denied',
-    'analytics_storage': 'denied'
-  });
 gtag('config', 'G-HVF2WPFB5W', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Desde la Ciencia y la Ecología Urbana - Proyectos">
+<meta property="og:title" content="Proyectos – Desde la Ciencia y la Ecología Urbana">
 <meta property="og:image" content="./Proyectos/images/ecd.gif">
-<meta property="og:site-name" content="Desde la Ciencia y la Ecología Urbana">
-<meta name="twitter:title" content="Desde la Ciencia y la Ecología Urbana - Proyectos">
+<meta property="og:site_name" content="Desde la Ciencia y la Ecología Urbana">
+<meta name="twitter:title" content="Proyectos – Desde la Ciencia y la Ecología Urbana">
 <meta name="twitter:image" content="./Proyectos/images/ecd.gif">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -121,64 +150,64 @@ gtag('config', 'G-HVF2WPFB5W', { 'anonymize_ip': true});
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Desde la Ciencia y la Ecología Urbana</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/Pachecovv" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/Pachecovv"> <i class="bi bi-twitter" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Rodpach/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/Rodpach/"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:rodpachecom@gmail.com" rel="" target=""><i class="bi bi-envelope-at" role="img">
+    <a class="nav-link" href="mailto:rodpachecom@gmail.com"> <i class="bi bi-envelope-at" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./proyectos.html" rel="" target="" aria-current="page">
- <span class="menu-text">Proyectos</span></a>
+    <a class="nav-link active" href="./proyectos.html" aria-current="page"> 
+<span class="menu-text">Proyectos</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./divulgacion.html" rel="" target="">
- <span class="menu-text">Comunicación científica</span></a>
+    <a class="nav-link" href="./divulgacion.html"> 
+<span class="menu-text">Comunicación científica</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./publicaciones_cientificas.html" rel="" target="">
- <span class="menu-text">Publicaciones</span></a>
+    <a class="nav-link" href="./publicaciones_cientificas.html"> 
+<span class="menu-text">Publicaciones</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="mailto:rodpachecom@gmail.com" rel="" target="">
- <span class="menu-text">Contacto</span></a>
+    <a class="nav-link" href="mailto:rodpachecom@gmail.com"> 
+<span class="menu-text">Contacto</span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -188,7 +217,7 @@ gtag('config', 'G-HVF2WPFB5W', { 'anonymize_ip': true});
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(10)</span></div><div class="category" data-category="Análisis espacial">Análisis espacial <span class="quarto-category-count">(7)</span></div><div class="category" data-category="App interactiva">App interactiva <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Aves">Aves <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Cambio climático">Cambio climático <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Ciencia de datos">Ciencia de datos <span class="quarto-category-count">(9)</span></div><div class="category" data-category="Comportamiento">Comportamiento <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Dashboard">Dashboard <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Ecología">Ecología <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Ecología Urbana">Ecología Urbana <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Invasión de especies">Invasión de especies <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Machine learning">Machine learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Manejo de fauna">Manejo de fauna <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Manejo de recursos">Manejo de recursos <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Manejo urbano">Manejo urbano <span class="quarto-category-count">(6)</span></div><div class="category" data-category="Región">Región <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Tablas dinamicas">Tablas dinamicas <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Transporte urbano">Transporte urbano <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Visualizacion">Visualizacion <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Áreas verdes">Áreas verdes <span class="quarto-category-count">(2)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(10)</span></div><div class="category" data-category="QW4lQzMlQTFsaXNpcyUyMGVzcGFjaWFs">Análisis espacial <span class="quarto-category-count">(7)</span></div><div class="category" data-category="QXBwJTIwaW50ZXJhY3RpdmE=">App interactiva <span class="quarto-category-count">(2)</span></div><div class="category" data-category="QXZlcw==">Aves <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Q2FtYmlvJTIwY2xpbSVDMyVBMXRpY28=">Cambio climático <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Q2llbmNpYSUyMGRlJTIwZGF0b3M=">Ciencia de datos <span class="quarto-category-count">(9)</span></div><div class="category" data-category="Q29tcG9ydGFtaWVudG8=">Comportamiento <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGFzaGJvYXJk">Dashboard <span class="quarto-category-count">(3)</span></div><div class="category" data-category="RWNvbG9nJUMzJUFEYQ==">Ecología <span class="quarto-category-count">(4)</span></div><div class="category" data-category="RWNvbG9nJUMzJUFEYSUyMFVyYmFuYQ==">Ecología Urbana <span class="quarto-category-count">(5)</span></div><div class="category" data-category="SW52YXNpJUMzJUIzbiUyMGRlJTIwZXNwZWNpZXM=">Invasión de especies <span class="quarto-category-count">(2)</span></div><div class="category" data-category="TWFjaGluZSUyMGxlYXJuaW5n">Machine learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TWFuZWpvJTIwZGUlMjBmYXVuYQ==">Manejo de fauna <span class="quarto-category-count">(4)</span></div><div class="category" data-category="TWFuZWpvJTIwZGUlMjByZWN1cnNvcw==">Manejo de recursos <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TWFuZWpvJTIwdXJiYW5v">Manejo urbano <span class="quarto-category-count">(6)</span></div><div class="category" data-category="UmVnaSVDMyVCM24=">Región <span class="quarto-category-count">(2)</span></div><div class="category" data-category="VGFibGFzJTIwZGluYW1pY2Fz">Tablas dinamicas <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VHJhbnNwb3J0ZSUyMHVyYmFubw==">Transporte urbano <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VmlzdWFsaXphY2lvbg==">Visualizacion <span class="quarto-category-count">(2)</span></div><div class="category" data-category="JUMzJTgxcmVhcyUyMHZlcmRlcw==">Áreas verdes <span class="quarto-category-count">(2)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -207,7 +236,9 @@ gtag('config', 'G-HVF2WPFB5W', { 'anonymize_ip': true});
   </div>
   
 
+
 </header>
+
 
 
 
@@ -215,11 +246,11 @@ gtag('config', 'G-HVF2WPFB5W', { 'anonymize_ip': true});
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="Análisis espacial,Manejo de fauna,Invasión de especies,Ecología,Aves,Ciencia de datos" data-listing-date-sort="1685595600000" data-listing-file-modified-sort="1708626955524" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
+<div class="g-col-1" data-index="0" data-categories="QW4lQzMlQTFsaXNpcyUyMGVzcGFjaWFsJTJDTWFuZWpvJTIwZGUlMjBmYXVuYSUyQ0ludmFzaSVDMyVCM24lMjBkZSUyMGVzcGVjaWVzJTJDRWNvbG9nJUMzJUFEYSUyQ0F2ZXMlMkNDaWVuY2lhJTIwZGUlMjBkYXRvcw==" data-listing-date-sort="1685599200000" data-listing-file-modified-sort="1708626955524" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="788">
 <a href="./Proyectos/CMRPM2023.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="./Proyectos/images/ecd.gif" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="./Proyectos/images/ecd.gif" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -243,11 +274,11 @@ Jun 1, 2023
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="Ecología,Invasión de especies,Comportamiento,Ciencia de datos,Cambio climático" data-listing-date-sort="1660712400000" data-listing-file-modified-sort="1708625513752" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
+<div class="g-col-1" data-index="1" data-categories="RWNvbG9nJUMzJUFEYSUyQ0ludmFzaSVDMyVCM24lMjBkZSUyMGVzcGVjaWVzJTJDQ29tcG9ydGFtaWVudG8lMkNDaWVuY2lhJTIwZGUlMjBkYXRvcyUyQ0NhbWJpbyUyMGNsaW0lQzMlQTF0aWNv" data-listing-date-sort="1660712400000" data-listing-file-modified-sort="1708625513752" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="602">
 <a href="./Proyectos/PalomeraHernandezetal2022.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="https://www.biolib.cz/IMG/GAL/BIG/439282.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="https://www.biolib.cz/IMG/GAL/BIG/439282.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -271,11 +302,11 @@ Aug 17, 2022
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="Análisis espacial,Ecología Urbana,Manejo urbano,Manejo de fauna,Áreas verdes,Ecología,Aves,Ciencia de datos,Machine learning" data-listing-date-sort="1652418000000" data-listing-file-modified-sort="1708625520521" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
+<div class="g-col-1" data-index="2" data-categories="QW4lQzMlQTFsaXNpcyUyMGVzcGFjaWFsJTJDRWNvbG9nJUMzJUFEYSUyMFVyYmFuYSUyQ01hbmVqbyUyMHVyYmFubyUyQ01hbmVqbyUyMGRlJTIwZmF1bmElMkMlQzMlODFyZWFzJTIwdmVyZGVzJTJDRWNvbG9nJUMzJUFEYSUyQ0F2ZXMlMkNDaWVuY2lhJTIwZGUlMjBkYXRvcyUyQ01hY2hpbmUlMjBsZWFybmluZw==" data-listing-date-sort="1652418000000" data-listing-file-modified-sort="1708625520521" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1575">
 <a href="./Proyectos/PachecoMuñozetal2022a.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="https://static.inaturalist.org/photos/28605354/medium.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="https://static.inaturalist.org/photos/28605354/medium.jpeg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -299,11 +330,11 @@ May 13, 2022
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="Análisis espacial,Visualizacion,Ecología Urbana,Manejo de fauna" data-listing-date-sort="1651986000000" data-listing-file-modified-sort="1708624467766" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="g-col-1" data-index="3" data-categories="QW4lQzMlQTFsaXNpcyUyMGVzcGFjaWFsJTJDVmlzdWFsaXphY2lvbiUyQ0Vjb2xvZyVDMyVBRGElMjBVcmJhbmElMkNNYW5lam8lMjBkZSUyMGZhdW5h" data-listing-date-sort="1651986000000" data-listing-file-modified-sort="1708624467766" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="203">
 <a href="./Proyectos/gatos_gps.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="./Proyectos/images/HR_111.gif" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="./Proyectos/images/HR_111.gif" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -327,11 +358,11 @@ May 8, 2022
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="Ecología Urbana,Manejo urbano,Manejo de fauna,Áreas verdes,Ecología,Aves,Ciencia de datos" data-listing-date-sort="1642399200000" data-listing-file-modified-sort="1708625498683" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
+<div class="g-col-1" data-index="4" data-categories="RWNvbG9nJUMzJUFEYSUyMFVyYmFuYSUyQ01hbmVqbyUyMHVyYmFubyUyQ01hbmVqbyUyMGRlJTIwZmF1bmElMkMlQzMlODFyZWFzJTIwdmVyZGVzJTJDRWNvbG9nJUMzJUFEYSUyQ0F2ZXMlMkNDaWVuY2lhJTIwZGUlMjBkYXRvcw==" data-listing-date-sort="1642399200000" data-listing-file-modified-sort="1708625498683" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="656">
 <a href="./Proyectos/PachecoMuñozetal2022b.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="./Proyectos/images/RPM2022b_web.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="./Proyectos/images/RPM2022b_web.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -355,11 +386,11 @@ Jan 17, 2022
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="Ciencia de datos,Tablas dinamicas,Visualizacion,Dashboard" data-listing-date-sort="1620450000000" data-listing-file-modified-sort="1709734848419" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12">
+<div class="g-col-1" data-index="5" data-categories="Q2llbmNpYSUyMGRlJTIwZGF0b3MlMkNUYWJsYXMlMjBkaW5hbWljYXMlMkNWaXN1YWxpemFjaW9uJTJDRGFzaGJvYXJk" data-listing-date-sort="1620450000000" data-listing-file-modified-sort="1709734848419" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2333">
 <a href="./Proyectos/reporte_crypto.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="./Proyectos/images/crypto_img.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="./Proyectos/images/crypto_img.jpeg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -369,7 +400,8 @@ Tendencias en el valor de criptomonedas
 12 min
 </div>
 <div class="card-text listing-description">
-<em>Información dinámica e interactiva sobre el valor de criptomonedas en un formato de tablero.</em> <em>El tablero está en constante actualización</em>
+<p><em>Información dinámica e interactiva sobre el valor de criptomonedas en un formato de tablero.</em></p>
+<em>El tablero está en constante actualización</em>
 </div>
 <div class="card-attribution card-text-small justify">
 <div class="listing-author">
@@ -383,11 +415,11 @@ May 8, 2021
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="6" data-categories="Análisis espacial,Manejo urbano,Ecología Urbana,Región,Manejo urbano,Ciencia de datos" data-listing-date-sort="1519452000000" data-listing-file-modified-sort="1708625535300" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
+<div class="g-col-1" data-index="6" data-categories="QW4lQzMlQTFsaXNpcyUyMGVzcGFjaWFsJTJDTWFuZWpvJTIwdXJiYW5vJTJDRWNvbG9nJUMzJUFEYSUyMFVyYmFuYSUyQ1JlZ2klQzMlQjNuJTJDTWFuZWpvJTIwdXJiYW5vJTJDQ2llbmNpYSUyMGRlJTIwZGF0b3M=" data-listing-date-sort="1519452000000" data-listing-file-modified-sort="1708625535300" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="515">
 <a href="./Proyectos/Zambranoetal2018.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="./Proyectos/images/influ_solidwate_web.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="./Proyectos/images/influ_solidwate_web.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -411,11 +443,11 @@ Feb 24, 2018
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="7" data-categories="Análisis espacial,App interactiva,Ciencia de datos,Dashboard" data-listing-date-sort="1511330400000" data-listing-file-modified-sort="1708658111927" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="g-col-1" data-index="7" data-categories="QW4lQzMlQTFsaXNpcyUyMGVzcGFjaWFsJTJDQXBwJTIwaW50ZXJhY3RpdmElMkNDaWVuY2lhJTIwZGUlMjBkYXRvcyUyQ0Rhc2hib2FyZA==" data-listing-date-sort="1511330400000" data-listing-file-modified-sort="1708658111927" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="95">
 <a href="./Proyectos/EdoMex2017.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="./Proyectos/images/edomex17.png" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="./Proyectos/images/edomex17.png" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -439,11 +471,11 @@ Nov 22, 2017
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="8" data-categories="Análisis espacial,Manejo urbano,Transporte urbano,Ciencia de datos,App interactiva,Dashboard" data-listing-date-sort="1505624400000" data-listing-file-modified-sort="1708633970447" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
+<div class="g-col-1" data-index="8" data-categories="QW4lQzMlQTFsaXNpcyUyMGVzcGFjaWFsJTJDTWFuZWpvJTIwdXJiYW5vJTJDVHJhbnNwb3J0ZSUyMHVyYmFubyUyQ0NpZW5jaWElMjBkZSUyMGRhdG9zJTJDQXBwJTIwaW50ZXJhY3RpdmElMkNEYXNoYm9hcmQ=" data-listing-date-sort="1505624400000" data-listing-file-modified-sort="1708633970447" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="877">
 <a href="./Proyectos/ecobici.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Ecobici_Mec%C3%A1nica.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/0/01/Ecobici_Mec%C3%A1nica.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -467,11 +499,11 @@ Sep 17, 2017
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="9" data-categories="Análisis espacial,Manejo urbano,Cambio climático,Ecología Urbana,Ciencia de datos,Región,Manejo de recursos" data-listing-date-sort="1488348000000" data-listing-file-modified-sort="1708625493550" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
+<div class="g-col-1" data-index="9" data-categories="QW4lQzMlQTFsaXNpcyUyMGVzcGFjaWFsJTJDTWFuZWpvJTIwdXJiYW5vJTJDQ2FtYmlvJTIwY2xpbSVDMyVBMXRpY28lMkNFY29sb2clQzMlQURhJTIwVXJiYW5hJTJDQ2llbmNpYSUyMGRlJTIwZGF0b3MlMkNSZWdpJUMzJUIzbiUyQ01hbmVqbyUyMGRlJTIwcmVjdXJzb3M=" data-listing-date-sort="1488348000000" data-listing-file-modified-sort="1708625493550" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="478">
 <a href="./Proyectos/Zambranoetal2017.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img src="./Proyectos/images/inf_inun_portada_web.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" src="./Proyectos/images/inf_inun_portada_web.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -535,18 +567,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -578,11 +599,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -592,8 +650,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -605,7 +672,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -649,6 +838,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -674,6 +864,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -739,12 +955,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center">Powered by <a href="https://quarto.org/">Quarto</a>. <br>Copyright 2024, Rodrigo Pacheco Muñoz.<br><a href="../../../../../index.html">Home</a> | <a href="../../../../../about.html">About</a> | <a href="../../../../../proyectos.html">Proyectos</a> | <a href="../../../../../divulgacion.html">Comunicación Científica</a> | <a href="../../../../../publicaciones_cientificas.html">Publicaciones</a> | <a href="mailto:rodpachecom@gmail.com">Contacto</a></div>
+    <div class="nav-footer-center">
+<p>Powered by <a href="https://quarto.org/">Quarto</a>. <br>Copyright 2024, Rodrigo Pacheco Muñoz.<br><a href="../../../../../index.html">Home</a> | <a href="../../../../../about.html">About</a> | <a href="../../../../../proyectos.html">Proyectos</a> | <a href="../../../../../divulgacion.html">Comunicación Científica</a> | <a href="../../../../../publicaciones_cientificas.html">Publicaciones</a> | <a href="mailto:rodpachecom@gmail.com">Contacto</a></p>
+</div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 

@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="@Pachecovv">
 <meta name="description" content="Reporte de cafe">
 
-<title>Desde la Ciencia y la Ecología Urbana - Estudio de café</title>
+<title>Estudio de café – Desde la Ciencia y la Ecología Urbana</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -47,7 +47,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -56,6 +62,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -68,11 +75,6 @@ ul.task-list li input[type="checkbox"] {
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
- 
-  gtag('consent', 'default', {
-    'ad_storage': 'denied',
-    'analytics_storage': 'denied'
-  });
 gtag('config', 'G-HVF2WPFB5W', { 'anonymize_ip': true});
 </script>
 <script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
@@ -86,78 +88,76 @@ gtag('config', 'G-HVF2WPFB5W', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Desde la Ciencia y la Ecología Urbana - Estudio de café">
+<meta property="og:title" content="Estudio de café – Desde la Ciencia y la Ecología Urbana">
 <meta property="og:description" content="Reporte de cafe">
-<meta property="og:image" content="reporte_cafe_files/figure-html/unnamed-chunk-3-1.png">
-<meta property="og:site-name" content="Desde la Ciencia y la Ecología Urbana">
-<meta name="twitter:title" content="Desde la Ciencia y la Ecología Urbana - Estudio de café">
+<meta property="og:site_name" content="Desde la Ciencia y la Ecología Urbana">
+<meta name="twitter:title" content="Estudio de café – Desde la Ciencia y la Ecología Urbana">
 <meta name="twitter:description" content="Reporte de cafe">
-<meta name="twitter:image" content="reporte_cafe_files/figure-html/unnamed-chunk-3-1.png">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Desde la Ciencia y la Ecología Urbana</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/Pachecovv" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/Pachecovv"> <i class="bi bi-twitter" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/Rodpach/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/Rodpach/"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:rodpachecom@gmail.com" rel="" target=""><i class="bi bi-envelope-at" role="img">
+    <a class="nav-link" href="mailto:rodpachecom@gmail.com"> <i class="bi bi-envelope-at" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../proyectos.html" rel="" target="">
- <span class="menu-text">Proyectos</span></a>
+    <a class="nav-link" href="../proyectos.html"> 
+<span class="menu-text">Proyectos</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../divulgacion.html" rel="" target="">
- <span class="menu-text">Comunicación científica</span></a>
+    <a class="nav-link" href="../divulgacion.html"> 
+<span class="menu-text">Comunicación científica</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../publicaciones_cientificas.html" rel="" target="">
- <span class="menu-text">Publicaciones</span></a>
+    <a class="nav-link" href="../publicaciones_cientificas.html"> 
+<span class="menu-text">Publicaciones</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="mailto:rodpachecom@gmail.com" rel="" target="">
- <span class="menu-text">Contacto</span></a>
+    <a class="nav-link" href="mailto:rodpachecom@gmail.com"> 
+<span class="menu-text">Contacto</span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -208,7 +208,9 @@ gtag('config', 'G-HVF2WPFB5W', { 'anonymize_ip': true});
   </div>
   
 
+
 </header>
+
 
 <section id="café-en-amazon" class="level1">
 <h1>Café en Amazon</h1>
@@ -218,8 +220,8 @@ gtag('config', 'G-HVF2WPFB5W', { 'anonymize_ip': true});
 <p>El valor del café va de <strong>0.25 - 64.83 $/gramo</strong>. El <strong>promedio</strong> es de <strong>0.45 $/gramo</strong>. Revisa el precio de los productos por marca forma interactiva.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-2e83a558d3ca61eadc9c" style="width:100%;height:960px;"></div>
-<script type="application/json" data-for="htmlwidget-2e83a558d3ca61eadc9c">{"x":{"visdat":{"600843c3a10d":["function () ","plotlyVisDat"]},"cur_data":"600843c3a10d","attrs":{"600843c3a10d":{"y":{},"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"markers","text":{},"marker":{"color":"black"},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Café Tostado (70 del Top 85 de Amazon)","yaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["‎Kaya Kopi","‎Cafe Britt","‎Exploradores de Café","‎1968","‎Death Wish Coffee Co.","‎Illy","‎illycaffè","‎Lavazza","‎JUAN VALDEZ","‎TÓH HAÁ","‎Kalakapäla","‎Lavazza Premium Coffee Corp","‎Generic","‎HUUPA a la leña","‎Stone Street","‎Jose's Coffee","‎Bola de Oro","‎EspressoAmico","‎Ruanda","‎AMMA TIENDITA DE ORGÁNICOS Y NATURALES","‎Coffee Brew","‎Vivendi","‎Finca Hamburgo","‎Café Monte Grande","‎CAFFENIO","‎San Francisco","‎CAFFE BACIO MISCELA ITALIANA","‎Tresso","‎Café de La Parroquia de Veracruz","‎Kirkland Signature","‎San Francisco Bay Brand","‎Kirkland","‎Cafe Cien","‎EL CAFE-TAL APAN","‎Punta del Cielo","‎Disfruto Nuts","‎Cafiver","‎Café Solo Dios","‎LA MERA MATA","‎Cafe Solo Dios","‎Café Jaguar en Grano","‎Etnia 52","‎Nukana","‎Genérico","‎OCIXEM"]},"xaxis":{"domain":[0,1],"automargin":true,"title":"Pesos por gramo ($/g.)"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"y":["‎Cafe Britt","‎Exploradores de Café","‎1968","‎Death Wish Coffee Co.","‎Illy","‎illycaffè","‎Lavazza","‎1968","‎Lavazza","‎JUAN VALDEZ","‎Lavazza","‎Lavazza","‎TÓH HAÁ","‎Kalakapäla","‎Lavazza Premium Coffee Corp","‎Generic","‎Lavazza","‎Lavazza","‎Lavazza","‎Lavazza","‎Lavazza","‎Lavazza","‎HUUPA a la leña","‎HUUPA a la leña","‎Stone Street","‎Jose's Coffee","‎Bola de Oro","‎EspressoAmico","‎Ruanda","‎Bola de Oro","‎Lavazza","‎AMMA TIENDITA DE ORGÁNICOS Y NATURALES","‎Coffee Brew","‎Vivendi","‎Bola de Oro","‎Finca Hamburgo","‎Bola de Oro","‎Café Monte Grande","‎Café Monte Grande","‎AMMA TIENDITA DE ORGÁNICOS Y NATURALES","‎CAFFENIO","‎San Francisco","‎AMMA TIENDITA DE ORGÁNICOS Y NATURALES","‎CAFFE BACIO MISCELA ITALIANA","‎Tresso","‎Café de La Parroquia de Veracruz","‎1968","‎Kirkland Signature","‎San Francisco Bay Brand","‎Kirkland","‎Kirkland","‎Cafe Cien","‎EL CAFE-TAL APAN","‎Punta del Cielo","‎CAFFE BACIO MISCELA ITALIANA","‎Disfruto Nuts","‎Cafiver","‎Cafiver","‎Café Solo Dios","‎Café Solo Dios","‎LA MERA MATA","‎Cafe Solo Dios","‎Café Jaguar en Grano","‎Etnia 52","‎Nukana","‎AMMA TIENDITA DE ORGÁNICOS Y NATURALES","‎Genérico","‎OCIXEM","‎Tresso"],"x":[2.9199999999999999,1.8400000000000001,1.74,1.6499999999999999,1.5,1.5,1.2,1.1499999999999999,0.97999999999999998,0.87,0.84999999999999998,0.80000000000000004,0.77000000000000002,0.75,0.73999999999999999,0.69999999999999996,0.66000000000000003,0.65000000000000002,0.64000000000000001,0.63,0.59999999999999998,0.58999999999999997,0.57999999999999996,0.57999999999999996,0.57999999999999996,0.56000000000000005,0.5,0.5,0.5,0.48999999999999999,0.47999999999999998,0.46999999999999997,0.46999999999999997,0.46000000000000002,0.45000000000000001,0.44,0.40999999999999998,0.40999999999999998,0.40999999999999998,0.40000000000000002,0.40000000000000002,0.40000000000000002,0.39000000000000001,0.39000000000000001,0.39000000000000001,0.38,0.37,0.37,0.37,0.35999999999999999,0.35999999999999999,0.34999999999999998,0.34999999999999998,0.34999999999999998,0.34000000000000002,0.33000000000000002,0.32000000000000001,0.32000000000000001,0.32000000000000001,0.32000000000000001,0.32000000000000001,0.31,0.31,0.29999999999999999,0.28999999999999998,0.28000000000000003,0.27000000000000002,0.27000000000000002,0.25],"type":"scatter","mode":"markers","text":["Cafe Britt Costa Rica Light Roast Whole Bean Coffee, 12 Ounce Bag","Exploradores de Café, en grano tostado Edomex - 250 G","Café 1968 - Café Colombiano en Grano - Origen Colombia, Notas frutales y florales, Cuerpo Aterciopelado - 1Kg","Death Wish - Café de grano entero - Comercio justo y certificado orgánico USDA","illy, Café en Granos Descafeinado Tueste Clásico, Café 100% Arábica, 250 gr","illy, Café en Granos, Tueste Clásico, 1 piezas","Lavazza Dek Decaf Whole Bean Espresso, 1.1-Pound Bag by Lavazza","Café 1968 - Café De La Casa en Grano - Origen Oaxaca, Chiapas y Veracruz - 1kg","Lavazza Caffe Espresso - Mezcla de café","Juan Valdez Café de Grano Origen Antioquia 454gr","Lavazza Gran Riserva Whole Bean Coffee Blend, Dark Espresso Roast, 2.2-Pound Bag","Lavazza Grand Espresso - Grano Entero, 2.2 Libras de Bolsa","Café cubierto de Chocolate con Leche - Café Selecto Cubierto de Real Chocolate Lácteo - Presentación de 220 gramos - TÓH HAÁ -","Kalakapäla | Café Italiano en Grano | 100% de Excelente Calidad | Café puro Originario de Veracruz | Mezcla Gourmet | Ingredientes Mexicanos | 400 gr","Lavazza Super Crema Whole Bean Coffee Blend, Medium Espresso Roast, 2.2-Pound Bag","Mixtla - Café en grano - 100% Arábica - Tueste Medio - Café de Altura - De la sierra negra de Puebla - 500 Gr.","Lavazza Caffe Espresso Mezcla de café en grano entero, tostado medio, bolsa de 2.2 libras","Lavazza Organic Tierra! Mezcla de café de grano entero, tostado italiano, 2.2 libras","LAVAZZA - Café Calidad de oro 1 kg","Super Crema Whole Bean Espresso Coffee, 2.2lb Bag, Vacuum-Packed","Lavazza Qualita Rossa 1 kg","Lavazza Caffe Espresso - Mezcla de café","Café Tostado a la Leña, 100% Grano Robusta, Tueste Oscuro, Grano Entero, EXTREMO 454 Gr","Café Tostado a la Leña, 100% Mezcla Grano Arábigo y Robusta, Tueste Oscuro, Grano Entero, INTENSO 454 Gr","Stone Street Café El Espresso Perfecto, En Grano, Tostado Medio, Notas Almendra-Chocolate-Vainilla, 100% Arabica, Orgánico - 450 G","Jose's Whole Bean Coffee Vanilla Nut 1.4kg","Bola de Oro Café Grano, Descafeinado, 500 gramos","Espressoamico Cafe Nueve Nubes, En Grano - 500 Gr","Ruanda - Kirkland Signature Ruanda Café en Grano 1 kg","Bola de Oro Café Grano, Mezcla Especial Ganadora, Gourmet - 500 g","Lavazza Caffe Espresso Whole Bean Coffee Blend, Medium Roast, 2.2 Pound Bag","Café Orgánico en Grano Ruta Maya 1 Kg","2 Pack (340 g) Coffee Brew - Decaf, Café Descafeinado, 100% Arábica Premium (en Grano)","Café Tostado En Grano Regular 340g Vivendi. Café tipo gourmet, 100% de altura, tueste tipo europeo, con notas intensas a nueces, almendras y avellanas.","Bola de Oro Café Grano, Gourmet - 500 g","Café Finca Hamburgo En Grano Catuaí Bourbon 454 gr / 1 lb","Bola de Oro Café Grano, Exportacion - 1 kg","Café Monte Grande, Tueste Americano, En Grano, 2 paquetes de 454 gramos","Café Monte Grande, Tueste Espresso, en grano, 2 paquetes de 454 gramos","Café En Grano Tanzania San Francisco Bay Coffe 1 Kg","Caffenio- Café en Grano 500gr, Tueste Intenso, Calidad Pluma Hidalgo Oaxaca, Café Arábiga, 100% Mexicano","Café en grano, San Francisco Bay Coffee, Taza Otoñal de Edicion especial, Café de Chiapas, México., 1 kg","Café Orgánico En Grano Selva De Chiapas The Coffee Farmer's Co-Op","BACIO, Café en Grano, Qualita Speciale 1 Kilo, Café de Especialidad, Café Mexicano, Tueste italiano, Café Veracruzano, Café Gourmet,","Tresso - Café Honey de Especialidad, Notas Ácidas Afrutadas, 380 g en Grano","LA PARROQUIA DE VERACRUZ - Bolsa de Café de Grano Tostado, 780 g, Café Puro 100%, Seleccionado y Elaborado con Alta Calidad, Café con Aroma Intenso y Agradable, Cuerpo Completo","Café 1968 - Café Oaxaca en Grano - Perfil suave, Notas cítricas - 1kg","KIRKLAND SIGNATURE - Café Puro Tostado en Grano Gourmet French Roast","San Francisco Cafe Organico de Chiapas 1 Kg Grano Entero","Kirkland Signature café en grano French Roast 1kg","Kirkland Signature café en grano selección de la casa de Chiapas 1kg","Café Cien Paquete Doble, Café en Grano de Altura, 100% Puro, Tostado Medio, Café Artesanal, Contenido: 454 Gramos cada uno, Hecho en Rancho Perseverancia, Veracruz, México","El Café-Tal Apan - Cafe de Grano cosecha Coatepec Veracruz, tostado \"medio\", grano Arabiga, Bolsa de 1kg","Café En Grano Punta Del Cielo Tostado Cosecha Premium 1 kg","BACIO, Café en Grano, 1 kilo, Expreso, BAR, Café de Especialidad, Café Mexicano, Tueste Italiano, Café Veracruzano, Café Gourmet,","Grano De Café Cubierto De Chocolate 1Kg","CAFIVER Specialty Tostado En Grano 500g. Café estilo gourmet, tueste tipo europeo, mezcla de grano arábiga, aroma intenso. Presentado en bolsa tipo almohada.","Café HB Plus Regular en grano 500g Cafiver. Café tipo gourmet, grano de altura, tueste tipo europeo, con notas intensas a chocolate, nueces y almendras.","Café Solo Dios Grano Artesanal - 1 Kg","Café Solo Dios Molido Artesanal - 1 Kg","CAFE 100% PURO, TOSTADO EN GRANO, MEZCLA GOURMET FUERTE","Café Solo Dios Café en Grano, Sabor Artesanal, 1 Kg","Café Jaguar en Grano, Café En grano Arábica de Chiapas, 454 gr","Etnia 52 | Café en Grano de Altura Chiapas | Cuerpo Medio | Notas a Nuez, Miel y Caramel | Tostado Medio | 100% Arábica | 454 g","Nukana Macadamia Tostada Salada - 1 KG","Café Orgánico Nativo En Grano The Coffee Farmers Co-op 1 Kg","Café Solo Dios Orgánico Grano Tostado 1Kg Paquete de 2 Empaque 2024","OCIXEM, Café en Grano Soconusco, Chiapas, 454 gramos","Tresso, Café Veracruz Región de las Altas Montañas en Grano, 1 kilogramos"],"marker":{"color":"black","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-db9bb6615481d7af9ff4" style="width:100%;height:960px;"></div>
+<script type="application/json" data-for="htmlwidget-db9bb6615481d7af9ff4">{"x":{"visdat":{"71f763b8d6ba":["function () ","plotlyVisDat"]},"cur_data":"71f763b8d6ba","attrs":{"71f763b8d6ba":{"y":{},"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"markers","text":{},"marker":{"color":"black"},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Café Tostado (70 del Top 85 de Amazon)","yaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["‎Kaya Kopi","‎Cafe Britt","‎Exploradores de Café","‎1968","‎Death Wish Coffee Co.","‎Illy","‎illycaffè","‎Lavazza","‎JUAN VALDEZ","‎TÓH HAÁ","‎Kalakapäla","‎Lavazza Premium Coffee Corp","‎Generic","‎HUUPA a la leña","‎Stone Street","‎Jose's Coffee","‎Bola de Oro","‎EspressoAmico","‎Ruanda","‎AMMA TIENDITA DE ORGÁNICOS Y NATURALES","‎Coffee Brew","‎Vivendi","‎Finca Hamburgo","‎Café Monte Grande","‎CAFFENIO","‎San Francisco","‎CAFFE BACIO MISCELA ITALIANA","‎Tresso","‎Café de La Parroquia de Veracruz","‎Kirkland Signature","‎San Francisco Bay Brand","‎Kirkland","‎Cafe Cien","‎EL CAFE-TAL APAN","‎Punta del Cielo","‎Disfruto Nuts","‎Cafiver","‎Café Solo Dios","‎LA MERA MATA","‎Cafe Solo Dios","‎Café Jaguar en Grano","‎Etnia 52","‎Nukana","‎Genérico","‎OCIXEM"]},"xaxis":{"domain":[0,1],"automargin":true,"title":"Pesos por gramo ($/g.)"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"y":["‎Cafe Britt","‎Exploradores de Café","‎1968","‎Death Wish Coffee Co.","‎Illy","‎illycaffè","‎Lavazza","‎1968","‎Lavazza","‎JUAN VALDEZ","‎Lavazza","‎Lavazza","‎TÓH HAÁ","‎Kalakapäla","‎Lavazza Premium Coffee Corp","‎Generic","‎Lavazza","‎Lavazza","‎Lavazza","‎Lavazza","‎Lavazza","‎Lavazza","‎HUUPA a la leña","‎HUUPA a la leña","‎Stone Street","‎Jose's Coffee","‎Bola de Oro","‎EspressoAmico","‎Ruanda","‎Bola de Oro","‎Lavazza","‎AMMA TIENDITA DE ORGÁNICOS Y NATURALES","‎Coffee Brew","‎Vivendi","‎Bola de Oro","‎Finca Hamburgo","‎Bola de Oro","‎Café Monte Grande","‎Café Monte Grande","‎AMMA TIENDITA DE ORGÁNICOS Y NATURALES","‎CAFFENIO","‎San Francisco","‎AMMA TIENDITA DE ORGÁNICOS Y NATURALES","‎CAFFE BACIO MISCELA ITALIANA","‎Tresso","‎Café de La Parroquia de Veracruz","‎1968","‎Kirkland Signature","‎San Francisco Bay Brand","‎Kirkland","‎Kirkland","‎Cafe Cien","‎EL CAFE-TAL APAN","‎Punta del Cielo","‎CAFFE BACIO MISCELA ITALIANA","‎Disfruto Nuts","‎Cafiver","‎Cafiver","‎Café Solo Dios","‎Café Solo Dios","‎LA MERA MATA","‎Cafe Solo Dios","‎Café Jaguar en Grano","‎Etnia 52","‎Nukana","‎AMMA TIENDITA DE ORGÁNICOS Y NATURALES","‎Genérico","‎OCIXEM","‎Tresso"],"x":[2.9199999999999999,1.8400000000000001,1.74,1.6499999999999999,1.5,1.5,1.2,1.1499999999999999,0.97999999999999998,0.87,0.84999999999999998,0.80000000000000004,0.77000000000000002,0.75,0.73999999999999999,0.69999999999999996,0.66000000000000003,0.65000000000000002,0.64000000000000001,0.63,0.59999999999999998,0.58999999999999997,0.57999999999999996,0.57999999999999996,0.57999999999999996,0.56000000000000005,0.5,0.5,0.5,0.48999999999999999,0.47999999999999998,0.46999999999999997,0.46999999999999997,0.46000000000000002,0.45000000000000001,0.44,0.40999999999999998,0.40999999999999998,0.40999999999999998,0.40000000000000002,0.40000000000000002,0.40000000000000002,0.39000000000000001,0.39000000000000001,0.39000000000000001,0.38,0.37,0.37,0.37,0.35999999999999999,0.35999999999999999,0.34999999999999998,0.34999999999999998,0.34999999999999998,0.34000000000000002,0.33000000000000002,0.32000000000000001,0.32000000000000001,0.32000000000000001,0.32000000000000001,0.32000000000000001,0.31,0.31,0.29999999999999999,0.28999999999999998,0.28000000000000003,0.27000000000000002,0.27000000000000002,0.25],"type":"scatter","mode":"markers","text":["Cafe Britt Costa Rica Light Roast Whole Bean Coffee, 12 Ounce Bag","Exploradores de Café, en grano tostado Edomex - 250 G","Café 1968 - Café Colombiano en Grano - Origen Colombia, Notas frutales y florales, Cuerpo Aterciopelado - 1Kg","Death Wish - Café de grano entero - Comercio justo y certificado orgánico USDA","illy, Café en Granos Descafeinado Tueste Clásico, Café 100% Arábica, 250 gr","illy, Café en Granos, Tueste Clásico, 1 piezas","Lavazza Dek Decaf Whole Bean Espresso, 1.1-Pound Bag by Lavazza","Café 1968 - Café De La Casa en Grano - Origen Oaxaca, Chiapas y Veracruz - 1kg","Lavazza Caffe Espresso - Mezcla de café","Juan Valdez Café de Grano Origen Antioquia 454gr","Lavazza Gran Riserva Whole Bean Coffee Blend, Dark Espresso Roast, 2.2-Pound Bag","Lavazza Grand Espresso - Grano Entero, 2.2 Libras de Bolsa","Café cubierto de Chocolate con Leche - Café Selecto Cubierto de Real Chocolate Lácteo - Presentación de 220 gramos - TÓH HAÁ -","Kalakapäla | Café Italiano en Grano | 100% de Excelente Calidad | Café puro Originario de Veracruz | Mezcla Gourmet | Ingredientes Mexicanos | 400 gr","Lavazza Super Crema Whole Bean Coffee Blend, Medium Espresso Roast, 2.2-Pound Bag","Mixtla - Café en grano - 100% Arábica - Tueste Medio - Café de Altura - De la sierra negra de Puebla - 500 Gr.","Lavazza Caffe Espresso Mezcla de café en grano entero, tostado medio, bolsa de 2.2 libras","Lavazza Organic Tierra! Mezcla de café de grano entero, tostado italiano, 2.2 libras","LAVAZZA - Café Calidad de oro 1 kg","Super Crema Whole Bean Espresso Coffee, 2.2lb Bag, Vacuum-Packed","Lavazza Qualita Rossa 1 kg","Lavazza Caffe Espresso - Mezcla de café","Café Tostado a la Leña, 100% Grano Robusta, Tueste Oscuro, Grano Entero, EXTREMO 454 Gr","Café Tostado a la Leña, 100% Mezcla Grano Arábigo y Robusta, Tueste Oscuro, Grano Entero, INTENSO 454 Gr","Stone Street Café El Espresso Perfecto, En Grano, Tostado Medio, Notas Almendra-Chocolate-Vainilla, 100% Arabica, Orgánico - 450 G","Jose's Whole Bean Coffee Vanilla Nut 1.4kg","Bola de Oro Café Grano, Descafeinado, 500 gramos","Espressoamico Cafe Nueve Nubes, En Grano - 500 Gr","Ruanda - Kirkland Signature Ruanda Café en Grano 1 kg","Bola de Oro Café Grano, Mezcla Especial Ganadora, Gourmet - 500 g","Lavazza Caffe Espresso Whole Bean Coffee Blend, Medium Roast, 2.2 Pound Bag","Café Orgánico en Grano Ruta Maya 1 Kg","2 Pack (340 g) Coffee Brew - Decaf, Café Descafeinado, 100% Arábica Premium (en Grano)","Café Tostado En Grano Regular 340g Vivendi. Café tipo gourmet, 100% de altura, tueste tipo europeo, con notas intensas a nueces, almendras y avellanas.","Bola de Oro Café Grano, Gourmet - 500 g","Café Finca Hamburgo En Grano Catuaí Bourbon 454 gr / 1 lb","Bola de Oro Café Grano, Exportacion - 1 kg","Café Monte Grande, Tueste Americano, En Grano, 2 paquetes de 454 gramos","Café Monte Grande, Tueste Espresso, en grano, 2 paquetes de 454 gramos","Café En Grano Tanzania San Francisco Bay Coffe 1 Kg","Caffenio- Café en Grano 500gr, Tueste Intenso, Calidad Pluma Hidalgo Oaxaca, Café Arábiga, 100% Mexicano","Café en grano, San Francisco Bay Coffee, Taza Otoñal de Edicion especial, Café de Chiapas, México., 1 kg","Café Orgánico En Grano Selva De Chiapas The Coffee Farmer's Co-Op","BACIO, Café en Grano, Qualita Speciale 1 Kilo, Café de Especialidad, Café Mexicano, Tueste italiano, Café Veracruzano, Café Gourmet,","Tresso - Café Honey de Especialidad, Notas Ácidas Afrutadas, 380 g en Grano","LA PARROQUIA DE VERACRUZ - Bolsa de Café de Grano Tostado, 780 g, Café Puro 100%, Seleccionado y Elaborado con Alta Calidad, Café con Aroma Intenso y Agradable, Cuerpo Completo","Café 1968 - Café Oaxaca en Grano - Perfil suave, Notas cítricas - 1kg","KIRKLAND SIGNATURE - Café Puro Tostado en Grano Gourmet French Roast","San Francisco Cafe Organico de Chiapas 1 Kg Grano Entero","Kirkland Signature café en grano French Roast 1kg","Kirkland Signature café en grano selección de la casa de Chiapas 1kg","Café Cien Paquete Doble, Café en Grano de Altura, 100% Puro, Tostado Medio, Café Artesanal, Contenido: 454 Gramos cada uno, Hecho en Rancho Perseverancia, Veracruz, México","El Café-Tal Apan - Cafe de Grano cosecha Coatepec Veracruz, tostado \"medio\", grano Arabiga, Bolsa de 1kg","Café En Grano Punta Del Cielo Tostado Cosecha Premium 1 kg","BACIO, Café en Grano, 1 kilo, Expreso, BAR, Café de Especialidad, Café Mexicano, Tueste Italiano, Café Veracruzano, Café Gourmet,","Grano De Café Cubierto De Chocolate 1Kg","CAFIVER Specialty Tostado En Grano 500g. Café estilo gourmet, tueste tipo europeo, mezcla de grano arábiga, aroma intenso. Presentado en bolsa tipo almohada.","Café HB Plus Regular en grano 500g Cafiver. Café tipo gourmet, grano de altura, tueste tipo europeo, con notas intensas a chocolate, nueces y almendras.","Café Solo Dios Grano Artesanal - 1 Kg","Café Solo Dios Molido Artesanal - 1 Kg","CAFE 100% PURO, TOSTADO EN GRANO, MEZCLA GOURMET FUERTE","Café Solo Dios Café en Grano, Sabor Artesanal, 1 Kg","Café Jaguar en Grano, Café En grano Arábica de Chiapas, 454 gr","Etnia 52 | Café en Grano de Altura Chiapas | Cuerpo Medio | Notas a Nuez, Miel y Caramel | Tostado Medio | 100% Arábica | 454 g","Nukana Macadamia Tostada Salada - 1 KG","Café Orgánico Nativo En Grano The Coffee Farmers Co-op 1 Kg","Café Solo Dios Orgánico Grano Tostado 1Kg Paquete de 2 Empaque 2024","OCIXEM, Café en Grano Soconusco, Chiapas, 454 gramos","Tresso, Café Veracruz Región de las Altas Montañas en Grano, 1 kilogramos"],"marker":{"color":"black","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><br>
@@ -228,7 +230,11 @@ gtag('config', 'G-HVF2WPFB5W', { 'anonymize_ip': true});
 </p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="reporte_cafe_files/figure-html/unnamed-chunk-3-1.png" style="width:100.0%;height:56.25%"></p>
+<div>
+<figure class="figure">
+<p><img src="reporte_cafe_files/figure-html/unnamed-chunk-3-1.png" style="width:100.0%;height:56.25%" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><br>
@@ -238,8 +244,8 @@ gtag('config', 'G-HVF2WPFB5W', { 'anonymize_ip': true});
 <p>El precio del café asociado al ranking.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-9281c5b1633e9f50cb03" style="width:100%;height:56.25%;"></div>
-<script type="application/json" data-for="htmlwidget-9281c5b1633e9f50cb03">{"x":{"visdat":{"60086c59534d":["function () ","plotlyVisDat"]},"cur_data":"60086c59534d","attrs":{"60086c59534d":{"y":{},"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"markers","text":{},"marker":{"color":"black"},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Café Tostado (70 del Top 85 de Amazon)","yaxis":{"domain":[0,1],"automargin":true,"title":"Ranking"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Pesos por gramo ($/g.)","range":[0,3]},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"y":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,37,38,40,41,42,44,45,46,47,48,49,51,52,53,54,55,56,58,59,62,63,64,65,66,67,68,69,70,71,72,74,75,76,77,78,79,81,84,85],"x":[0.29999999999999999,0.31,0.27000000000000002,0.25,0.58999999999999997,0.38,0.47999999999999998,0.34999999999999998,0.40999999999999998,0.73999999999999999,0.34000000000000002,1.5,0.45000000000000001,0.63,0.39000000000000001,0.69999999999999996,0.32000000000000001,0.87,0.31,0.28000000000000003,0.59999999999999998,0.44,0.32000000000000001,0.40000000000000002,0.34999999999999998,0.40000000000000002,0.32000000000000001,0.48999999999999999,0.37,0.57999999999999996,0.64000000000000001,0.65000000000000002,0.5,0.40000000000000002,0.35999999999999999,0.35999999999999999,0.84999999999999998,0.80000000000000004,0.46999999999999997,0.40000000000000002,1.2,1.1499999999999999,0.37,0.40000000000000002,0.33000000000000002,0.57999999999999996,0.37,0.5,0.40999999999999998,0.56000000000000005,1.74,1.5,0.39000000000000001,0.55000000000000004,0.34999999999999998,2.9199999999999999,0.32000000000000001,1.6499999999999999,0.77000000000000002,0.66000000000000003,0.27000000000000002,0.32000000000000001,0.75,0.46999999999999997,0.5,64.829999999999998,0.39000000000000001,0.57999999999999996,0.40999999999999998,1.8400000000000001,0.97999999999999998,0.28999999999999998,0.46000000000000002],"type":"scatter","mode":"markers","text":["Etnia 52 | Café en Grano de Altura Chiapas | Cuerpo Medio | Notas a Nuez, Miel y Caramel | Tostado Medio | 100% Arábica | 454 g","Café Solo Dios Café en Grano, Sabor Artesanal, 1 Kg","OCIXEM, Café en Grano Soconusco, Chiapas, 454 gramos","Tresso, Café Veracruz Región de las Altas Montañas en Grano, 1 kilogramos","Lavazza Caffe Espresso - Mezcla de café","LA PARROQUIA DE VERACRUZ - Bolsa de Café de Grano Tostado, 780 g, Café Puro 100%, Seleccionado y Elaborado con Alta Calidad, Café con Aroma Intenso y Agradable, Cuerpo Completo","Lavazza Caffe Espresso Whole Bean Coffee Blend, Medium Roast, 2.2 Pound Bag","Café En Grano Punta Del Cielo Tostado Cosecha Premium 1 kg","Bola de Oro Café Grano, Exportacion - 1 kg","Lavazza Super Crema Whole Bean Coffee Blend, Medium Espresso Roast, 2.2-Pound Bag","BACIO, Café en Grano, 1 kilo, Expreso, BAR, Café de Especialidad, Café Mexicano, Tueste Italiano, Café Veracruzano, Café Gourmet,","illy, Café en Granos, Tueste Clásico, 1 piezas","Bola de Oro Café Grano, Gourmet - 500 g","Super Crema Whole Bean Espresso Coffee, 2.2lb Bag, Vacuum-Packed","BACIO, Café en Grano, Qualita Speciale 1 Kilo, Café de Especialidad, Café Mexicano, Tueste italiano, Café Veracruzano, Café Gourmet,","Mixtla - Café en grano - 100% Arábica - Tueste Medio - Café de Altura - De la sierra negra de Puebla - 500 Gr.","Café Solo Dios Grano Artesanal - 1 Kg","Juan Valdez Café de Grano Origen Antioquia 454gr","Café Jaguar en Grano, Café En grano Arábica de Chiapas, 454 gr","Café Orgánico Nativo En Grano The Coffee Farmers Co-op 1 Kg","Lavazza Qualita Rossa 1 kg","Café Finca Hamburgo En Grano Catuaí Bourbon 454 gr / 1 lb","Café Solo Dios Molido Artesanal - 1 Kg","Café En Grano Tanzania San Francisco Bay Coffe 1 Kg","Café Cien Paquete Doble, Café en Grano de Altura, 100% Puro, Tostado Medio, Café Artesanal, Contenido: 454 Gramos cada uno, Hecho en Rancho Perseverancia, Veracruz, México","Café en grano, San Francisco Bay Coffee, Taza Otoñal de Edicion especial, Café de Chiapas, México., 1 kg","CAFIVER Specialty Tostado En Grano 500g. Café estilo gourmet, tueste tipo europeo, mezcla de grano arábiga, aroma intenso. Presentado en bolsa tipo almohada.","Bola de Oro Café Grano, Mezcla Especial Ganadora, Gourmet - 500 g","San Francisco Cafe Organico de Chiapas 1 Kg Grano Entero","Stone Street Café El Espresso Perfecto, En Grano, Tostado Medio, Notas Almendra-Chocolate-Vainilla, 100% Arabica, Orgánico - 450 G","LAVAZZA - Café Calidad de oro 1 kg","Lavazza Organic Tierra! Mezcla de café de grano entero, tostado italiano, 2.2 libras","Espressoamico Cafe Nueve Nubes, En Grano - 500 Gr","Café Caracolillo Orgánico De Altura en Grano 100% natural. (Cosecha Limitada) 1 Kilogramo. Finca Irlanda, de Chiapas.","Kirkland Signature café en grano selección de la casa de Chiapas 1kg","Kirkland Signature café en grano French Roast 1kg","Lavazza Gran Riserva Whole Bean Coffee Blend, Dark Espresso Roast, 2.2-Pound Bag","Lavazza Grand Espresso - Grano Entero, 2.2 Libras de Bolsa","2 Pack (340 g) Coffee Brew - Decaf, Café Descafeinado, 100% Arábica Premium (en Grano)","Caffenio- Café en Grano 500gr, Tueste Intenso, Calidad Pluma Hidalgo Oaxaca, Café Arábiga, 100% Mexicano","Lavazza Dek Decaf Whole Bean Espresso, 1.1-Pound Bag by Lavazza","Café 1968 - Café De La Casa en Grano - Origen Oaxaca, Chiapas y Veracruz - 1kg","KIRKLAND SIGNATURE - Café Puro Tostado en Grano Gourmet French Roast","Café Superior Orgánico De Altura en Grano (Cosecha Limitada) 1 Kilogramo. Finca Irlanda, de Chiapas.","Grano De Café Cubierto De Chocolate 1Kg","Café Tostado a la Leña, 100% Grano Robusta, Tueste Oscuro, Grano Entero, EXTREMO 454 Gr","Café 1968 - Café Oaxaca en Grano - Perfil suave, Notas cítricas - 1kg","Ruanda - Kirkland Signature Ruanda Café en Grano 1 kg","Café Monte Grande, Tueste Espresso, en grano, 2 paquetes de 454 gramos","Jose's Whole Bean Coffee Vanilla Nut 1.4kg","Café 1968 - Café Colombiano en Grano - Origen Colombia, Notas frutales y florales, Cuerpo Aterciopelado - 1Kg","illy, Café en Granos Descafeinado Tueste Clásico, Café 100% Arábica, 250 gr","Café Orgánico En Grano Selva De Chiapas The Coffee Farmer's Co-Op","Café Marago Orgánico De Altura en Grano (Cosecha Limitada) 1Kilogramo. Finca Irlanda, de Chiapas.","El Café-Tal Apan - Cafe de Grano cosecha Coatepec Veracruz, tostado \"medio\", grano Arabiga, Bolsa de 1kg","Cafe Britt Costa Rica Light Roast Whole Bean Coffee, 12 Ounce Bag","Café HB Plus Regular en grano 500g Cafiver. Café tipo gourmet, grano de altura, tueste tipo europeo, con notas intensas a chocolate, nueces y almendras.","Death Wish - Café de grano entero - Comercio justo y certificado orgánico USDA","Café cubierto de Chocolate con Leche - Café Selecto Cubierto de Real Chocolate Lácteo - Presentación de 220 gramos - TÓH HAÁ -","Lavazza Caffe Espresso Mezcla de café en grano entero, tostado medio, bolsa de 2.2 libras","Café Solo Dios Orgánico Grano Tostado 1Kg Paquete de 2 Empaque 2024","CAFE 100% PURO, TOSTADO EN GRANO, MEZCLA GOURMET FUERTE","Kalakapäla | Café Italiano en Grano | 100% de Excelente Calidad | Café puro Originario de Veracruz | Mezcla Gourmet | Ingredientes Mexicanos | 400 gr","Café Orgánico en Grano Ruta Maya 1 Kg","Bola de Oro Café Grano, Descafeinado, 500 gramos","Premium Kopi Luwak de Indonesia Wild Palm Civets Arábica Café en granos (Kopi Luwak tostado medio, 0.35 onzas (paquete de 1))","Tresso - Café Honey de Especialidad, Notas Ácidas Afrutadas, 380 g en Grano","Café Tostado a la Leña, 100% Mezcla Grano Arábigo y Robusta, Tueste Oscuro, Grano Entero, INTENSO 454 Gr","Café Monte Grande, Tueste Americano, En Grano, 2 paquetes de 454 gramos","Exploradores de Café, en grano tostado Edomex - 250 G","Lavazza Caffe Espresso - Mezcla de café","Nukana Macadamia Tostada Salada - 1 KG","Café Tostado En Grano Regular 340g Vivendi. Café tipo gourmet, 100% de altura, tueste tipo europeo, con notas intensas a nueces, almendras y avellanas."],"marker":{"color":"black","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-7111e2bfafc671455f76" style="width:100%;height:56.25%;"></div>
+<script type="application/json" data-for="htmlwidget-7111e2bfafc671455f76">{"x":{"visdat":{"71f72a9a5da6":["function () ","plotlyVisDat"]},"cur_data":"71f72a9a5da6","attrs":{"71f72a9a5da6":{"y":{},"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"markers","text":{},"marker":{"color":"black"},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Café Tostado (70 del Top 85 de Amazon)","yaxis":{"domain":[0,1],"automargin":true,"title":"Ranking"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Pesos por gramo ($/g.)","range":[0,3]},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"y":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,37,38,40,41,42,44,45,46,47,48,49,51,52,53,54,55,56,58,59,62,63,64,65,66,67,68,69,70,71,72,74,75,76,77,78,79,81,84,85],"x":[0.29999999999999999,0.31,0.27000000000000002,0.25,0.58999999999999997,0.38,0.47999999999999998,0.34999999999999998,0.40999999999999998,0.73999999999999999,0.34000000000000002,1.5,0.45000000000000001,0.63,0.39000000000000001,0.69999999999999996,0.32000000000000001,0.87,0.31,0.28000000000000003,0.59999999999999998,0.44,0.32000000000000001,0.40000000000000002,0.34999999999999998,0.40000000000000002,0.32000000000000001,0.48999999999999999,0.37,0.57999999999999996,0.64000000000000001,0.65000000000000002,0.5,0.40000000000000002,0.35999999999999999,0.35999999999999999,0.84999999999999998,0.80000000000000004,0.46999999999999997,0.40000000000000002,1.2,1.1499999999999999,0.37,0.40000000000000002,0.33000000000000002,0.57999999999999996,0.37,0.5,0.40999999999999998,0.56000000000000005,1.74,1.5,0.39000000000000001,0.55000000000000004,0.34999999999999998,2.9199999999999999,0.32000000000000001,1.6499999999999999,0.77000000000000002,0.66000000000000003,0.27000000000000002,0.32000000000000001,0.75,0.46999999999999997,0.5,64.829999999999998,0.39000000000000001,0.57999999999999996,0.40999999999999998,1.8400000000000001,0.97999999999999998,0.28999999999999998,0.46000000000000002],"type":"scatter","mode":"markers","text":["Etnia 52 | Café en Grano de Altura Chiapas | Cuerpo Medio | Notas a Nuez, Miel y Caramel | Tostado Medio | 100% Arábica | 454 g","Café Solo Dios Café en Grano, Sabor Artesanal, 1 Kg","OCIXEM, Café en Grano Soconusco, Chiapas, 454 gramos","Tresso, Café Veracruz Región de las Altas Montañas en Grano, 1 kilogramos","Lavazza Caffe Espresso - Mezcla de café","LA PARROQUIA DE VERACRUZ - Bolsa de Café de Grano Tostado, 780 g, Café Puro 100%, Seleccionado y Elaborado con Alta Calidad, Café con Aroma Intenso y Agradable, Cuerpo Completo","Lavazza Caffe Espresso Whole Bean Coffee Blend, Medium Roast, 2.2 Pound Bag","Café En Grano Punta Del Cielo Tostado Cosecha Premium 1 kg","Bola de Oro Café Grano, Exportacion - 1 kg","Lavazza Super Crema Whole Bean Coffee Blend, Medium Espresso Roast, 2.2-Pound Bag","BACIO, Café en Grano, 1 kilo, Expreso, BAR, Café de Especialidad, Café Mexicano, Tueste Italiano, Café Veracruzano, Café Gourmet,","illy, Café en Granos, Tueste Clásico, 1 piezas","Bola de Oro Café Grano, Gourmet - 500 g","Super Crema Whole Bean Espresso Coffee, 2.2lb Bag, Vacuum-Packed","BACIO, Café en Grano, Qualita Speciale 1 Kilo, Café de Especialidad, Café Mexicano, Tueste italiano, Café Veracruzano, Café Gourmet,","Mixtla - Café en grano - 100% Arábica - Tueste Medio - Café de Altura - De la sierra negra de Puebla - 500 Gr.","Café Solo Dios Grano Artesanal - 1 Kg","Juan Valdez Café de Grano Origen Antioquia 454gr","Café Jaguar en Grano, Café En grano Arábica de Chiapas, 454 gr","Café Orgánico Nativo En Grano The Coffee Farmers Co-op 1 Kg","Lavazza Qualita Rossa 1 kg","Café Finca Hamburgo En Grano Catuaí Bourbon 454 gr / 1 lb","Café Solo Dios Molido Artesanal - 1 Kg","Café En Grano Tanzania San Francisco Bay Coffe 1 Kg","Café Cien Paquete Doble, Café en Grano de Altura, 100% Puro, Tostado Medio, Café Artesanal, Contenido: 454 Gramos cada uno, Hecho en Rancho Perseverancia, Veracruz, México","Café en grano, San Francisco Bay Coffee, Taza Otoñal de Edicion especial, Café de Chiapas, México., 1 kg","CAFIVER Specialty Tostado En Grano 500g. Café estilo gourmet, tueste tipo europeo, mezcla de grano arábiga, aroma intenso. Presentado en bolsa tipo almohada.","Bola de Oro Café Grano, Mezcla Especial Ganadora, Gourmet - 500 g","San Francisco Cafe Organico de Chiapas 1 Kg Grano Entero","Stone Street Café El Espresso Perfecto, En Grano, Tostado Medio, Notas Almendra-Chocolate-Vainilla, 100% Arabica, Orgánico - 450 G","LAVAZZA - Café Calidad de oro 1 kg","Lavazza Organic Tierra! Mezcla de café de grano entero, tostado italiano, 2.2 libras","Espressoamico Cafe Nueve Nubes, En Grano - 500 Gr","Café Caracolillo Orgánico De Altura en Grano 100% natural. (Cosecha Limitada) 1 Kilogramo. Finca Irlanda, de Chiapas.","Kirkland Signature café en grano selección de la casa de Chiapas 1kg","Kirkland Signature café en grano French Roast 1kg","Lavazza Gran Riserva Whole Bean Coffee Blend, Dark Espresso Roast, 2.2-Pound Bag","Lavazza Grand Espresso - Grano Entero, 2.2 Libras de Bolsa","2 Pack (340 g) Coffee Brew - Decaf, Café Descafeinado, 100% Arábica Premium (en Grano)","Caffenio- Café en Grano 500gr, Tueste Intenso, Calidad Pluma Hidalgo Oaxaca, Café Arábiga, 100% Mexicano","Lavazza Dek Decaf Whole Bean Espresso, 1.1-Pound Bag by Lavazza","Café 1968 - Café De La Casa en Grano - Origen Oaxaca, Chiapas y Veracruz - 1kg","KIRKLAND SIGNATURE - Café Puro Tostado en Grano Gourmet French Roast","Café Superior Orgánico De Altura en Grano (Cosecha Limitada) 1 Kilogramo. Finca Irlanda, de Chiapas.","Grano De Café Cubierto De Chocolate 1Kg","Café Tostado a la Leña, 100% Grano Robusta, Tueste Oscuro, Grano Entero, EXTREMO 454 Gr","Café 1968 - Café Oaxaca en Grano - Perfil suave, Notas cítricas - 1kg","Ruanda - Kirkland Signature Ruanda Café en Grano 1 kg","Café Monte Grande, Tueste Espresso, en grano, 2 paquetes de 454 gramos","Jose's Whole Bean Coffee Vanilla Nut 1.4kg","Café 1968 - Café Colombiano en Grano - Origen Colombia, Notas frutales y florales, Cuerpo Aterciopelado - 1Kg","illy, Café en Granos Descafeinado Tueste Clásico, Café 100% Arábica, 250 gr","Café Orgánico En Grano Selva De Chiapas The Coffee Farmer's Co-Op","Café Marago Orgánico De Altura en Grano (Cosecha Limitada) 1Kilogramo. Finca Irlanda, de Chiapas.","El Café-Tal Apan - Cafe de Grano cosecha Coatepec Veracruz, tostado \"medio\", grano Arabiga, Bolsa de 1kg","Cafe Britt Costa Rica Light Roast Whole Bean Coffee, 12 Ounce Bag","Café HB Plus Regular en grano 500g Cafiver. Café tipo gourmet, grano de altura, tueste tipo europeo, con notas intensas a chocolate, nueces y almendras.","Death Wish - Café de grano entero - Comercio justo y certificado orgánico USDA","Café cubierto de Chocolate con Leche - Café Selecto Cubierto de Real Chocolate Lácteo - Presentación de 220 gramos - TÓH HAÁ -","Lavazza Caffe Espresso Mezcla de café en grano entero, tostado medio, bolsa de 2.2 libras","Café Solo Dios Orgánico Grano Tostado 1Kg Paquete de 2 Empaque 2024","CAFE 100% PURO, TOSTADO EN GRANO, MEZCLA GOURMET FUERTE","Kalakapäla | Café Italiano en Grano | 100% de Excelente Calidad | Café puro Originario de Veracruz | Mezcla Gourmet | Ingredientes Mexicanos | 400 gr","Café Orgánico en Grano Ruta Maya 1 Kg","Bola de Oro Café Grano, Descafeinado, 500 gramos","Premium Kopi Luwak de Indonesia Wild Palm Civets Arábica Café en granos (Kopi Luwak tostado medio, 0.35 onzas (paquete de 1))","Tresso - Café Honey de Especialidad, Notas Ácidas Afrutadas, 380 g en Grano","Café Tostado a la Leña, 100% Mezcla Grano Arábigo y Robusta, Tueste Oscuro, Grano Entero, INTENSO 454 Gr","Café Monte Grande, Tueste Americano, En Grano, 2 paquetes de 454 gramos","Exploradores de Café, en grano tostado Edomex - 250 G","Lavazza Caffe Espresso - Mezcla de café","Nukana Macadamia Tostada Salada - 1 KG","Café Tostado En Grano Regular 340g Vivendi. Café tipo gourmet, 100% de altura, tueste tipo europeo, con notas intensas a nueces, almendras y avellanas."],"marker":{"color":"black","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><br>
@@ -252,7 +258,11 @@ gtag('config', 'G-HVF2WPFB5W', { 'anonymize_ip': true});
 <p>Umbral de 5 años que muestra el acumulado de comentarios en el tiempo. Cada linea roja es un año. <strong>Los productos suelen superar los 500 comentarios al tercer año</strong>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="reporte_cafe_files/figure-html/unnamed-chunk-5-1.png" style="width:100.0%;height:56.25%"></p>
+<div>
+<figure class="figure">
+<p><img src="reporte_cafe_files/figure-html/unnamed-chunk-5-1.png" style="width:100.0%;height:56.25%" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><br>
@@ -262,13 +272,25 @@ gtag('config', 'G-HVF2WPFB5W', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="ventas">Ventas</h2>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="reporte_cafe_files/figure-html/unnamed-chunk-6-1.png" style="width:100.0%;height:56.25%"></p>
+<div>
+<figure class="figure">
+<p><img src="reporte_cafe_files/figure-html/unnamed-chunk-6-1.png" style="width:100.0%;height:56.25%" class="figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output-display">
-<p><img src="reporte_cafe_files/figure-html/unnamed-chunk-6-2.png" style="width:100.0%;height:56.25%"></p>
+<div>
+<figure class="figure">
+<p><img src="reporte_cafe_files/figure-html/unnamed-chunk-6-2.png" style="width:100.0%;height:56.25%" class="figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output-display">
-<p><img src="reporte_cafe_files/figure-html/unnamed-chunk-6-3.png" style="width:100.0%;height:56.25%"></p>
+<div>
+<figure class="figure">
+<p><img src="reporte_cafe_files/figure-html/unnamed-chunk-6-3.png" style="width:100.0%;height:56.25%" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><br>
@@ -277,8 +299,8 @@ gtag('config', 'G-HVF2WPFB5W', { 'anonymize_ip': true});
 </p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-b61dbca2bc45ec3bc509" style="width:100%;height:56.25%;"></div>
-<script type="application/json" data-for="htmlwidget-b61dbca2bc45ec3bc509">{"x":{"visdat":{"600816a7f5e":["function () ","plotlyVisDat"]},"cur_data":"600816a7f5e","attrs":{"600816a7f5e":{"y":{},"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"markers","text":{},"marker":{"color":"black"},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Café Tostado (70 del Top 85 de Amazon)","yaxis":{"domain":[0,1],"automargin":true,"title":"Ventas del mes pasado"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Número de reviews","range":[0,3000]},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"y":[100,300,50,500,100,200,100,100,50,100,50,100,50,100,50,50,100,50,100,50],"x":[6605,1721,1702,2093,17462,855,13217,116,407,31204,159,291,687,208,129,205,343,460,546,1854],"type":"scatter","mode":"markers","text":["Etnia 52 | Café en Grano de Altura Chiapas | Cuerpo Medio | Notas a Nuez, Miel y Caramel | Tostado Medio | 100% Arábica | 454 g","Café Solo Dios Café en Grano, Sabor Artesanal, 1 Kg","OCIXEM, Café en Grano Soconusco, Chiapas, 454 gramos","Tresso, Café Veracruz Región de las Altas Montañas en Grano, 1 kilogramos","Lavazza Caffe Espresso - Mezcla de café","LA PARROQUIA DE VERACRUZ - Bolsa de Café de Grano Tostado, 780 g, Café Puro 100%, Seleccionado y Elaborado con Alta Calidad, Café con Aroma Intenso y Agradable, Cuerpo Completo","Lavazza Caffe Espresso Whole Bean Coffee Blend, Medium Roast, 2.2 Pound Bag","Café En Grano Punta Del Cielo Tostado Cosecha Premium 1 kg","Bola de Oro Café Grano, Exportacion - 1 kg","Lavazza Super Crema Whole Bean Coffee Blend, Medium Espresso Roast, 2.2-Pound Bag","BACIO, Café en Grano, 1 kilo, Expreso, BAR, Café de Especialidad, Café Mexicano, Tueste Italiano, Café Veracruzano, Café Gourmet,","illy, Café en Granos, Tueste Clásico, 1 piezas","Bola de Oro Café Grano, Gourmet - 500 g","Super Crema Whole Bean Espresso Coffee, 2.2lb Bag, Vacuum-Packed","BACIO, Café en Grano, Qualita Speciale 1 Kilo, Café de Especialidad, Café Mexicano, Tueste italiano, Café Veracruzano, Café Gourmet,","Café Solo Dios Grano Artesanal - 1 Kg","Juan Valdez Café de Grano Origen Antioquia 454gr","Café Jaguar en Grano, Café En grano Arábica de Chiapas, 454 gr","Bola de Oro Café Grano, Mezcla Especial Ganadora, Gourmet - 500 g","LAVAZZA - Café Calidad de oro 1 kg"],"marker":{"color":"black","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-d3433fe423a8e7706c41" style="width:100%;height:56.25%;"></div>
+<script type="application/json" data-for="htmlwidget-d3433fe423a8e7706c41">{"x":{"visdat":{"71f727688343":["function () ","plotlyVisDat"]},"cur_data":"71f727688343","attrs":{"71f727688343":{"y":{},"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"markers","text":{},"marker":{"color":"black"},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Café Tostado (70 del Top 85 de Amazon)","yaxis":{"domain":[0,1],"automargin":true,"title":"Ventas del mes pasado"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Número de reviews","range":[0,3000]},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"y":[100,300,50,500,100,200,100,100,50,100,50,100,50,100,50,50,100,50,100,50],"x":[6605,1721,1702,2093,17462,855,13217,116,407,31204,159,291,687,208,129,205,343,460,546,1854],"type":"scatter","mode":"markers","text":["Etnia 52 | Café en Grano de Altura Chiapas | Cuerpo Medio | Notas a Nuez, Miel y Caramel | Tostado Medio | 100% Arábica | 454 g","Café Solo Dios Café en Grano, Sabor Artesanal, 1 Kg","OCIXEM, Café en Grano Soconusco, Chiapas, 454 gramos","Tresso, Café Veracruz Región de las Altas Montañas en Grano, 1 kilogramos","Lavazza Caffe Espresso - Mezcla de café","LA PARROQUIA DE VERACRUZ - Bolsa de Café de Grano Tostado, 780 g, Café Puro 100%, Seleccionado y Elaborado con Alta Calidad, Café con Aroma Intenso y Agradable, Cuerpo Completo","Lavazza Caffe Espresso Whole Bean Coffee Blend, Medium Roast, 2.2 Pound Bag","Café En Grano Punta Del Cielo Tostado Cosecha Premium 1 kg","Bola de Oro Café Grano, Exportacion - 1 kg","Lavazza Super Crema Whole Bean Coffee Blend, Medium Espresso Roast, 2.2-Pound Bag","BACIO, Café en Grano, 1 kilo, Expreso, BAR, Café de Especialidad, Café Mexicano, Tueste Italiano, Café Veracruzano, Café Gourmet,","illy, Café en Granos, Tueste Clásico, 1 piezas","Bola de Oro Café Grano, Gourmet - 500 g","Super Crema Whole Bean Espresso Coffee, 2.2lb Bag, Vacuum-Packed","BACIO, Café en Grano, Qualita Speciale 1 Kilo, Café de Especialidad, Café Mexicano, Tueste italiano, Café Veracruzano, Café Gourmet,","Café Solo Dios Grano Artesanal - 1 Kg","Juan Valdez Café de Grano Origen Antioquia 454gr","Café Jaguar en Grano, Café En grano Arábica de Chiapas, 454 gr","Bola de Oro Café Grano, Mezcla Especial Ganadora, Gourmet - 500 g","LAVAZZA - Café Calidad de oro 1 kg"],"marker":{"color":"black","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
@@ -322,18 +344,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -365,11 +376,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -379,8 +429,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -392,7 +451,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -436,6 +618,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -461,6 +644,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -526,12 +735,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center">Powered by <a href="https://quarto.org/">Quarto</a>. <br>Copyright 2024, Rodrigo Pacheco Muñoz.<br><a href="../../../../../index.html">Home</a> | <a href="../../../../../about.html">About</a> | <a href="../../../../../proyectos.html">Proyectos</a> | <a href="../../../../../divulgacion.html">Comunicación Científica</a> | <a href="../../../../../publicaciones_cientificas.html">Publicaciones</a> | <a href="mailto:rodpachecom@gmail.com">Contacto</a></div>
+    <div class="nav-footer-center">
+<p>Powered by <a href="https://quarto.org/">Quarto</a>. <br>Copyright 2024, Rodrigo Pacheco Muñoz.<br><a href="../../../../../index.html">Home</a> | <a href="../../../../../about.html">About</a> | <a href="../../../../../proyectos.html">Proyectos</a> | <a href="../../../../../divulgacion.html">Comunicación Científica</a> | <a href="../../../../../publicaciones_cientificas.html">Publicaciones</a> | <a href="mailto:rodpachecom@gmail.com">Contacto</a></p>
+</div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 
