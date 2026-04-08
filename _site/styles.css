@@ -20,3 +20,18 @@
 .page-layout-full .title:empty {
   display: none;
 }
+
+/* Elimina gap entre hero y footer en page-layout: full */
+.page-layout-full .page-rows {
+  row-gap: 0 !important;
+}
+
+.page-layout-full #quarto-content {
+  padding-bottom: 0 !important;
+}
+
+.page-layout-full .page-content {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
