@@ -1,8 +1,22 @@
-/* css styles */
-.ch1 h1 {
-  text-align: center;
+/* ============================================================
+   styles.css — estilos globales del sitio
+   Tema base: Solar (Bootstrap)
+   ============================================================ */
+
+/* ── Tipografía centrada (clases helper para Quarto) ── */
+.ch1 h1 { text-align: center; }
+.ch4 h4 { text-align: center; }
+
+/* ── Elimina el padding-top que Quarto agrega
+      al body en páginas con page-layout: full ──
+   Necesario para que el hero toque el navbar sin gap */
+.page-layout-full .page-content {
+  padding-top: 0 !important;
 }
 
-.ch4 h4 {
-  text-align: center;
+/* ── Quarto a veces agrega un <h1> vacío en páginas
+      con title: "" — esto lo oculta limpiamente ── */
+.page-layout-full h1:empty,
+.page-layout-full .title:empty {
+  display: none;
 }
