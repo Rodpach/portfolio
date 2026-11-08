@@ -1,0 +1,65 @@
+---
+title: "La invasión ya estaba aquí cuando nací"
+description: "_El cambio climático y las especies invasoras son una de las principales amenzas a la vida silvestre. Ante ellas, ¿Las especies nativas pueden ajustar su comportamiento?._"
+date: "08/17/2022"
+categories:
+  - Ecología
+  - Invasión de especies
+  - Comportamiento
+  - Ciencia de datos
+  - Cambio climático
+image: "https://www.biolib.cz/IMG/GAL/BIG/439282.jpg"
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="_Mapa interactivo que muestra la localización de los lagos de Zempoala y Tonatiahua. En estos lagos se encuentran los organismos que estudiamos._.", fig.align='center', out.width= "100%", out.height="400px"}
+library(leaflet, quietly = T)
+library(sf, quietly = T)
+lagosZ =sf::st_as_sf(data.frame(lat=c(19.050586, 19.055869), long=c(-99.314293, -99.316653), label = c("Zempoala", "Tonatiahua")), coords=c("long", "lat")) 
+leaflet(data = lagosZ) |> addTiles() |>
+  addMarkers(label = ~label, labelOptions = labelOptions(noHide = T))
+
+```
+
+\
+
+Este proyectó buscó entender si las especies nativas pueden ajustar sus comportamientos al estar expuestos a la invasión de sus hábitats por otras especies en un contexto de calentamiento global.
+
+El **mexcalpique** (Fig. 1) es un pez endémico de la cuenca del río Lerma cuyo hábitat está siendo invadido por el **Guatopote manchando** (Fig. 2). En los lagos de Zempoala hay **mexcalpique** pero no todos los lagos tienen **Guatopote manchando**. Esto es así desde 28 años antes de que realizaramos este estudio. Es por eso que este sistema fue ideal para evaluar si ha habido ajustes en el comportamiento de los peces nativos, al ser expuestos a una especie invasora en un contexto de calentamiento global. También evaluamos si los ajustes en el comportamiento que minimizan conflictos con los peces invasores son hereditarios u ontogenéticos (por experiencia de individual).
+
+\
+
+::: columns
+::: column
+![Figura 1. El mexalpique (*Girardinichthys multiradiatus*), pez endémico de la cuenca del río Lerma.](https://inaturalist-open-data.s3.amazonaws.com/photos/13732929/original.jpg){fig-align="center" width="351"}
+:::
+
+::: column
+![Figgura 2. Guatopote Manchado (*Pseudoxiphophorus bimaculatus*), invasor en el centro de México y nativo en el este, con distirbución hasta centro América.](https://www.fishbase.se/images/species/Hebim_f1.jpg){fig-align="center" width="350"}
+:::
+:::
+
+\
+
+Para el proyecto se criaron peces **mexcalpique** a partir de madres de dos lagos: uno invadido y otro no. Es decir, de ambas poblaciones se obtuvieron huevos que nacieron en condiciones de laboratorio. Luego evaluamos el consumo de alimento e interacciones de las crías en presencia de competencia alimentaria con peces invasores (**Guatopote manchando**) y con individuos de su misma especie, combinando machos y hembras, y distintas temperaturas. La evaluación de su comportamiento se se llevó a cabo con modelos lineales generalizados.
+
+Lo que encontramos fue que existen diferencias en el comportamiento de las crías según el lago del que provienen. Los peces **mexcalpique** de Zempoala, el lago invadido, tenían un comportamiento más agresivo, probablemente debido a la competencia por el alimento con los invasores (Fig. 3). Por otro lado, los peces macho **mexcalpique** de Zempoala cambiaron su enfoque, pasando más tiempo interactuando con hembras (Fig. 3). Estos cambios los explicamos por su adaptación local (herencia), luego de 28 años de convivencia entre especies, y por ajustes en su comportamiento por experiencias de vida (ontogenia).
+
+\
+
+![Figura 3. (**a**) Las hembras, descendientes de **mexcalpique** de Zempoala (barras grises), ha enfrentado competencia con el **guatopote manchando**, dedican menos tiempo a buscar alimento a bajas temperaturas (en las que **mexcalpique** es menos competitivo), que a temperaturas más altas (en las que las dos especies son más competitivos), y también menos que sus contrapartes de Tonatiahua (barras negras), donde no **guatopote manchando**. (**b**) Las hembras de Zempoala se involucraron más frecuentemente en agresiones con sus compañeros sociales que las hembras de Tonatiahua, particularmente a temperaturas más altas.](images/PH2022_2_web.jpg){fig-align="center" width="400"}
+
+\
+
+---
+
+\
+
+*Este proyecto lo realicé como colaborador, en un proyecto coordinado por el [laboratorio de Ecología de Especies Invasoras, del Instituto de Limnología](https://www.invasivespeciesecology.com/), UNAM.* *Mi participación en el proyecto involucró el manejo, visualización y el análisis de datos, la interpretación de resultados y la redacción del reporte*.
+
+\
+
+::: text-secondary
+Sus resultados se publicaron en la revista [Acta ethologica](https://link.springer.com/10.1007/s10211-022-00402-4) el 26 de junio de 2022 y lo puedes descargar [aquí](https://drive.google.com/file/d/1W9M5T1r2-GA19B3Tro0Lad8UA-ukN559/view?usp=drive_link).
+
+**Cita**: Palomera-Hernandez, V., Camacho-Cervantes, M., Ramirez-Carrillo, E., **Pacheco-Muñoz, R**., Macías Garcia, C., 2022. Coexistence with an invasive species in the context of global warming lead to behavioural changes via both hereditary and ontogenetic adjustments to minimise conflict. acta ethol. <https://doi.org/10.1007/s10211-022-00402-4>
+:::

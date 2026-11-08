@@ -1,0 +1,44 @@
+---
+title: "Áreas de infiltración y anegación en ciudades latinoamericanas"
+description: "_Desarrollamos un innovador modelo espacial para evaluar la capacidad de infiltración y los riesgos de inundación en tres regiones urbanas latinoamericanas._"
+date: "03/01/2017"
+categories:
+  - Análisis espacial
+  - Manejo urbano
+  - Cambio climático
+  - Ecología Urbana
+  - Ciencia de datos
+  - Región
+  - Manejo de recursos
+image: "images/inf_inun_portada_web.jpg"
+---
+
+[![Figura 1. Infiltración potencial actual de la Ciudad de México (A) y escenario de infiltración potencial con cambio de uso de suelo y cambio climático (B). Zonas de riesgo de inundación actuales (C) y escenario de riesgo de inundación con cambio de uso del suelo y cambio climático (D). Tomada de Zambrano et al., (2017).](images/inf_inun_web.jpg){fig-align="center"}](https://linkinghub.elsevier.com/retrieve/pii/S2213305416301333)
+
+\
+
+Sabemos que el agua es un recurso esencial, y su gestión adecuada es fundamental para el bienestar de la población. ¿Cómo evaluamos la vulnerabilidad de la gestión del agua en ciudades a nivel regional considerando el cambio climático? El objetivo de nuestro proyecto era evaluar la vulnerabilidad de la gestión del agua en tres ciudades clave de América Latina (México City, Sao Paulo y Buenos Aires), teniendo en cuenta el cambio climático.
+
+Para lograrlo, desarrollamos un modelo espacial que nos permitió analizar la capacidad de infiltración del agua y los riesgos de inundaciones en estas ciudades. En el modelo consideramos datos espaciales de uso de suelo, pendiente, textura del suelo, elevación y precipitación. Luego probamos diferentes escenarios considerando cambios en el uso de suelo y cambio climático hasta el año 2050.
+
+Con el modelo encontramos que el cambio climático disminuirá la capacidad de infiltración de agua en Sao Paulo, pero aumentará en México y Buenos Aires. El cambio en el uso de suelo es el factor clave en la reducción de la capacidad de infiltración y el aumento del riesgo de inundaciones en las tres ciudades. Una de las conclusiones más destacadas fue la importancia de las áreas naturales en la protección de nuestras ciudades contra eventos extremos. Las zonas verdes juegan un papel crucial al reducir la vulnerabilidad de nuestras dinámicas urbanas del agua. El modelo puede ayudar a los responsables de la toma de decisiones a evaluar planes de urbanización y políticas de gestión del agua.
+
+Una de las principales limitaciones a nuestro modelo es el uso de datos cualitativos, ya que la información precisa sobre las características del suelo es escasa. En este sentido, para mejorar la precisión del modelo también serúa útil considerar variables adicionales, como la saturación del suelo y la intensidad de las lluvias.
+
+En última instancia, nuestro estudio resalta la importancia de tomar decisiones informadas sobre la gestión del agua en nuestras ciudades en crecimiento. Con la rápida urbanización y el cambio climático.
+
+\
+
+---
+
+\
+
+*Este proyecto lo realicé como coordinador de proyectos en el [laboratorio de Restauración Ecológica del Instituto de Biología de la UNAM](https://www.restauracionecologica.org/), con fondos del [Climate and Development Knowledge Network (CDKN).](https://cdkn.org/)* *Mi participación involucró su coordinación desde su planteamiento, colecta y visualización de datos, análisis, interpretación de resultados y la redacción de su reporte*.
+
+\
+
+::: text-secondary
+Sus resultados se encuentran publicados en la revista [Antropocene](https://linkinghub.elsevier.com/retrieve/pii/S2213305416301333) y lo puedes descargar [aquí](https://drive.google.com/file/d/1_H_TPNJ1wVZ6MK9s_FLiVI6NTbtuTdYD/view?usp=drive_link).
+
+**Cita**: Zambrano, L., **Pacheco-Muñoz, R**., Fernández, T., 2017. A spatial model for evaluating the vulnerability of water management in Mexico City, Sao Paulo and Buenos Aires considering climate change. Anthropocene 17, 1--12. <https://doi.org/10.1016/j.ancene.2016.12.001>
+:::

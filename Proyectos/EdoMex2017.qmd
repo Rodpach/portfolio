@@ -1,0 +1,19 @@
+---
+title: "Dashboard interactivo para explorar elecciones"
+description: "_Como prueba de concepto, esta aplicación permite explorar espacial y gráficamente votaciones electorales. ¡Prueba la app!_"
+date: "11/22/2017"
+categories:
+  - Análisis espacial
+  - App interactiva
+  - Ciencia de datos
+  - Dashboard
+image: "images/edomex17.png"
+---
+
+A continuación muestro el concepto de implementación de un *Dashboard* donde visualizamos información espacial y gŕafica de forma interactiva. Este *Dashboard* es una [*shiny app*](https://shiny.posit.co/).
+
+Para demostrar el concepto de implementación de la app, usé los datos electorales de las elecciones de junio de 2017 del Estado de México. Estos los obtuve del [**IEEM**](http://www.prepieem.org.mx/rptDistrital.html). También obtuve la información de los distritos electorales que provee el INEGI. Esta es la última versión del conteo de votos que se emitió. **La aplicación permite explorar de forma interactiva el voto en cada municipio.**
+
+## ¡Haz click en el municipio de tu elección y explora los votos!
+
+`<iframe height="900" width="100%" frameborder="yes" src=" https://datapach.shinyapps.io/EdoMex/"`{=html} </iframe>

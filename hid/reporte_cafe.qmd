@@ -1,0 +1,170 @@
+---
+title: "Estudio de café"
+description: "_Reporte de cafe_"
+author: "@Pachecovv"
+---
+
+# Café en Amazon
+
+```{r, echo=FALSE, message=FALSE}
+library(tidyverse)
+library(tm)
+library(tidytext)
+library(plotly)
+
+lista_detalles_ = read_csv("/home/pacheco/Documents/R/vergniano_amazon/categoriaGranoTostado/marcasDetalles_cafe_grano_amazonMX_corregida.csv")
+lista_ranking_cafeTostado = read_csv("/home/pacheco/Documents/R/vergniano_amazon/categoriaGranoTostado/marcasRankingTop_granoTostodado_cafe_grano_amazonMX.csv") |> filter(categorias == "en Café en Grano Tostado")
+
+lista_detalles_$Marca = ifelse(!is.na(lista_detalles_$Marca...20), lista_detalles_$Marca...20, lista_detalles_$Marca...50)
+
+lista_detalles_$prod_precio_unidad_corregido = round(lista_detalles_$prod_precio/lista_detalles_$Unidades_pesoGramo_corregido, 2)
+
+
+#FECHAS
+# Desagregar las fechas
+fechas_desagregadas <- strsplit(lista_detalles_$vendidoDesde, " ")
+
+# Crear el data.frame
+df_fechas <- data.frame(t(sapply(fechas_desagregadas, function(x) {
+  c(dia = x[1], mes = x[2], anio = x[3])
+})))
+
+# Convertir el mes a número
+meses <- c("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
+           "agosto", "septiembre", "octubre", "noviembre", "diciembre")
+df_fechas$mes_num <- match(df_fechas$mes, meses)
+
+# Crear la fecha con lubridate
+df_fechas$fecha <- dmy(paste(df_fechas$dia, df_fechas$mes_num, df_fechas$anio))
+
+# Calcula el intervalo desde la fecha dada hasta hoy
+df_fechas$intervalo <- interval(start = df_fechas$fecha, end = Sys.Date())
+
+# Convierte el intervalo a un periodo y extrae los meses
+df_fechas$meses_transcurridos <- as.period(df_fechas$intervalo, unit = "month")$month
+
+
+df_fechas$ASIN = lista_detalles_$ASIN
+
+
+df_fechas = select(df_fechas, ASIN, fecha, meses_transcurridos) |> 
+  right_join(select(lista_detalles_, ASIN, prod_title, prod_num_reviews, prod_precio_unidad_corregido))
+```
+
+Se consideraron las 85 mejores productos de café en la categoría "**Grano Tostado**" en Amazon. Se analizaron 82 productos porque 3 no tenían datos suficientes. Los precios de todos los productos se estandarizaron a su valor en pesos (\$) por un gramo de café.
+
+## PRECIOS
+
+El valor del café va de **0.25 - 64.83 \$/gramo**. El **promedio** es de **0.45 \$/gramo**. Revisa el precio de los productos por marca forma interactiva.
+
+```{r,echo=FALSE, warning=FALSE, out.width="100%", fig.height=10}
+gg_marca_precio_Df = count(lista_detalles_, Marca, prod_title, prod_precio_unidad_corregido) |> arrange(desc(prod_precio_unidad_corregido)) |> 
+  select(-n) |> filter(!is.na(Marca), !is.na(prod_precio_unidad_corregido)) |>
+  dplyr::mutate(Marca = factor(Marca, levels = unique(Marca)))
+
+plotgg_marca_precio = filter(gg_marca_precio_Df, prod_precio_unidad_corregido <=3) |>  plot_ly(y = ~Marca, x = ~prod_precio_unidad_corregido) %>% 
+  add_markers(text = ~prod_title,
+              marker = list(color = "black")) %>%
+  layout(title = 'Café Tostado (70 del Top 85 de Amazon)',
+         yaxis = list(title = ''),  xaxis = list(title = 'Pesos por gramo ($/g.)'))
+
+plotgg_marca_precio
+```
+
+\
+
+\
+
+```{r, echo=FALSE, message=FALSE, out.width="100%", out.height="56.25%"}
+ filter(gg_marca_precio_Df, prod_precio_unidad_corregido <=3) |>
+   ggplot()+
+  geom_histogram(aes(prod_precio_unidad_corregido), fill = "white", color = "black")+
+  labs(y = "Café Tostado (70 del Top 85 de Amazon)", x= "Pesos por gramo ($/g.)", subtitle = "Intervalo de precios de Café Tostado (70 del Top 85 de Amazon)")+
+  scale_x_continuous(breaks = seq(0,3, .2), expand = c(0,0))+
+  scale_y_continuous(expand = c(0,0))+
+  theme_classic()
+```
+
+\
+
+\
+
+El precio del café asociado al ranking.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, out.width="100%", out.height="56.25%"}
+lista_detalles_ranking = left_join(lista_detalles_, lista_ranking_cafeTostado) |> left_join(df_fechas)
+plot_ly(data = lista_detalles_ranking, y = ~ranking, x = ~prod_precio_unidad_corregido) %>% 
+  add_markers(text = ~prod_title,
+              marker = list(color = "black")) %>%
+  layout(title = 'Café Tostado (70 del Top 85 de Amazon)',
+         yaxis = list(title = 'Ranking'),  xaxis = list(title = 'Pesos por gramo ($/g.)', range = c(0,3)))
+```
+
+\
+
+\
+
+## Tiempo desde el inicio de venta
+
+Umbral de 5 años que muestra el acumulado de comentarios en el tiempo. Cada linea roja es un año. **Los productos suelen superar los 500 comentarios al tercer año**.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, out.width="100%", out.height="56.25%"}
+mod_fechas_transcurrido_numReviews = MASS::glm.nb(prod_num_reviews ~ meses_transcurridos, data = filter(df_fechas, meses_transcurridos <= 60))
+
+broom::augment(mod_fechas_transcurrido_numReviews) |>
+ggplot(aes(x=meses_transcurridos, y = prod_num_reviews)) +
+  geom_point(color = "black")+
+  geom_smooth(aes(y= exp(.fitted),), color = "gray", linetype = 2, se = F)+
+  labs(y = "Número de comentarios", x= "Meses desde el inicio de venta")+
+  geom_vline(xintercept = 12, linetype = 3, color = "red")+
+  geom_vline(xintercept = 24, linetype = 3, color = "red")+
+  geom_vline(xintercept = 36, linetype = 3, color = "red")+
+  geom_vline(xintercept = 48, linetype = 3, color = "red")+
+  geom_vline(xintercept = 60, linetype = 3, color = "red")+
+  scale_x_continuous(breaks = seq(0, 60, 6), limits = c(0,60))+
+  scale_y_continuous(limits = c(0,3000), breaks = seq(0,5000,250))+
+  theme_classic()
+
+```
+
+\
+
+## Ventas
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%", out.height="56.25%"}
+lista_detalles_ventas = filter(lista_detalles_, !is.na(prod_ventas_mesPasado))
+lista_detalles_ventas = left_join(lista_detalles_ventas, df_fechas)
+lista_detalles_ventas = left_join(lista_detalles_ventas, lista_ranking_cafeTostado)
+
+ggplot(lista_detalles_ventas)+
+  geom_histogram(aes(prod_ventas_mesPasado), fill = "white", color = "black")+
+  labs(y = "Número de marcas", x= "Ventas", subtitle = " Café Tostado (20 del Top 85 de Amazon)")+
+  scale_y_continuous(expand = c(0,0), breaks = seq(0,9,1))+
+  theme_classic()
+
+ggplot(lista_detalles_ventas) +
+  geom_point(aes(x=prod_precio_unidad_corregido, y = prod_ventas_mesPasado), color = "black")+
+  labs(x = "Precio por gramo en pesos ($/g.)", y= "Ventas", subtitle = "Categoría: Café en Grano Tostado")+
+  scale_x_continuous(limits = c(0,2), breaks = seq(0,2, .2))+
+  scale_y_continuous()+
+  theme_classic()
+
+ggplot(lista_detalles_ventas) +
+  geom_point(aes(x=Unidades_peso, y = prod_ventas_mesPasado), color = "black")+
+  labs(x = "Peso neto (g.)", y= "Ventas", subtitle = "Categoría: Café en Grano Tostado")+
+  scale_x_continuous(limits = c(0,1100))+
+  scale_y_continuous()+
+  theme_classic()
+```
+
+\
+
+\
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, out.width="100%", out.height="56.25%"}
+plot_ly(data = lista_detalles_ranking, y = ~prod_ventas_mesPasado, x = ~prod_num_reviews) %>% 
+  add_markers(text = ~prod_title,
+              marker = list(color = "black")) %>%
+  layout(title = 'Café Tostado (70 del Top 85 de Amazon)',
+         yaxis = list(title = 'Ventas del mes pasado'),  xaxis = list(title = 'Número de reviews', range = c(0,3000)))
+```

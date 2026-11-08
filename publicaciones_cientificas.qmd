@@ -1,0 +1,77 @@
+---
+title: "Publicaciones académicas y reportes técnicos"
+---
+
+Aquí encuentras y descargas las ***publicaciones académicas*** y los ***reportes técnicos*** que he realizado. Ambos tipos de materiales cuentan con su sección y los elementos los muestro del elemento más reciente al más antiguo. Hay un resumen de cada ***publicación académica*** en la sección de proyectos de la página. Puedes visitarlo resúmenes dando clic al enlace frente de cada publicación que lo contenga. También si hay una nota en medios al respecto.
+
+Mis publicaciones académicas también están en mis perfiles de estas plataformas:
+
+::::: columns
+::: column
+[![](img/ResearchGate_icon.png){fig-align="center" width="100"}](https://www.researchgate.net/profile/Rodrigo-Pacheco-Munoz)
+:::
+
+::: column
+[![](img/Google%20Scholar.png){fig-alt="google_sholar_logo" fig-align="center" width="186"}](https://scholar.google.com/citations?user=b4BxmRwAAAAJ&hl=es)
+:::
+:::::
+
+## Publicaciones académicas
+
+### Artículos
+
+\
+
+- **Pacheco-Muñoz R**, Ceja-Madrigal A, Schondube JE. [Migratory birds benefit from urban environments in a highly anthropized Neotropical region](1.%20Pacheco-Muñoz%20R,%20Ceja-Madrigal%20A,%20Schondube%20JE.%20Migratory%20birds%20benefit%20from%20urban%20environments%20in%20a%20highly%20anthropized%20Neotropical%20region.%20PLOS%20ONE.%202025;20:%20e0311290.%20doi:10.1371/journal.pone.0311290). PLOS ONE. 2025;20: e0311290. doi:[10.1371/journal.pone.0311290](https://doi.org/10.1371/journal.pone.0311290)
+
+  [**Nota en medios**](https://es.wired.com/articulos/las-ciudades-son-bosques-simplificados-un-refugio-inesperado-para-las-aves-migratorias)
+
+- Ayala-Azcarraga C, Hinojosa-Diaz IA, Segura O, **Pacheco-Muñoz R**, Larrucea-Garritz A, Diaz D. [Evaluation of Sustainable Landscape Design: Presence of Native Pollinators in an Urban Park in Mexico City, Mexico.](https://www.mdpi.com/2071-1050/17/2/799) Sustainability. 2025;17: 799. doi:10.3390/su17020799
+
+- **Pacheco-Muñoz, R**., Ceja-Madrigal, A., Navarro-Sigüenza, A.G., Rodríguez, P., Jiménez-Cruz, M., Schondube, J.E., 2023. [[Factors affecting invasion process of a megadiverse country by two exotic bird species]{.underline}](10.1016/j.ancene.2023.100399). *Anthropocene* 43.
+
+  [**Descarga**](https://drive.google.com/file/d/1x7luyleXDjC0DwMi-ltY7w7YQMqd0WFc/view?usp=drive_link) \| [**Resumen**](Proyectos/CMRPM2023.qmd) **\| [Nota en medios](https://www.lajornadamorelos.mx/opinion/tenga-para-que-se-entretenga-26/?fbclid=IwAR3kHKObkiKPwogmlSI3AybZB0zYpNMo5xS54P5LXBF9D3j-_Hs_b8w4KW0)**
+
+- **Pacheco-Muñoz, R**., Ceja-Madrigal, A., Pérez-Negrón, E., Ortiz-Asbun, A. K., & Schondube, J. E. (2022). [Wintering Town: Individual Quality of Migratory Warblers Using Green Urban Areas in a Neotropical City](https://www.frontiersin.org/articles/10.3389/fevo.2021.779507/full). Frontiers in Ecology and Evolution, 9, 779507.
+
+  [**Descarga**](https://drive.google.com/file/d/1ljREn87gblj3ZhPxm9jarSoe_U6BE4Om/view?usp=drive_link) \| [**Resumen**](Proyectos/PachecoMuñozetal2022b.qmd) **\| [Nota en medios](Entrevista%20por%20la%20BBC%20sobre%20mi%20trabajo%20sobre%20aves%20migratorias%20urbanas.%202022.)**
+
+- **Pacheco-Muñoz, R**., Aguilar-Gómez, M. Á., & Schondube, J. E. (2022).[Overwintering in a megacity: Urban green areas and migratory birds in Mexico City](https://linkinghub.elsevier.com/retrieve/pii/S1618866722001571). *Urban Forestry & Urban Greening*, 73.
+
+  [**Descarga**](https://drive.google.com/file/d/1CmXslpbxTO_OZSRyGPzg21lk7pzTmJ73/view?usp=drive_link) \| [**Resumen**](Proyectos/PachecoMuñozetal2022a.qmd)
+
+- Palomera-Hernandez, V., Camacho-Cervantes, M., Ramirez-Carrillo, E., **Pacheco-Muñoz, R**., & Macías Garcia, C. (2022). [Coexistence with an invasive species in the context of global warming lead to behavioural changes via both hereditary and ontogenetic adjustments to minimise conflict](https://link.springer.com/10.1007/s10211-022-00402-4). *Acta Ethologica*.
+
+  [**Descarga**](https://drive.google.com/file/d/1W9M5T1r2-GA19B3Tro0Lad8UA-ukN559/view?usp=drive_link) \| [**Resumen**](Proyectos/PalomeraHernandezetal2022.qmd)
+
+- Zambrano, L., **Pacheco-Muñoz, R**., & Fernández, T. (2018). [Influence of solid waste and topography on urban floods: The case of Mexico City](http://link.springer.com/10.1007/s13280-018-1023-1). *Ambio*, 47(7), 771--780.
+
+  [**Descarga**](https://drive.google.com/file/d/1cuVCBIqx4IRRP-BVCzjwiCVdgD9Of4_H/view?usp=drive_link) \| [**Resumen**](Proyectos/Zambranoetal2018.qmd) **\| [Nota en medios](https://www.infobae.com/mexico/2023/06/08/por-que-se-inunda-la-ciudad-de-mexico-siempre-que-llueve/)**
+
+- Zambrano, L., **Pacheco-Muñoz, R**., & Fernández, T. (2017). [A spatial model for evaluating the vulnerability of water management in Mexico City, Sao Paulo and Buenos Aires considering climate change](https://linkinghub.elsevier.com/retrieve/pii/S2213305416301333). *Anthropocene*, 17, 1--12.
+
+  [**Descarga**](https://drive.google.com/file/d/1_H_TPNJ1wVZ6MK9s_FLiVI6NTbtuTdYD/view?usp=drive_link) [**Resumen**](Proyectos/Zambranoetal2017.qmd)
+
+\
+
+### Capítulos en libros
+
+\
+
+- Zambrano, L., Córdova-Tapia, F., **Pacheco-Muñoz, R**., Karen Levy Gálvez. (2014). La comunidad de peces del lago de Pátzcuaro., in: Ruben Huerto Delgadillo, Sergio Vargas Velázquez (Eds.), [Estudio Ecosistémico Del Lago de Pátzcuaro Aportes En Gestión Ambiental Para El Fomento Del Desarrollo Sustentable](http://repositorio.imta.mx/handle/20.500.12013/1701). *Instituto Mexicano de Tecnología del Agua, Secretaría de Medio Ambiente y Recursos Naturales*, Jiutepec, México, pp. 79--93. [**Descarga**](https://drive.google.com/file/d/19fri-UVuQE8VXppRacBJ9JLc0rDJshbR/view?usp=drive_link)
+
+\
+
+## Reportes técnicos
+
+\
+
+- Ceja-Madrigal, A., **Pacheco-Muñoz, R**., & Schondube, J. E. (2022). [El estudio de las aves invasoras en México](https://scme.mx/wp-content/uploads/2022/10/Boleti%CC%81n-SCME-septiembre-2022_Descarga-completa.pdf). *Boletín de la Sociedad Científica Mexicana de Ecología*. pp. 58--70. [**Descarga**](https://drive.google.com/file/d/1OaoAIFUvB92gN-fmDcXb2TIMqFidq3kH/view?usp=drive_link)
+
+- **Pacheco-Muñoz, R** (2020). [La avifauna del confinamiento](https://scme.mx/la-avifauna-del-confinamiento/). *Boletín de la Sociedad Científica Mexicana de Ecología*. Núm. 5. pp. 58--70.
+
+- Fernando Córdova Tapia., Jorge Alejandro López Portillo Guzmán., Víctor Manuel Vásquez Reyes., **Rodrigo Pacheco Muñoz**., Mónica Pallares Trujillo., Karen Levy Gálvez., Luis Zambrano González. (2014). [Análisis de la Manifestación de Impacto Ambiental del Proyecto "Parque Temático Ecológico Laguna del Carpintero", MIA-28TM2014HD13."](https://www.researchgate.net/publication/276374344_Analisis_de_la_Manifestacion_de_Impacto_Ambiental_del_Proyecto_Parque_Tematico_Ecologico_Laguna_del_Carpintero_MIA-28TM2014HD13). *Consulta Pública.*
+
+- Luis Zambrano González., Fernando Córdova Tapia., Cristina Ayala Azcárraga., Karen Levy Gálvez., Gemma Abisay Ortiz Haro., Nuria Mónica Navarro Pérez de León., Daniel I. Manzur Trujillo., **Rodrigo Pacheco Muñoz**., Shanty Daniela Acosta Sinencio & Ana Laura Aguilar. (2013). [Opinión sobre los posibles impactos de la "Autopista Urbana Oriente. Tramo Muyuguarda-Bilbao"](https://www.researchgate.net/publication/276355475_Opinion_sobre_los_posibles_impactos_de_la_Autopista_Urbana_Oriente_Tramo_Muyuguarda-Bilbao?_sg%5B0%5D=6hKupxo1Oq47z7IewBDa4bs2HfgDj8JkxQrC4U5BQhh6QN0CX9mCi12Pf2avlwnMfMWpHr5pLxNaOkarzrpkmgDcfAvlEFiHddGoVdQt.74FAGc6NRBlH3UI-Ghsv_UKJUToezCIW0fk9bB038Xo76pPgrsHNVSOgJoiZ4sCUJppKGSn57IKryAweqxS_xQ). *Consulta pública*.
+
+- Luis Zambrano GonzálezBiól., Fernando Córdova Tapia., **Rodrigo Pacheco Muñoz**., Pablo Arturo López Guijosa., Shanty Daniela Acosta Sinencio., Martha Patricia Almazán Tejeda., Karen Levy Gálvez. (2012). [Análisis de la Manifestación de Impacto Ambiental del Proyecto "La Ensenada" MIA-23QR2012TD073](https://www.researchgate.net/publication/274639332_Analisis_de_la_Manifestacion_de_Impacto_Ambiental_del_Proyecto_La_Ensenada_MIA-23QR2012TD073?_sg%5B0%5D=J_WSns1fmoG0Zgol-uKKqJxGPMNhE65ys_u5AfQSH4u1ZkLV196Kc7egeJs2LvKkal-njqwRyevEFfrjXZ85IwfCaLI-Gx1ZIZMXQWnr.WGOzglg-t8RjFJ-a7Oi2FsTeyO6D9r25IeIBeQGBjF7Vc-tSIa2ltkWMDrWU3PKYQHcpbaWUJnT94yi30W2pig). *Consulta publica.*

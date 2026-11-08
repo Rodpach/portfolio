@@ -1,0 +1,46 @@
+---
+title: "Dr. Rodrigo Pacheco Muñoz"
+image: "/img/about_profile2.jpg"
+about:
+  template: jolla
+  image-shape: round
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com/Pachecovv
+    - icon: github
+      text: Github
+      href: https://github.com/Rodpach/
+    - icon: ""
+      text: Researchgate
+      href: https://www.researchgate.net/profile/Rodrigo-Pacheco-Munoz
+    - icon: "{{< iconify fa6-brands--google-scholar >}}"
+      text: Google Scholar
+      href: https://scholar.google.com/citations?pli=1&authuser=1&user=b4BxmRwAAAAJ
+---
+
+Soy un ecólogo urbano especializado en comprender el papel de los humanos y nuestras actividades en los ecosistemas. Veo las ciudades como ecosistemas complejos particulares, en donde nuestra influencia se da con mayor intensidad. Entenderlas nos permitirá fomentar procesos ecológicos positivos que beneficien tanto al medio ambiente como a la calidad de vida humana.
+
+Actualmente soy investigador posdoctoral en el Instituto de Biología de la UNAM, en él [laboratorio de restauración ecológica](https://www.restauracionecologica.org/), soy profesor de "Ecología Urbana" en el Posgrado en Ciencias Biológicas de la UNAM y soy nivel 1 en el Sistema Nacional de Investigadores de México ([SNI](https://es.wikipedia.org/wiki/Sistema_Nacional_de_Investigadoras_e_Investigadores_(M%C3%A9xico))).
+
+Mi formación como biólogo, con maestría y doctorado en ciencias por la UNAM, me permite aplicar un enfoque de investigación riguroso, basado en evidencia y pensamiento crítico. Además, mis habilidades en estadística, programación, sistemas de información geográfica y ciencia de datos me capacitan para abordar desafíos a escalas locales y globales de diversas ramas.
+
+He investigado cómo la fauna, especialmente aves migratorias y residentes, utiliza las ciudades mexicanas. También he estudiado procesos ecológicos urbanos como la susceptibilidad a inundaciones, la infiltración hídrica, el efecto de isla de calor y los factores que influyen en que haya o no vegetación. Para comprender las ciudades, integro aspectos históricos, sociales y tecnológicos que los conforman y retroalimentan.
+
+Mi enfoque contrasta los procesos urbanos con los de sistemas silvestres y productivos (agrícolas, silvopastoriles) para entender sus particularidades y oportunidades. Por ello, también evalúo de forma general a la vida silvestre, a la vegetación, a las especies invasoras, el paisaje, el uso y cambio del suelo, así como diversos procesos ecológicos y sociales.
+
+En resumen, considero que las ciudades son fascinantes y ofrecen una gran oportunidad para entender los ecosistemas, como influyen nuestras actividades y mejorar nuestra calidad de vida. Para mí es crucial entenderlas, asilvestrarlas y adaptarlas para un futuro mejor.
+
+**¡Te invito a conocer mi trabajo en las distintas secciones de la página!**
+
+## Formación Académica
+
+- **Doctorado en Ciencias** \| Posgrado en Ciencias Biológicas, Universidad Nacional Autónoma de México (UNAM) \| México.
+
+- **Maestría en Ciencias** \| *Mención honorífica* \| Posgrado en Ciencias Biológicas, Universidad Nacional Autónoma de México (UNAM) \| México.
+
+- **Biólogo** \| Facultad de Ciencias, Universidad Nacional Autónoma de México (UNAM) \| México.
+
+## Contacto
+
+Escríbeme a: [rodpachecom\@gmail.com](mailto:rodpachecom@gmail.com)

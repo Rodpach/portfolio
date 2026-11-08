@@ -1,0 +1,653 @@
+---
+title: "Tendencias en el valor de criptomonedas"
+description: "_Información dinámica e interactiva sobre el valor de criptomonedas en un formato de tablero._ \n \n_El tablero está en constante actualización_"
+date: "5/08/2021"
+categories:
+  - Ciencia de datos
+  - Tablas dinamicas
+  - Visualizacion
+  - Dashboard
+image: "images/crypto_img.jpeg"
+author: "@Pachecovv"
+---
+
+![](images/crypto_img.jpeg){fig-alt="graficas con estilo futurístico sobre criptomonedas" fig-align="center"}
+
+# ¿Que contiene este análisis?
+
+Analizo la tendencia del valor de cuatro criptomonedas: Cardano (ADA), Ethereum (ETH), Bitcoin (BTC) y Polkadot (DOT). El valor se obtiene a través de [Yahoo Finance](https://finance.yahoo.com/cryptocurrencies).
+
+La media movil que acompaña la tendencia del precio de las critomonedas se calcula a 10 días y 30 días. También se incluye un cálculo de retorno a un mes de la fecha actual, estandarizado a **\$1** **US dolar**. Esto responde a: ¿Cuánto cambia el valor de un dolar que se invirtió hace un mes en criptomoneda?.
+
+La última actualización se realizó el día: "`r Sys.Date()`". Por lo que la fecha a partir de la cuál se calcula el retorno es `r Sys.Date()-365`.
+
+*Este análisis lo realizo de forma independiente. Si lo consideras útil puedes hacer una donación voluntaria en cualquiera de estas direciones. Tu donación ayudará a mejorar el sitio:* <br /> **BTC**: 3Cq144j7SxTtd11m5TVEMvryFJz38GRoQV <br /> **ETH**: 0x05823a445C818407CbE682e5CaE664FE53364d1B <br /> **ADA**: addr1v9n9sc5e8dnnzhqndr94yydq7xfrwgvyx5y4nnfl9nhkz4q2tvfxl <br />
+
+*Si deseas que agregue una criptomoneda envíame un tweet a \@[Pachecovv](https://twitter.com/Pachecovv).*
+
+```{r setup, echo=FALSE, message=FALSE, warning=F}
+library(quantmod)
+library(ggplot2)
+library(lubridate)
+library(tidyverse)
+library(PerformanceAnalytics)
+library(xts)
+library(dygraphs)
+library(htmltools)
+
+#FORMATO, ORDEN Y RENOMBRE DE LOS DATOS
+get_order = function(x, asset){
+  x = data.frame(x)
+  
+  colnames(x) = c("open","high","low","close","volume","adjusted")
+  
+  x$date = rownames(x)
+  
+  x$date = ymd(x$date)
+  
+  x$asset  = asset
+  
+  x
+}
+
+#Obtiene retorno y utiliza get_order
+get_metric = function(x, asset){
+  r_d = dailyReturn(x)
+  r_w = weeklyReturn(x)
+  r_m = monthlyReturn(x)
+  r_q = quarterlyReturn(x)
+  
+  r_d = data.frame(date = ymd(rownames(data.frame(r_d))), r_d = r_d[,1])
+  r_w = data.frame(date = ymd(rownames(data.frame(r_w))), r_d = r_w[,1])
+  r_m = data.frame(date = ymd(rownames(data.frame(r_m))), r_d = r_m[,1])
+  r_q = data.frame(date = ymd(rownames(data.frame(r_q))), r_d = r_q[,1])
+  
+  returns = left_join(r_d, r_w) %>% left_join(r_m) %>% left_join(r_q)
+  
+  colnames(returns) = c("date", "r_d", "r_w", "r_m", "r_q")
+  #
+  x = get_order(x, asset)
+  
+  x = left_join(x, returns)
+  
+  x
+}
+get_ma = function(x){
+  x$ma5 <- rollmean(x[,6], 5, fill = list(NA, NULL, NA), align = "right")
+  x$ma10 <- rollmean(x[,6], 10, fill = list(NA, NULL, NA), align = "right")
+  x$ma30 <- rollmean(x[,6], 30, fill = list(NA, NULL, NA), align = "right")
+  x$ma50 <- rollmean(x[,6], 50, fill = list(NA, NULL, NA), align = "right")
+  x
+}
+
+date_to_xts = function(x, col){
+  x = xts(x = x[,col],
+          order.by = as.Date(x[,1]),
+          hayek_bday = as.POSIXct("1899-05-08"))
+  x
+}
+
+return_dolar = function(x){
+  
+  x = lapply(x, function(y){
+    y = Return.portfolio(y, wealth.index = TRUE)
+    y = data.frame(date = ymd(rownames(data.frame(y))), r = y[,1])
+    y
+  })
+  
+  for (i in 1:length(x)) {
+    x[[i]]$asset = names(x)[i]
+  }
+  
+  bind_rows(x)
+}
+
+ada = getSymbols("ADA-USD", src = "yahoo", from = "2020-01-01", auto.assign = FALSE)
+eth = getSymbols("ETH-USD", src = "yahoo", from = "2020-01-01", auto.assign = FALSE)
+btc = getSymbols("BTC-USD", src = "yahoo", from = "2020-01-01", auto.assign = FALSE)
+dot = getSymbols("DOT-USD", src = "yahoo", from = "2020-01-01", auto.assign = FALSE)
+coti = getSymbols("COTI-USD", src = "yahoo", from = "2020-01-01", auto.assign = FALSE)
+avax = getSymbols("AVAX-USD", src = "yahoo", from = "2020-01-01", auto.assign = FALSE)
+atom = getSymbols("ATOM-USD", src = "yahoo", from = "2020-01-01", auto.assign = FALSE)
+sol = getSymbols("SOL-USD", src = "yahoo", from = "2020-01-01", auto.assign = FALSE)
+
+ada = get_metric(ada, "ada")
+eth = get_metric(eth, "eth")
+btc = get_metric(btc, "btc")
+dot = get_metric(dot, "dot")
+coti = get_metric(coti, "coti")
+avax = get_metric(avax, "avax")
+atom = get_metric(atom, "atom")
+sol = get_metric(sol, "sol")
+
+
+ada = get_ma(ada)
+eth = get_ma(eth)
+btc = get_ma(btc)
+dot = get_ma(dot)
+coti = get_ma(coti)
+avax = get_ma(avax)
+atom = get_ma(atom)
+sol = get_ma(sol)
+
+e_coins = bind_rows(ada, eth, btc, dot, coti, avax, atom, sol)
+fecha_limite = ymd(Sys.Date()-30)
+fecha_limite1 = ymd(Sys.Date()-90)
+fecha_limite2 = ymd(Sys.Date()-180)
+fecha_limite3 = ymd(Sys.Date()-365)
+
+ada_qxts = filter(e_coins, asset == "ada")
+ada_qxts <- xts(ada_qxts[,-7], order.by=ada_qxts[,7])
+
+eth_qxts = filter(e_coins, asset == "eth")
+eth_qxts <- xts(eth_qxts[,-7], order.by=eth_qxts[,7])
+
+btc_qxts = filter(e_coins, asset == "btc")
+btc_qxts <- xts(btc_qxts[,-7], order.by=btc_qxts[,7])
+
+dot_qxts = filter(e_coins, asset == "dot")
+dot_qxts <- xts(dot_qxts[,-7], order.by=dot_qxts[,7])
+
+coti_qxts = filter(e_coins, asset == "coti")
+coti_qxts <- xts(coti_qxts[,-7], order.by=coti_qxts[,7])
+
+avax_qxts = filter(e_coins, asset == "avax")
+avax_qxts <- xts(avax[,-7], order.by=avax_qxts[,7])
+
+atom_qxts = filter(e_coins, asset == "atom")
+atom_qxts <- xts(atom_qxts[,-7], order.by=atom_qxts[,7])
+
+sol_qxts = filter(e_coins, asset == "sol")
+sol_qxts <- xts(sol_qxts[,-7], order.by=sol_qxts[,7])
+
+dateWindow = c(Sys.Date()-15, Sys.Date())
+
+##RETORNO EN DOLARES 
+
+#AL 30
+return_dollar_d =  select(e_coins, date, asset, r_d) %>% 
+  filter(!is.na(r_d)) %>% filter(date >= fecha_limite) %>%
+  pivot_wider(values_from = r_d, names_from = asset) %>% data.frame()
+
+return_dollar_d_list = list()
+return_dollar_d_list[[1]] = date_to_xts(return_dollar_d, 2)
+return_dollar_d_list[[2]] = date_to_xts(return_dollar_d, 3)
+return_dollar_d_list[[3]] = date_to_xts(return_dollar_d, 4)
+return_dollar_d_list[[4]] = date_to_xts(return_dollar_d, 5)
+return_dollar_d_list[[5]] = date_to_xts(return_dollar_d, 6)
+return_dollar_d_list[[6]] = date_to_xts(return_dollar_d, 7)
+return_dollar_d_list[[7]] = date_to_xts(return_dollar_d, 8)
+return_dollar_d_list[[8]] = date_to_xts(return_dollar_d, 9)
+names(return_dollar_d_list) = c("ada", "eth", "btc", "dot","coti", "avax", "atom", "sol")
+
+return_dollar_d_list = return_dolar(return_dollar_d_list)
+return_dollar_d_list = rename(return_dollar_d_list, dolar = portfolio.wealthindex) %>% pivot_wider(names_from = asset, values_from = dolar) %>%
+  data.frame()
+return_dollar_d_list = xts(return_dollar_d_list[,-1], order.by=return_dollar_d_list[,1])
+
+#90
+return_dollar_w =  select(e_coins, date, asset, r_d) %>% 
+  filter(!is.na(r_d)) %>% filter(date >= fecha_limite1) %>%
+  pivot_wider(values_from = r_d, names_from = asset) %>% data.frame()
+
+
+return_dollar_w_list = list()
+return_dollar_w_list[[1]] = date_to_xts(return_dollar_w, 2)
+return_dollar_w_list[[2]] = date_to_xts(return_dollar_w, 3)
+return_dollar_w_list[[3]] = date_to_xts(return_dollar_w, 4)
+return_dollar_w_list[[4]] = date_to_xts(return_dollar_w, 5)
+return_dollar_w_list[[5]] = date_to_xts(return_dollar_w, 6)
+return_dollar_w_list[[6]] = date_to_xts(return_dollar_w, 7)
+return_dollar_w_list[[7]] = date_to_xts(return_dollar_w, 8)
+return_dollar_w_list[[8]] = date_to_xts(return_dollar_w, 9)
+names(return_dollar_w_list) = c("ada", "eth", "btc", "dot","coti", "avax", "atom", "sol")
+
+return_dollar_w_list = return_dolar(return_dollar_w_list)
+return_dollar_w_list = rename(return_dollar_w_list, dolar = portfolio.wealthindex)%>% pivot_wider(names_from = asset, values_from = dolar) %>%
+  data.frame()
+
+return_dollar_w_list = xts(return_dollar_w_list[,-1], order.by=return_dollar_w_list[,1])
+
+#180
+return_dollar_m =  select(e_coins, date, asset, r_d) %>% 
+  filter(!is.na(r_d)) %>% filter(date >= fecha_limite2) %>%
+  pivot_wider(values_from = r_d, names_from = asset) %>% data.frame()
+
+return_dollar_m_list = list()
+return_dollar_m_list[[1]] = date_to_xts(return_dollar_m, 2)
+return_dollar_m_list[[2]] = date_to_xts(return_dollar_m, 3)
+return_dollar_m_list[[3]] = date_to_xts(return_dollar_m, 4)
+return_dollar_m_list[[4]] = date_to_xts(return_dollar_m, 5)
+return_dollar_m_list[[5]] = date_to_xts(return_dollar_m, 6)
+return_dollar_m_list[[6]] = date_to_xts(return_dollar_m, 7)
+return_dollar_m_list[[7]] = date_to_xts(return_dollar_m, 8)
+return_dollar_m_list[[8]] = date_to_xts(return_dollar_m, 9)
+names(return_dollar_m_list) = c("ada", "eth", "btc", "dot","coti", "avax", "atom", "sol")
+
+return_dollar_m_list = return_dolar(return_dollar_m_list)
+return_dollar_m_list = rename(return_dollar_m_list, dolar = portfolio.wealthindex) %>% pivot_wider(names_from = asset, values_from = dolar) %>%
+  data.frame()
+
+return_dollar_m_list = xts(return_dollar_m_list[,-1], order.by=return_dollar_m_list[,1])
+
+#365
+return_dollar_365 =  select(e_coins, date, asset, r_d) %>% 
+  filter(!is.na(r_d)) %>% filter(date >= fecha_limite3) %>%
+  pivot_wider(values_from = r_d, names_from = asset) %>% data.frame()
+
+return_dollar_365_list = list()
+return_dollar_365_list[[1]] = date_to_xts(return_dollar_m, 2)
+return_dollar_365_list[[2]] = date_to_xts(return_dollar_m, 3)
+return_dollar_365_list[[3]] = date_to_xts(return_dollar_m, 4)
+return_dollar_365_list[[4]] = date_to_xts(return_dollar_m, 5)
+return_dollar_365_list[[5]] = date_to_xts(return_dollar_m, 6)
+return_dollar_365_list[[6]] = date_to_xts(return_dollar_m, 7)
+return_dollar_365_list[[7]] = date_to_xts(return_dollar_m, 8)
+return_dollar_365_list[[8]] = date_to_xts(return_dollar_m, 9)
+names(return_dollar_365_list) = c("ada", "eth", "btc", "dot","coti", "avax", "atom", "sol")
+
+return_dollar_365_list = return_dolar(return_dollar_365_list)
+return_dollar_365_list = rename(return_dollar_365_list, dolar = portfolio.wealthindex) %>% pivot_wider(names_from = asset, values_from = dolar) %>%
+  data.frame()
+
+return_dollar_365_list = xts(return_dollar_365_list[,-1], order.by=return_dollar_365_list[,1])
+```
+
+::: {.panel-tabset style="background-color: white"}
+## ADA
+
+```{r Figura1ADA, echo=FALSE, fig.align='center', fig.cap="Utiliza la barra para ver el registro histórico por día", message=FALSE, warning=F}
+dygraph(ada_qxts[,c(1:4)], main = "Gráfica de vela", group = "CS") %>%
+  dyCandlestick() %>%
+  dyRangeSelector(dateWindow = dateWindow)
+```
+
+```{r Figura2ADA, echo=FALSE, fig.align='center', fig.cap="Tendencia del cierre ajustado y medias móviles (ma) calculados con umbrales temporales de distintos días. Utiliza la barra para ver el registro histórico por día", message=FALSE, warning=F}
+dygraph(ada_qxts[,c(5,6,12,13,14,15)], main = "Tendencia diaria del valor ($US)",
+        ylab = "Valor ajustado al cierre (US $)", group = "TC") %>%
+  dyAxis("y2", label = "Volumen", independentTicks = TRUE) %>%
+  dySeries("adjusted", color = "black") %>%
+  dySeries("ma5", color = "green", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("ma10", color = "#BBD500", strokeWidth = 1, strokePattern = "dashed") %>%
+  dySeries("ma30", color = "orange", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("ma50", color = "red", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("volume", axis = 'y2', color = "gray", strokeWidth = 1, strokePattern = "dashed") %>%
+  dyRangeSelector(dateWindow = dateWindow)
+```
+
+### Gráficos de retono de inversión por cada \$1 US dolar invertido
+
+¿Cuánto cambió la inversión **\$1 US dolar** que realicé en criptomonedas desde hace un mes?
+
+```{r Figura3ADA, echo=FALSE, fig.align='center', fig.cap="30 días", message=FALSE, warning=F}
+#30
+dygraph(return_dollar_d_list[,1], main = "30 días", group = "Rd")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura4ADA, echo=FALSE, fig.align='center', fig.cap="90", message=FALSE, warning=F}
+#SEMANA
+dygraph(return_dollar_w_list[,1], main = "90 días", group = "Rw")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura5ADA, echo=FALSE, fig.align='center', fig.cap="180", message=FALSE, warning=F}
+#MENSUAL
+dygraph(return_dollar_m_list[,1], main = "180 días", group = "Rm")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura6ADA, echo=FALSE, fig.align='center', fig.cap="365", message=FALSE, warning=F}
+#MENSUAL
+dygraph(return_dollar_365_list[,1], main = "365 días", group = "Rm")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+## ETH
+
+```{r Figura1ETH, echo=FALSE, fig.align='center', fig.cap="Utiliza la barra para ver el registro histórico por día", message=FALSE, warning=F}
+dygraph(eth_qxts[,c(1:4)], main = "Gráfica de vela", group = "CS") %>%
+  dyCandlestick()%>% 
+  dyRangeSelector(dateWindow = dateWindow)
+```
+
+```{r Figura2ETH, echo=FALSE, fig.align='center', fig.cap="Tendencia del cierre ajustado y medias móviles (ma) calculados con umbrales temporales de distintos días. Utiliza la barra para ver el registro histórico por día Utiliza la barra para ver el registro histórico por día", message=FALSE, warning=F}
+dygraph(eth_qxts[,c(5,6,12,13,14,15)], main = "Tendencia diaria del valor ($US)",
+        ylab = "Valor ajustado al cierre (US $)", group = "TC") %>%
+  dyAxis("y2", label = "Volumen", independentTicks = TRUE) %>%
+  dySeries("adjusted", color = "black") %>%
+  dySeries("ma5", color = "green", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("ma10", color = "#BBD500", strokeWidth = 1, strokePattern = "dashed") %>%
+  dySeries("ma30", color = "orange", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("ma50", color = "red", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("volume", axis = 'y2', color = "gray", strokeWidth = 1, strokePattern = "dashed") %>%
+  dyRangeSelector(dateWindow = dateWindow)
+```
+
+### Gráficos de retono de inversión por cada \$1 US dolar invertido
+
+¿Cuánto cambió la inversión **\$1 US dolar** que realicé en criptomonedas desde hace un mes?
+
+```{r Figura3ETH, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 30 días (1 US $).", message=FALSE, warning=F}
+#30
+dygraph(return_dollar_d_list[,2], main = "30 días", group = "Rd")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura4ETH, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 90 días (1 US $).", message=FALSE, warning=F}
+#SEMANA
+dygraph(return_dollar_w_list[,2], main = "90 días", group = "Rw")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura5ETH, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 180 días (1 US $).", message=FALSE, warning=F}
+#MENSUAL
+dygraph(return_dollar_m_list[,2], main = "180 días", group = "Rm")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura6ETH, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 365 días (1 US $).", message=FALSE, warning=F}
+#MENSUAL
+dygraph(return_dollar_365_list[,2], main = "365 días", group = "Rm")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+## BTC
+
+```{r Figura1BTC, echo=FALSE, fig.align='center', fig.cap="Utiliza la barra para ver el registro histórico por día", message=FALSE, warning=F}
+dygraph(btc_qxts[,c(1:4)], main = "Gráfica de vela", group = "CS") %>%
+  dyCandlestick()%>% 
+  dyRangeSelector(dateWindow = dateWindow)
+```
+
+```{r Figura2BTC, echo=FALSE, fig.align='center', fig.cap="Tendencia del cierre ajustado y medias móviles (ma) calculados con umbrales temporales de distintos días. Utiliza la barra para ver el registro histórico por día Utiliza la barra para ver el registro histórico por día", message=FALSE, warning=F}
+dygraph(btc_qxts[,c(5,6,12,13,14,15)], main = "Tendencia diaria del valor ($US)",
+        ylab = "Valor ajustado al cierre (US $)", group = "TC") %>%
+  dyAxis("y2", label = "Volumen", independentTicks = TRUE) %>%
+  dySeries("adjusted", color = "black") %>%
+  dySeries("ma5", color = "green", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("ma10", color = "#BBD500", strokeWidth = 1, strokePattern = "dashed") %>%
+  dySeries("ma30", color = "orange", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("ma50", color = "red", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("volume", axis = 'y2', color = "gray", strokeWidth = 1, strokePattern = "dashed") %>%
+  dyRangeSelector(dateWindow = dateWindow)
+```
+
+### Gráficos de retono de inversión por cada \$1 US dolar invertido
+
+¿Cuánto cambió la inversión **\$1 US dolar** que realicé en criptomonedas desde hace un mes?
+
+```{r Figura3BTC, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 30 días (1 US $).", message=FALSE, warning=F}
+#30
+dygraph(return_dollar_d_list[,3], main = "30 días", group = "Rd")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura4BTC, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 90 días (1 US $).", message=FALSE, warning=F}
+#SEMANA
+dygraph(return_dollar_w_list[,3], main = "90 días", group = "Rw")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura5BTC, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 180 días (1 US $).", message=FALSE, warning=F}
+#MENSUAL
+dygraph(return_dollar_m_list[,3], main = "180 días", group = "Rm")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura6BTC, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 365 días (1 US $).", message=FALSE, warning=F}
+#MENSUAL
+dygraph(return_dollar_365_list[,3], main = "365 días", group = "Rm")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+## DOT
+
+```{r Figura1DOT, echo=FALSE, fig.align='center', fig.cap="Utiliza la barra para ver el registro histórico por día", message=FALSE, warning=F}
+dygraph(dot_qxts[,c(1:4)], main = "Gráfica de vela", group = "CS") %>%
+  dyCandlestick()%>% 
+  dyRangeSelector(dateWindow = dateWindow)
+```
+
+```{r Figura2DOT, echo=FALSE, fig.align='center', fig.cap="Tendencia del cierre ajustado y medias móviles (ma) calculados con umbrales temporales de distintos días. Utiliza la barra para ver el registro histórico por día", message=FALSE, warning=F}
+dygraph(dot_qxts[,c(5,6,12,13,14,15)], main = "Tendencia diaria del valor ($US)",
+        ylab = "Valor ajustado al cierre (US $)", group = "TC") %>%
+  dyAxis("y2", label = "Volumen", independentTicks = TRUE) %>%
+  dySeries("adjusted", color = "black") %>%
+  dySeries("ma5", color = "green", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("ma10", color = "#BBD500", strokeWidth = 1, strokePattern = "dashed") %>%
+  dySeries("ma30", color = "orange", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("ma50", color = "red", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("volume", axis = 'y2', color = "gray", strokeWidth = 1, strokePattern = "dashed") %>%
+  dyRangeSelector(dateWindow = dateWindow)
+```
+
+### Gráficos de retono de inversión por cada \$1 US dolar invertido
+
+¿Cuánto cambió la inversión **\$1 US dolar** que realicé en criptomonedas desde hace un mes?
+
+```{r Figura3DOT, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 30 días (1 US $).", message=FALSE, warning=F}
+#30
+dygraph(return_dollar_d_list[,4], main = "30 días", group = "Rd")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura4DOT, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 90 días (1 US $).", message=FALSE, warning=F}
+#SEMANA
+dygraph(return_dollar_w_list[,4], main = "90 días", group = "Rw")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura5DOT, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 180 días (1 US $).", message=FALSE, warning=F}
+#MENSUAL
+dygraph(return_dollar_m_list[,4], main = "180 días", group = "Rm")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura6DOT, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 365 días (1 US $).", message=FALSE, warning=F}
+#MENSUAL
+dygraph(return_dollar_365_list[,4], main = "365 días", group = "Rm")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+## COTI
+
+```{r Figura1COTI, echo=FALSE, fig.align='center', fig.cap="Utiliza la barra para ver el registro histórico por día", message=FALSE, warning=F}
+dygraph(coti_qxts[,c(1:4)], main = "Gráfica de vela", group = "CS") %>%
+  dyCandlestick()%>% 
+  dyRangeSelector(dateWindow = dateWindow)
+```
+
+```{r Figura2COTI, echo=FALSE, fig.align='center', fig.cap="Tendencia del cierre ajustado y medias móviles (ma) calculados con umbrales temporales de distintos días. Utiliza la barra para ver el registro histórico por día", message=FALSE, warning=F}
+
+dygraph(coti_qxts[,c(5,6,12,13,14,15)], main = "Tendencia diaria del valor ($US)",
+        ylab = "Valor ajustado al cierre (US $)", group = "TC") %>%
+  dyAxis("y2", label = "Volumen", independentTicks = TRUE) %>%
+  dySeries("adjusted", color = "black") %>%
+  dySeries("ma5", color = "green", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("ma10", color = "#BBD500", strokeWidth = 1, strokePattern = "dashed") %>%
+  dySeries("ma30", color = "orange", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("ma50", color = "red", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("volume", axis = 'y2', color = "gray", strokeWidth = 1, strokePattern = "dashed") %>%
+  dyRangeSelector(dateWindow = dateWindow)
+```
+
+### Gráficos de retono de inversión por cada \$1 US dolar invertido
+
+¿Cuánto cambió la inversión **\$1 US dolar** que realicé en criptomonedas desde hace un mes?
+
+```{r Figura3COTI, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 30 días (1 US $).", message=FALSE, warning=F}
+#30
+dygraph(return_dollar_d_list[,5], main = "30 días", group = "Rd")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura4COTI, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 90 días (1 US $).", message=FALSE, warning=F}
+#SEMANA
+dygraph(return_dollar_w_list[,5], main = "90 días", group = "Rw")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura5COTI, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 180 días (1 US $).", message=FALSE, warning=F}
+#MENSUAL
+dygraph(return_dollar_m_list[,5], main = "180 días", group = "Rm")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura6COTI, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 365 días (1 US $).", message=FALSE, warning=F}
+#MENSUAL
+dygraph(return_dollar_365_list[,5], main = "365 días", group = "Rm")%>%
+  dyLimit(as.numeric(1), color = "red")
+
+```
+
+## AVAX
+
+```{r Figura1AVAX, echo=FALSE, fig.align='center', fig.cap="Utiliza la barra para ver el registro histórico por día", message=FALSE, warning=F}
+dygraph(avax_qxts[,c(1:4)], main = "Gráfica de vela", group = "CS") %>%
+  dyCandlestick()%>% 
+  dyRangeSelector(dateWindow = dateWindow)
+```
+
+```{r Figura2AVAX, echo=FALSE, fig.align='center', fig.cap="Tendencia del cierre ajustado y medias móviles (ma) calculados con umbrales temporales de distintos días. Utiliza la barra para ver el registro histórico por día", message=FALSE, warning=F}
+
+dygraph(avax_qxts[,c(5,6,12,13,14,15)], main = "Tendencia diaria del valor ($US)",
+        ylab = "Valor ajustado al cierre (US $)", group = "TC") %>%
+  dyAxis("y2", label = "Volumen", independentTicks = TRUE) %>%
+  dySeries("adjusted", color = "black") %>%
+  dySeries("ma5", color = "green", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("ma10", color = "#BBD500", strokeWidth = 1, strokePattern = "dashed") %>%
+  dySeries("ma30", color = "orange", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("ma50", color = "red", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("volume", axis = 'y2', color = "gray", strokeWidth = 1, strokePattern = "dashed") %>%
+  dyRangeSelector(dateWindow = dateWindow)
+```
+
+### Gráficos de retono de inversión por cada \$1 US dolar invertido
+
+¿Cuánto cambió la inversión **\$1 US dolar** que realicé en criptomonedas desde hace un mes?
+
+```{r Figura3AVAX, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 30 días (1 US $).", message=FALSE, warning=F}
+#30
+dygraph(return_dollar_d_list[,6], main = "30 días", group = "Rd")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura4AVAX, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 90 días (1 US $).", message=FALSE, warning=F}
+#SEMANA
+dygraph(return_dollar_w_list[,6], main = "90 días", group = "Rw")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura5AVAX, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 180 días (1 US $).", message=FALSE, warning=F}
+#MENSUAL
+dygraph(return_dollar_m_list[,6], main = "180 días", group = "Rm")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura6AVAX, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 365 días (1 US $).", message=FALSE, warning=F}
+#MENSUAL
+dygraph(return_dollar_365_list[,6], main = "365 días", group = "Rm")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+## ATOM
+
+```{r Figura1ATOM, echo=FALSE, fig.align='center', fig.cap="Utiliza la barra para ver el registro histórico por día", message=FALSE, warning=F}
+dygraph(atom_qxts[,c(1:4)], main = "Gráfica de vela", group = "CS") %>%
+  dyCandlestick()%>% 
+  dyRangeSelector(dateWindow = dateWindow)
+```
+
+```{r Figura2ATOM, echo=FALSE, fig.align='center', fig.cap="Tendencia del cierre ajustado y medias móviles (ma) calculados con umbrales temporales de distintos días. Utiliza la barra para ver el registro histórico por día", message=FALSE, warning=F}
+
+dygraph(atom_qxts[,c(5,6,12,13,14,15)], main = "Tendencia diaria del valor ($US)",
+        ylab = "Valor ajustado al cierre (US $)", group = "TC") %>%
+  dyAxis("y2", label = "Volumen", independentTicks = TRUE) %>%
+  dySeries("adjusted", color = "black") %>%
+  dySeries("ma5", color = "green", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("ma10", color = "#BBD500", strokeWidth = 1, strokePattern = "dashed") %>%
+  dySeries("ma30", color = "orange", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("ma50", color = "red", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("volume", axis = 'y2', color = "gray", strokeWidth = 1, strokePattern = "dashed") %>%
+  dyRangeSelector(dateWindow = dateWindow)
+```
+
+### Gráficos de retono de inversión por cada \$1 US dolar invertido
+
+¿Cuánto cambió la inversión **\$1 US dolar** que realicé en criptomonedas desde hace un mes?
+
+```{r Figura3ATOM, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 30 días (1 US $).", message=FALSE, warning=F}
+#30
+dygraph(return_dollar_d_list[,7], main = "30 días", group = "Rd")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura4ATOM, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 90 días (1 US $).", message=FALSE, warning=F}
+#SEMANA
+dygraph(return_dollar_w_list[,7], main = "90 días", group = "Rw")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura5ATOM, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 180 días (1 US $).", message=FALSE, warning=F}
+#MENSUAL
+dygraph(return_dollar_m_list[,7], main = "180 días", group = "Rm")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura6ATOM, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 365 días (1 US $).", message=FALSE, warning=F}
+#MENSUAL
+dygraph(return_dollar_365_list[,7], main = "365 días", group = "Rm")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+## SOLANA
+
+```{r Figura1SOL, echo=FALSE, fig.align='center', fig.cap="Utiliza la barra para ver el registro histórico por día", message=FALSE, warning=F}
+dygraph(sol_qxts[,c(1:4)], main = "Gráfica de vela", group = "CS") %>%
+  dyCandlestick()%>% 
+  dyRangeSelector(dateWindow = dateWindow)
+```
+
+```{r Figura2SOL, echo=FALSE, fig.align='center', fig.cap="Tendencia del cierre ajustado y medias móviles (ma) calculados con umbrales temporales de distintos días. Utiliza la barra para ver el registro histórico por día", message=FALSE, warning=F}
+
+dygraph(sol_qxts[,c(5,6,12,13,14,15)], main = "Tendencia diaria del valor ($US)",
+        ylab = "Valor ajustado al cierre (US $)", group = "TC") %>%
+  dyAxis("y2", label = "Volumen", independentTicks = TRUE) %>%
+  dySeries("adjusted", color = "black") %>%
+  dySeries("ma5", color = "green", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("ma10", color = "#BBD500", strokeWidth = 1, strokePattern = "dashed") %>%
+  dySeries("ma30", color = "orange", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("ma50", color = "red", strokeWidth = 1, strokePattern = "dashed")%>%
+  dySeries("volume", axis = 'y2', color = "gray", strokeWidth = 1, strokePattern = "dashed") %>%
+  dyRangeSelector(dateWindow = dateWindow)
+```
+
+### Gráficos de retono de inversión por cada \$1 US dolar invertido
+
+¿Cuánto cambió la inversión **\$1 US dolar** que realicé en criptomonedas desde hace un mes?
+
+```{r Figura3SOL, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 30 días (1 US $).", message=FALSE, warning=F}
+#30
+dygraph(return_dollar_d_list[,8], main = "30 días", group = "Rd")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura4SOL, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 90 días (1 US $).", message=FALSE, warning=F}
+#SEMANA
+dygraph(return_dollar_w_list[,8], main = "90 días", group = "Rw")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura5SOL, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 180 días (1 US $).", message=FALSE, warning=F}
+#MENSUAL
+dygraph(return_dollar_m_list[,8], main = "180 días", group = "Rm")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+
+```{r Figura6SOL, echo=FALSE, fig.align='center', fig.cap="Tendencia de retorno a 365 días (1 US $).", message=FALSE, warning=F}
+#MENSUAL
+dygraph(return_dollar_365_list[,8], main = "365 días", group = "Rm")%>%
+  dyLimit(as.numeric(1), color = "red")
+```
+:::

@@ -1,0 +1,932 @@
+---
+title: "Tendencias de cultivos"
+format: html
+---
+
+```{r}
+#| echo: false
+#| warning: false
+library(tidyverse, quietly = T)
+library(readxl, quietly = T)
+library(plotly, quietly = T)
+siap = read_csv("/home/pacheco/Documents/R/CDMX_cultivos/SIAP_TODAS_2003_2023.csv")
+siap_cultivos_unicos = read_csv("/home/pacheco/Documents/R/CDMX_cultivos/siap_cultivos_unicos.csv")
+
+siap_grupos = left_join(siap, siap_cultivos_unicos) |> select(Cultivo, Delegacion, anio, SuperficieHa_sembrada, Produccion, Valor_produccion_millPesos, Milpa:Unitario)
+
+
+## MILPA
+milpa_delegacion = filter(siap_grupos, Milpa == 1) |> select(Cultivo, Delegacion, anio, SuperficieHa_sembrada, Produccion, Valor_produccion_millPesos)
+
+milpa_delegacion_total = group_by(milpa_delegacion, anio, Cultivo) |> 
+  summarise(SuperficieHa_sembrada = sum(SuperficieHa_sembrada), Produccion = sum(Produccion), Valor_produccion_millPesos = sum(Valor_produccion_millPesos))
+
+milpa_delegacion_total$Delegacion = "Total"
+
+#
+milpa_final = bind_rows(milpa_delegacion, milpa_delegacion_total)
+
+
+milpa_final = group_by(milpa_final, anio, Delegacion, Cultivo) |> 
+  summarise(SuperficieHa_sembrada = sum(SuperficieHa_sembrada), Produccion = sum(Produccion), Valor_produccion_millPesos = sum(Valor_produccion_millPesos)) |> 
+  ungroup()
+
+### FIGURAS
+#### SEMBRADA
+fig_MILPA_sembrada <- plot_ly(
+  data = milpa_final, 
+  x = ~anio, 
+  y = ~SuperficieHa_sembrada,
+  
+  color = ~Cultivo,         
+  linetype = ~Delegacion,  
+  
+  legendgroup = ~Cultivo,   
+  
+
+  type = 'scatter', 
+  mode = 'lines+markers',    
+  
+
+  text = ~paste("<br><b>Año:</b>", anio,
+                "<br><b>Delegacion:</b>", Delegacion,
+                "<br><b>Cultivo:</b>", Cultivo,
+                "<br><b>Superficie (ha):</b>", round(SuperficieHa_sembrada, 3)),
+  hoverinfo = "text",     
+  
+
+  marker = list(size = 6)
+) %>%
+  layout(
+    title = "Milpa: Sembrado",
+    xaxis = list(title = "Año"),
+    yaxis = list(title = "Superficie (HA)"),
+
+    legend = list(title = list(text = "<b>Click to Toggle Tipo</b>"))
+  )
+
+
+#### PRODUCCION
+fig_MILPA_produccion <- plot_ly(
+  data = milpa_final, 
+  x = ~anio, 
+  y = ~Produccion,
+  
+  color = ~Cultivo,         
+  linetype = ~Delegacion,  
+  
+  legendgroup = ~Cultivo,   
+  
+
+  type = 'scatter', 
+  mode = 'lines+markers',    
+  
+
+  text = ~paste("<br><b>Año:</b>", anio,
+                "<br><b>Delegacion:</b>", Delegacion,
+                "<br><b>Cultivo:</b>", Cultivo,
+                "<br><b>Producción:</b>", round(Produccion, 3)),
+  hoverinfo = "text",     
+  
+
+  marker = list(size = 6)
+) %>%
+  layout(
+    title = "Milpa: Produccion",
+    xaxis = list(title = "Año"),
+    yaxis = list(title = "Producción"),
+
+    legend = list(title = list(text = "<b>Click to Toggle Tipo</b>"))
+  )
+
+
+#### MILLONES PESOS
+fig_MILPA_Valor_produccion_millPesos <- plot_ly(
+  data = milpa_final, 
+  x = ~anio, 
+  y = ~Valor_produccion_millPesos,
+  
+  color = ~Cultivo,         
+  linetype = ~Delegacion,  
+  
+  legendgroup = ~Cultivo,   
+  
+
+  type = 'scatter', 
+  mode = 'lines+markers',    
+  
+
+  text = ~paste("<br><b>Año:</b>", anio,
+                "<br><b>Delegacion:</b>", Delegacion,
+                "<br><b>Cultivo:</b>", Cultivo,
+                "<br><b>Mill. pesos:</b>", round(Valor_produccion_millPesos, 3)),
+  hoverinfo = "text",     
+  
+
+  marker = list(size = 6)
+) %>%
+  layout(
+    title = "Milpa: Valor de produccion mill. pesos",
+    xaxis = list(title = "Año"),
+    yaxis = list(title = "Mill. pesos)"),
+
+    legend = list(title = list(text = "<b>Click to Toggle Tipo</b>"))
+  )
+
+
+## EXTENSION
+extension_delegacion = filter(siap_grupos, mas_ha == 1) |> select(Cultivo, Delegacion, anio, SuperficieHa_sembrada, Produccion, Valor_produccion_millPesos)
+
+extension_delegacion_acumulado = filter(siap_grupos, mas_ha == 0) |> select(Cultivo, Delegacion, anio, SuperficieHa_sembrada, Produccion, Valor_produccion_millPesos) |> 
+  group_by(anio, Delegacion) |> 
+  summarise(SuperficieHa_sembrada = sum(SuperficieHa_sembrada), Produccion = sum(Produccion), Valor_produccion_millPesos = sum(Valor_produccion_millPesos))
+extension_delegacion_acumulado$Cultivo = "Acumulado"
+
+
+extension_delegacion_total = group_by(extension_delegacion, anio, Cultivo) |> 
+  summarise(SuperficieHa_sembrada = sum(SuperficieHa_sembrada), Produccion = sum(Produccion), Valor_produccion_millPesos = sum(Valor_produccion_millPesos))
+extension_delegacion_total$Delegacion = "Total"
+
+extension_delegacion_acumulado_total = group_by(extension_delegacion_acumulado, anio, Cultivo) |> 
+  summarise(SuperficieHa_sembrada = sum(SuperficieHa_sembrada), Produccion = sum(Produccion), Valor_produccion_millPesos = sum(Valor_produccion_millPesos))
+extension_delegacion_acumulado_total$Delegacion = "Total"
+#
+extension_final = bind_rows(extension_delegacion, extension_delegacion_acumulado) |> 
+  bind_rows(extension_delegacion_total) |> 
+  bind_rows(extension_delegacion_acumulado_total) |> 
+  group_by(anio, Delegacion, Cultivo) |> 
+  summarise(SuperficieHa_sembrada = sum(SuperficieHa_sembrada), Produccion = sum(Produccion), Valor_produccion_millPesos = sum(Valor_produccion_millPesos)) |> 
+  ungroup()
+
+### FIGURAS
+#### SEMBRADA
+fig_extension_sembrada <- plot_ly(
+  data = extension_final, 
+  x = ~anio, 
+  y = ~SuperficieHa_sembrada,
+  
+  color = ~Cultivo,         
+  linetype = ~Delegacion,  
+  
+  legendgroup = ~Cultivo,   
+  
+
+  type = 'scatter', 
+  mode = 'lines+markers',    
+  
+
+  text = ~paste("<br><b>Año:</b>", anio,
+                "<br><b>Delegacion:</b>", Delegacion,
+                "<br><b>Cultivo:</b>", Cultivo,
+                "<br><b>Superficie (ha):</b>", round(SuperficieHa_sembrada, 3)),
+  hoverinfo = "text",     
+  
+
+  marker = list(size = 6)
+) %>%
+  layout(
+    title = "Extension: Sembrado",
+    xaxis = list(title = "Año"),
+    yaxis = list(title = "Superficie (HA)"),
+
+    legend = list(title = list(text = "<b>Click to Toggle Tipo</b>"))
+  )
+
+
+#### PRODUCCION
+fig_extension_produccion <- plot_ly(
+  data = extension_final, 
+  x = ~anio, 
+  y = ~Produccion,
+  
+  color = ~Cultivo,         
+  linetype = ~Delegacion,  
+  
+  legendgroup = ~Cultivo,   
+  
+
+  type = 'scatter', 
+  mode = 'lines+markers',    
+  
+
+  text = ~paste("<br><b>Año:</b>", anio,
+                "<br><b>Delegacion:</b>", Delegacion,
+                "<br><b>Cultivo:</b>", Cultivo,
+                "<br><b>Producción:</b>", round(Produccion, 3)),
+  hoverinfo = "text",     
+  
+
+  marker = list(size = 6)
+) %>%
+  layout(
+    title = "Extension: Produccion",
+    xaxis = list(title = "Año"),
+    yaxis = list(title = "Producción"),
+
+    legend = list(title = list(text = "<b>Click to Toggle Tipo</b>"))
+  )
+
+
+#### MILLONES PESOS
+fig_extension_Valor_produccion_millPesos <- plot_ly(
+  data = extension_final, 
+  x = ~anio, 
+  y = ~Valor_produccion_millPesos,
+  
+  color = ~Cultivo,         
+  linetype = ~Delegacion,  
+  
+  legendgroup = ~Cultivo,   
+  
+
+  type = 'scatter', 
+  mode = 'lines+markers',    
+  
+
+  text = ~paste("<br><b>Año:</b>", anio,
+                "<br><b>Delegacion:</b>", Delegacion,
+                "<br><b>Cultivo:</b>", Cultivo,
+                "<br><b>Mill. pesos:</b>", round(Valor_produccion_millPesos, 3)),
+  hoverinfo = "text",     
+  
+
+  marker = list(size = 6)
+) %>%
+  layout(
+    title = "Extension: Valor de produccion mill. pesos",
+    xaxis = list(title = "Año"),
+    yaxis = list(title = "Mill. pesos)"),
+
+    legend = list(title = list(text = "<b>Click to Toggle Tipo</b>"))
+  )
+
+## MILPA: MAIZ COMBINADO
+
+milpa_maizComb_final = bind_rows(milpa_delegacion, milpa_delegacion_total)
+
+
+milpa_maizComb_final = mutate(milpa_maizComb_final, Cultivo = case_when(
+    Cultivo %in% c("Maíz grano", "Elote") ~ "Maíz Total",
+    TRUE ~ Cultivo # Mantener el resto igual (Frijol, Trigo, etc.)
+  )) |> 
+  group_by(anio, Delegacion, Cultivo) |> 
+  summarise(SuperficieHa_sembrada = sum(SuperficieHa_sembrada), Produccion = sum(Produccion), Valor_produccion_millPesos = sum(Valor_produccion_millPesos)) |> 
+  ungroup()
+
+### FIGURAS
+#### SEMBRADA
+fig_MILPA_maizCombinado_sembrada <- plot_ly(
+  data = milpa_maizComb_final, 
+  x = ~anio, 
+  y = ~SuperficieHa_sembrada,
+  
+  color = ~Cultivo,         
+  linetype = ~Delegacion,  
+  
+  legendgroup = ~Cultivo,   
+  
+
+  type = 'scatter', 
+  mode = 'lines+markers',    
+  
+
+  text = ~paste("<br><b>Año:</b>", anio,
+                "<br><b>Delegacion:</b>", Delegacion,
+                "<br><b>Cultivo:</b>", Cultivo,
+                "<br><b>Superficie (ha):</b>", round(SuperficieHa_sembrada, 3)),
+  hoverinfo = "text",     
+  
+
+  marker = list(size = 6)
+) %>%
+  layout(
+    title = "Milpa: Sembrado",
+    xaxis = list(title = "Año"),
+    yaxis = list(title = "Superficie (HA)"),
+
+    legend = list(title = list(text = "<b>Click to Toggle Tipo</b>"))
+  )
+
+
+#### PRODUCCION
+fig_MILPA_maizCombinado_produccion <- plot_ly(
+  data = milpa_maizComb_final, 
+  x = ~anio, 
+  y = ~Produccion,
+  
+  color = ~Cultivo,         
+  linetype = ~Delegacion,  
+  
+  legendgroup = ~Cultivo,   
+  
+
+  type = 'scatter', 
+  mode = 'lines+markers',    
+  
+
+  text = ~paste("<br><b>Año:</b>", anio,
+                "<br><b>Delegacion:</b>", Delegacion,
+                "<br><b>Cultivo:</b>", Cultivo,
+                "<br><b>Producción:</b>", round(Produccion, 3)),
+  hoverinfo = "text",     
+  
+
+  marker = list(size = 6)
+) %>%
+  layout(
+    title = "Milpa: Produccion",
+    xaxis = list(title = "Año"),
+    yaxis = list(title = "Producción"),
+
+    legend = list(title = list(text = "<b>Click to Toggle Tipo</b>"))
+  )
+
+
+#### MILLONES PESOS
+fig_MILPA_maizCombinado_Valor_produccion_millPesos <- plot_ly(
+  data = milpa_maizComb_final, 
+  x = ~anio, 
+  y = ~Valor_produccion_millPesos,
+  
+  color = ~Cultivo,         
+  linetype = ~Delegacion,  
+  
+  legendgroup = ~Cultivo,   
+  
+
+  type = 'scatter', 
+  mode = 'lines+markers',    
+  
+
+  text = ~paste("<br><b>Año:</b>", anio,
+                "<br><b>Delegacion:</b>", Delegacion,
+                "<br><b>Cultivo:</b>", Cultivo,
+                "<br><b>Mill. pesos:</b>", round(Valor_produccion_millPesos, 3)),
+  hoverinfo = "text",     
+  
+
+  marker = list(size = 6)
+) %>%
+  layout(
+    title = "Milpa: Valor de produccion mill. pesos",
+    xaxis = list(title = "Año"),
+    yaxis = list(title = "Mill. pesos)"),
+
+    legend = list(title = list(text = "<b>Click to Toggle Tipo</b>"))
+  )
+
+
+## EXTENSION
+extension_delegacion = filter(siap_grupos, mas_ha == 1) |> select(Cultivo, Delegacion, anio, SuperficieHa_sembrada, Produccion, Valor_produccion_millPesos)
+
+extension_delegacion_acumulado = filter(siap_grupos, mas_ha == 0) |> select(Cultivo, Delegacion, anio, SuperficieHa_sembrada, Produccion, Valor_produccion_millPesos) |> 
+  group_by(anio, Delegacion) |> 
+  summarise(SuperficieHa_sembrada = sum(SuperficieHa_sembrada), Produccion = sum(Produccion), Valor_produccion_millPesos = sum(Valor_produccion_millPesos))
+extension_delegacion_acumulado$Cultivo = "Acumulado"
+
+
+extension_delegacion_total = group_by(extension_delegacion, anio, Cultivo) |> 
+  summarise(SuperficieHa_sembrada = sum(SuperficieHa_sembrada), Produccion = sum(Produccion), Valor_produccion_millPesos = sum(Valor_produccion_millPesos))
+extension_delegacion_total$Delegacion = "Total"
+
+extension_delegacion_acumulado_total = group_by(extension_delegacion_acumulado, anio, Cultivo) |> 
+  summarise(SuperficieHa_sembrada = sum(SuperficieHa_sembrada), Produccion = sum(Produccion), Valor_produccion_millPesos = sum(Valor_produccion_millPesos))
+extension_delegacion_acumulado_total$Delegacion = "Total"
+#
+extension_final = bind_rows(extension_delegacion, extension_delegacion_acumulado) |> 
+  bind_rows(extension_delegacion_total) |> 
+  bind_rows(extension_delegacion_acumulado_total) |> 
+  group_by(anio, Delegacion, Cultivo) |> 
+  summarise(SuperficieHa_sembrada = sum(SuperficieHa_sembrada), Produccion = sum(Produccion), Valor_produccion_millPesos = sum(Valor_produccion_millPesos)) |> 
+  ungroup()
+
+### FIGURAS
+#### SEMBRADA
+fig_extension_sembrada <- plot_ly(
+  data = extension_final, 
+  x = ~anio, 
+  y = ~SuperficieHa_sembrada,
+  
+  color = ~Cultivo,         
+  linetype = ~Delegacion,  
+  
+  legendgroup = ~Cultivo,   
+  
+
+  type = 'scatter', 
+  mode = 'lines+markers',    
+  
+
+  text = ~paste("<br><b>Año:</b>", anio,
+                "<br><b>Delegacion:</b>", Delegacion,
+                "<br><b>Cultivo:</b>", Cultivo,
+                "<br><b>Superficie (ha):</b>", round(SuperficieHa_sembrada, 3)),
+  hoverinfo = "text",     
+  
+
+  marker = list(size = 6)
+) %>%
+  layout(
+    title = "Extension: Sembrado",
+    xaxis = list(title = "Año"),
+    yaxis = list(title = "Superficie (HA)"),
+
+    legend = list(title = list(text = "<b>Click to Toggle Tipo</b>"))
+  )
+
+
+#### PRODUCCION
+fig_extension_produccion <- plot_ly(
+  data = extension_final, 
+  x = ~anio, 
+  y = ~Produccion,
+  
+  color = ~Cultivo,         
+  linetype = ~Delegacion,  
+  
+  legendgroup = ~Cultivo,   
+  
+
+  type = 'scatter', 
+  mode = 'lines+markers',    
+  
+
+  text = ~paste("<br><b>Año:</b>", anio,
+                "<br><b>Delegacion:</b>", Delegacion,
+                "<br><b>Cultivo:</b>", Cultivo,
+                "<br><b>Producción:</b>", round(Produccion, 3)),
+  hoverinfo = "text",     
+  
+
+  marker = list(size = 6)
+) %>%
+  layout(
+    title = "Extension: Produccion",
+    xaxis = list(title = "Año"),
+    yaxis = list(title = "Producción"),
+
+    legend = list(title = list(text = "<b>Click to Toggle Tipo</b>"))
+  )
+
+
+#### MILLONES PESOS
+fig_extension_Valor_produccion_millPesos <- plot_ly(
+  data = extension_final, 
+  x = ~anio, 
+  y = ~Valor_produccion_millPesos,
+  
+  color = ~Cultivo,         
+  linetype = ~Delegacion,  
+  
+  legendgroup = ~Cultivo,   
+  
+
+  type = 'scatter', 
+  mode = 'lines+markers',    
+  
+
+  text = ~paste("<br><b>Año:</b>", anio,
+                "<br><b>Delegacion:</b>", Delegacion,
+                "<br><b>Cultivo:</b>", Cultivo,
+                "<br><b>Mill. pesos:</b>", round(Valor_produccion_millPesos, 3)),
+  hoverinfo = "text",     
+  
+
+  marker = list(size = 6)
+) %>%
+  layout(
+    title = "Extension: Valor de produccion mill. pesos",
+    xaxis = list(title = "Año"),
+    yaxis = list(title = "Mill. pesos)"),
+
+    legend = list(title = list(text = "<b>Click to Toggle Tipo</b>"))
+  )
+
+## FORRAJEO
+forrajeo_delegacion = filter(siap_grupos, forrajeo == 1) |> select(Cultivo, Delegacion, anio, SuperficieHa_sembrada, Produccion, Valor_produccion_millPesos)
+
+forrajeo_delegacion_total = group_by(forrajeo_delegacion, anio, Cultivo) |> 
+  summarise(SuperficieHa_sembrada = sum(SuperficieHa_sembrada), Produccion = sum(Produccion), Valor_produccion_millPesos = sum(Valor_produccion_millPesos))
+forrajeo_delegacion_total$Delegacion = "Total"
+
+#
+forrajeo_final = bind_rows(forrajeo_delegacion, forrajeo_delegacion_total)
+
+### FIGURAS
+#### SEMBRADA
+fig_forrajeo_sembrada <- plot_ly(
+  data = forrajeo_final, 
+  x = ~anio, 
+  y = ~SuperficieHa_sembrada,
+  
+  color = ~Cultivo,         
+  linetype = ~Delegacion,  
+  
+  legendgroup = ~Cultivo,   
+  
+
+  type = 'scatter', 
+  mode = 'lines+markers',    
+  
+
+  text = ~paste("<br><b>Año:</b>", anio,
+                "<br><b>Delegacion:</b>", Delegacion,
+                "<br><b>Cultivo:</b>", Cultivo,
+                "<br><b>Superficie (ha):</b>", round(SuperficieHa_sembrada, 3)),
+  hoverinfo = "text",     
+  
+
+  marker = list(size = 6)
+) %>%
+  layout(
+    title = "Forrajeo: Sembrado",
+    xaxis = list(title = "Año"),
+    yaxis = list(title = "Superficie (HA)"),
+
+    legend = list(title = list(text = "<b>Click to Toggle Tipo</b>"))
+  )
+
+
+#### PRODUCCION
+fig_forrajeo_produccion <- plot_ly(
+  data = forrajeo_final, 
+  x = ~anio, 
+  y = ~Produccion,
+  
+  color = ~Cultivo,         
+  linetype = ~Delegacion,  
+  
+  legendgroup = ~Cultivo,   
+  
+
+  type = 'scatter', 
+  mode = 'lines+markers',    
+  
+
+  text = ~paste("<br><b>Año:</b>", anio,
+                "<br><b>Delegacion:</b>", Delegacion,
+                "<br><b>Cultivo:</b>", Cultivo,
+                "<br><b>Producción:</b>", round(Produccion, 3)),
+  hoverinfo = "text",     
+  
+
+  marker = list(size = 6)
+) %>%
+  layout(
+    title = "Forrajeo: Produccion",
+    xaxis = list(title = "Año"),
+    yaxis = list(title = "Producción"),
+
+    legend = list(title = list(text = "<b>Click to Toggle Tipo</b>"))
+  )
+
+
+#### MILLONES PESOS
+fig_forrajeo_Valor_produccion_millPesos <- plot_ly(
+  data = forrajeo_final, 
+  x = ~anio, 
+  y = ~Valor_produccion_millPesos,
+  
+  color = ~Cultivo,         
+  linetype = ~Delegacion,  
+  
+  legendgroup = ~Cultivo,   
+  
+
+  type = 'scatter', 
+  mode = 'lines+markers',    
+  
+
+  text = ~paste("<br><b>Año:</b>", anio,
+                "<br><b>Delegacion:</b>", Delegacion,
+                "<br><b>Cultivo:</b>", Cultivo,
+                "<br><b>Mill. pesos:</b>", round(Valor_produccion_millPesos, 3)),
+  hoverinfo = "text",     
+  
+
+  marker = list(size = 6)
+) %>%
+  layout(
+    title = "Forrajeo: Valor de produccion mill. pesos",
+    xaxis = list(title = "Año"),
+    yaxis = list(title = "Mill. pesos)"),
+
+    legend = list(title = list(text = "<b>Click to Toggle Tipo</b>"))
+  )
+
+
+## UNITARIO
+unitario_delegacion = filter(siap_grupos, Unitario == 1) |> select(Cultivo, Delegacion, anio, SuperficieHa_sembrada, Produccion, Valor_produccion_millPesos)
+
+unitario_delegacion_total = group_by(unitario_delegacion, anio, Cultivo) |> 
+  summarise(SuperficieHa_sembrada = sum(SuperficieHa_sembrada), Produccion = sum(Produccion), Valor_produccion_millPesos = sum(Valor_produccion_millPesos))
+unitario_delegacion_total$Delegacion = "Total"
+
+#
+unitario_final = bind_rows(unitario_delegacion, unitario_delegacion_total)
+
+### FIGURAS
+#### SEMBRADA
+fig_unitario_sembrada <- plot_ly(
+  data = unitario_final, 
+  x = ~anio, 
+  y = ~SuperficieHa_sembrada,
+  
+  color = ~Cultivo,         
+  linetype = ~Delegacion,  
+  
+  legendgroup = ~Cultivo,   
+  
+
+  type = 'scatter', 
+  mode = 'lines+markers',    
+  
+
+  text = ~paste("<br><b>Año:</b>", anio,
+                "<br><b>Delegacion:</b>", Delegacion,
+                "<br><b>Cultivo:</b>", Cultivo,
+                "<br><b>Superficie (ha):</b>", round(SuperficieHa_sembrada, 3)),
+  hoverinfo = "text",     
+  
+
+  marker = list(size = 6)
+) %>%
+  layout(
+    title = "Unitario: Sembrado",
+    xaxis = list(title = "Año"),
+    yaxis = list(title = "Superficie (HA)"),
+
+    legend = list(title = list(text = "<b>Click to Toggle Tipo</b>"))
+  )
+
+
+#### PRODUCCION
+fig_unitario_produccion <- plot_ly(
+  data = unitario_final, 
+  x = ~anio, 
+  y = ~Produccion,
+  
+  color = ~Cultivo,         
+  linetype = ~Delegacion,  
+  
+  legendgroup = ~Cultivo,   
+  
+
+  type = 'scatter', 
+  mode = 'lines+markers',    
+  
+
+  text = ~paste("<br><b>Año:</b>", anio,
+                "<br><b>Delegacion:</b>", Delegacion,
+                "<br><b>Cultivo:</b>", Cultivo,
+                "<br><b>Producción:</b>", round(Produccion, 3)),
+  hoverinfo = "text",     
+  
+
+  marker = list(size = 6)
+) %>%
+  layout(
+    title = "Unitario: Produccion",
+    xaxis = list(title = "Año"),
+    yaxis = list(title = "Producción"),
+
+    legend = list(title = list(text = "<b>Click to Toggle Tipo</b>"))
+  )
+
+
+#### MILLONES PESOS
+fig_unitario_Valor_produccion_millPesos <- plot_ly(
+  data = unitario_final, 
+  x = ~anio, 
+  y = ~Valor_produccion_millPesos,
+  
+  color = ~Cultivo,         
+  linetype = ~Delegacion,  
+  
+  legendgroup = ~Cultivo,   
+  
+
+  type = 'scatter', 
+  mode = 'lines+markers',    
+  
+
+  text = ~paste("<br><b>Año:</b>", anio,
+                "<br><b>Delegacion:</b>", Delegacion,
+                "<br><b>Cultivo:</b>", Cultivo,
+                "<br><b>Mill. pesos:</b>", round(Valor_produccion_millPesos, 3)),
+  hoverinfo = "text",     
+  
+
+  marker = list(size = 6)
+) %>%
+  layout(
+    title = "Unitario: Valor de produccion mill. pesos",
+    xaxis = list(title = "Año"),
+    yaxis = list(title = "Mill. pesos)"),
+
+    legend = list(title = list(text = "<b>Click to Toggle Tipo</b>"))
+  )
+
+# USO DE SUELO
+usosuelo1 = read_excel("/home/pacheco/Documents/R/CDMX_cultivos/Uso de suelo multifecha ANP Xochimilco.xlsx", sheet = 2) |> 
+  pivot_longer(`2002`:`2021`, names_to = "Year") |> 
+  rename(uso_suelo = `Uso de suelo`)
+
+usosuelo2 = read_excel("/home/pacheco/Documents/R/CDMX_cultivos/Uso de suelo multifecha ANP Xochimilco.xlsx", sheet = 3) |> 
+  pivot_longer(`2002`:`2021`, names_to = "Year") |> 
+  rename(uso_suelo = `Uso de suelo`)
+
+##
+fig_usuSuelo <- plot_ly(
+  data = usosuelo1, 
+  x = ~Year, 
+  y = ~value,
+  
+  color = ~uso_suelo,
+
+  type = 'scatter', 
+  mode = 'lines+markers',     
+  
+
+  text = ~paste("<br><b>Year:</b>", Year,
+                "<br><b>Uso de suelo:</b>", uso_suelo,
+                "<br><b>Superficie (ha):</b>", round(value, 2)),
+  hoverinfo = "text",        
+  
+ 
+  marker = list(size = 6)
+) %>%
+  layout(
+    title = "Uso de suelo",
+    xaxis = list(title = "Año"),
+    yaxis = list(title = "Superficie (ha)"),
+
+    legend = list(title = list(text = "<b>Click to Toggle Tipo</b>"))
+  )
+
+#
+fig_usuSuelo2 <- plot_ly(
+  data = usosuelo2, 
+  x = ~Year, 
+  y = ~value,
+  
+  color = ~uso_suelo,
+
+  type = 'scatter', 
+  mode = 'lines+markers',     
+  
+
+  text = ~paste("<br><b>Year:</b>", Year,
+                "<br><b>Uso de suelo:</b>", uso_suelo,
+                "<br><b>Superficie (ha):</b>", round(value, 2)),
+  hoverinfo = "text",        
+  
+ 
+  marker = list(size = 6)
+) %>%
+  layout(
+    title = "Uso de suelo combinado",
+    xaxis = list(title = "Año"),
+    yaxis = list(title = "Superficie (ha)"),
+
+    legend = list(title = list(text = "<b>Click to Toggle Tipo</b>"))
+  )
+
+```
+
+::: {.panel-tabset style="background-color: white"}
+## MILPA
+
+```{r}
+#| echo: false
+#| warning: false
+fig_MILPA_sembrada
+```
+
+---------------
+```{r}
+#| echo: false
+#| warning: false
+fig_MILPA_produccion
+```
+
+
+---------------
+```{r}
+#| echo: false
+#| warning: false
+fig_MILPA_Valor_produccion_millPesos
+```
+
+## MILPA: Maiz combinado
+
+```{r}
+#| echo: false
+#| warning: false
+fig_MILPA_maizCombinado_sembrada
+```
+
+---------------
+```{r}
+#| echo: false
+#| warning: false
+fig_MILPA_maizCombinado_produccion
+```
+
+
+---------------
+```{r}
+#| echo: false
+#| warning: false
+fig_MILPA_maizCombinado_Valor_produccion_millPesos
+```
+
+## EXTENSIÓN
+
+```{r}
+#| echo: false
+#| warning: false
+fig_extension_sembrada
+```
+
+
+---------------
+```{r}
+#| echo: false
+#| warning: false
+fig_extension_produccion
+```
+
+
+---------------
+```{r}
+#| echo: false
+#| warning: false
+fig_extension_Valor_produccion_millPesos
+```
+
+
+## Forrajeo
+
+```{r}
+#| echo: false
+#| warning: false
+fig_forrajeo_sembrada
+```
+
+
+---------------
+```{r}
+#| echo: false
+#| warning: false
+fig_forrajeo_produccion
+```
+
+
+---------------
+```{r}
+#| echo: false
+#| warning: false
+fig_forrajeo_Valor_produccion_millPesos
+```
+
+## Unitario
+```{r}
+#| echo: false
+#| warning: false
+fig_unitario_sembrada
+```
+
+
+---------------
+```{r}
+#| echo: false
+#| warning: false
+fig_unitario_produccion
+```
+
+
+---------------
+```{r}
+#| echo: false
+#| warning: false
+fig_unitario_Valor_produccion_millPesos
+```
+
+
+## Uso de suelo
+```{r}
+#| echo: false
+#| warning: false
+fig_usuSuelo
+```
+
+
+---------------
+```{r}
+#| echo: false
+#| warning: false
+fig_usuSuelo2
+```
+
+:::

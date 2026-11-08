@@ -1,0 +1,13 @@
+---
+title: "Proyectos"
+format:
+  html:
+    page-layout: article
+listing: 
+  contents: Proyectos
+  type: grid
+  categories: true
+  sort:
+    - "date desc"
+  fields: [image, date, title, description, author, reading-time]
+---

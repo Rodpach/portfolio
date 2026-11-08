@@ -1,0 +1,373 @@
+---
+title: "Explorador Académico de EcoUrbana"
+lang: es
+resources:
+  - ExploradorEcoUrb/data/articles.json
+  - ExploradorEcoUrb/assets/explorer.js
+  - ExploradorEcoUrb/assets/explorer.css
+format:
+  html:
+    page-layout: full
+    toc: false
+    css: ExploradorEcoUrb/assets/explorer.css
+    embed-resources: false
+    include-in-header:
+      - text: |
+          <link rel="stylesheet" href="https://unpkg.com/tabulator-tables@6.5.0/dist/css/tabulator.min.css">
+          <script defer src="https://unpkg.com/tabulator-tables@6.5.0/dist/js/tabulator.min.js"></script>
+          <script defer src="https://unpkg.com/chart.js@4.4.1/dist/chart.umd.js"></script>
+          <script defer src="ExploradorEcoUrb/assets/explorer.js"></script>
+execute:
+  enabled: false
+---
+
+```{=html}
+<main class="eco-explorer" aria-label="Explorador bibliográfico">
+<header class="explorer-intro">
+<p class="eyebrow">Literatura de ecología urbana</p>
+<p class="intro-copy">El Explorador Académico de EcoUrbana es un proyecto autónomo en el que reúno investigaciones de revistas científicas para seguir avances, perspectivas y soluciones que ayuden a construir ecosistemas urbanos funcionales, adecuados para la vida y el funcionamiento ecológico.</p>
+<details class="about-explorer">
+<summary>Acerca del explorador y sus fuentes</summary>
+<div class="about-content">
+<p>Incluye artículos disponibles de Journal of Urban Ecology, Urban Forestry &amp; Urban Greening, Landscape and Urban Planning, Urban Climate, Cities, Sustainable Cities and Society, Journal of Environmental Management y People and Nature.</p>
+<p>Los feeds RSS se actualizan mensualmente. El acervo conserva hasta doce meses de consultas, desde noviembre de 2026, mediante una ventana móvil.</p>
+<p>Las descripciones en español y las clasificaciones temáticas se generan con inteligencia artificial usando categorías y etiquetas delimitadas. Puede haber formulaciones poco naturales o imprecisiones; consulta el artículo original antes de usar sus contenidos o interpretaciones.</p>
+<p>Busca palabras en títulos, revistas, autores, descripciones y etiquetas; combina los filtros de revista, categorías, etiquetas y mes de consulta. En el calendario puedes cambiar entre años con registros. Los meses deshabilitados no tienen artículos disponibles.</p>
+</div>
+</details>
+</header>
+<section class="filter-panel" aria-label="Filtros bibliográficos">
+<div class="filter-grid">
+<label class="control search-control" for="search-input">
+<span>Buscar por palabras clave</span>
+<input id="search-input" type="search" placeholder="Ej. arbolado, Urban Climate…" autocomplete="off">
+</label>
+<details class="multi-filter" id="journal-filter">
+<summary id="journal-summary" aria-label="Filtrar por revista">Todas las revistas</summary>
+<div class="filter-popover">
+<label class="popover-search" for="journal-search">Buscar revista
+<input id="journal-search" type="search" autocomplete="off">
+</label>
+<div class="popover-actions">
+<button type="button" id="journal-select-all">Seleccionar todas</button>
+<button type="button" id="journal-clear">Limpiar selección</button>
+</div>
+<p id="journal-selected-count" class="selection-count" aria-live="polite"></p>
+<fieldset class="checkbox-list" id="journal-options">
+<legend class="sr-only">Revistas disponibles</legend>
+</fieldset>
+</div>
+</details>
+<label class="control" for="primary-filter">
+<span>Categoría principal</span>
+<select id="primary-filter"><option value="">Todas</option></select>
+</label>
+<label class="control" for="secondary-filter">
+<span>Categoría secundaria</span>
+<select id="secondary-filter"><option value="">Todas</option></select>
+</label>
+<details class="multi-filter" id="tag-filter">
+<summary id="tag-summary" aria-label="Filtrar por etiquetas">Todas las etiquetas</summary>
+<div class="filter-popover">
+<div class="popover-actions">
+<button type="button" id="tag-select-all">Seleccionar todas</button>
+<button type="button" id="tag-clear">Limpiar selección</button>
+</div>
+<p id="tag-selected-count" class="selection-count" aria-live="polite"></p>
+<fieldset class="checkbox-list tag-list" id="tag-options">
+<legend class="sr-only">Etiquetas disponibles</legend>
+</fieldset>
+</div>
+</details>
+</div>
+<section class="calendar-panel" aria-label="Filtrar por mes de consulta">
+<div class="calendar-heading">
+<h2>Mes de consulta</h2>
+<div class="calendar-navigation">
+<button id="calendar-previous" class="calendar-nav" type="button" aria-label="Año anterior">‹</button>
+<span id="calendar-year" aria-live="polite">—</span>
+<button id="calendar-next" class="calendar-nav" type="button" aria-label="Año siguiente">›</button>
+</div>
+</div>
+<div id="consultation-calendar" class="calendar-months" role="group" aria-label="Meses disponibles"></div>
+</section>
+<div class="toolbar">
+<div class="sort-group" role="group" aria-label="Ordenar artículos">
+<span class="toolbar-label">Ordenar</span>
+<button id="sort-date" class="sort-button is-active" type="button" aria-pressed="true">Más recientes</button>
+<button id="sort-title" class="sort-button" type="button" aria-pressed="false">Título A–Z</button>
+</div>
+<button id="clear-filters" class="clear-button" type="button">Limpiar filtros</button>
+</div>
+</section>
+<section class="summary-module" aria-labelledby="summary-title">
+<div class="summary-head">
+<div>
+<h2 id="summary-title">Resumen mensual</h2>
+<p class="summary-note">Artículos por mes de consulta. Este resumen es independiente de los filtros del listado.</p>
+</div>
+<label class="control summary-select" for="summary-month">
+<span>Mes del resumen</span>
+<select id="summary-month"></select>
+</label>
+</div>
+<div class="kpi-grid">
+<article class="kpi">
+<span class="kpi-label">Artículos del mes</span>
+<strong id="kpi-total">—</strong>
+<small id="kpi-delta"></small>
+</article>
+<article class="kpi">
+<span class="kpi-label">Total de la ventana</span>
+<strong id="kpi-window">—</strong>
+<small id="kpi-window-note"></small>
+</article>
+<article class="kpi">
+<span class="kpi-label">Categoría principal líder</span>
+<strong id="kpi-top-category">—</strong>
+<small id="kpi-top-category-note"></small>
+</article>
+<article class="kpi">
+<span class="kpi-label">Revista líder</span>
+<strong id="kpi-top-journal">—</strong>
+<small id="kpi-top-journal-note"></small>
+</article>
+</div>
+<div class="chart-controls">
+<div class="segmented" id="summary-breakdown" role="group" aria-label="Desglose de la gráfica">
+<button type="button" data-mode="total" aria-pressed="true">Total</button>
+<button type="button" data-mode="primary" aria-pressed="false">Categoría principal</button>
+<button type="button" data-mode="secondary" aria-pressed="false">Categoría secundaria</button>
+<button type="button" data-mode="journal" aria-pressed="false">Revista</button>
+</div>
+</div>
+<div class="chart-wrap">
+<canvas id="summary-chart" role="img" aria-label="Gráfica de artículos por mes de consulta"></canvas>
+</div>
+<p id="summary-chart-note" class="summary-note" aria-live="polite"></p>
+</section>
+<div class="results-heading">
+<p id="article-count" class="article-count" role="status" aria-live="polite">Cargando artículos…</p>
+</div>
+<div id="bibliography" aria-label="Resultados bibliográficos"></div>
+<p id="load-error" class="load-error" role="alert" hidden></p>
+</main>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const palette = ["#365c48", "#8A704E", "#54718A", "#8A6F8A", "#397A91", "#587A3E"];
+  const LIMIT = 6;
+  const monthPattern = /^\d{4}-(0[1-9]|1[0-2])$/;
+  const byId = id => document.getElementById(id);
+  const hex = value => typeof value === "string" && /^#[\da-f]{6}$/i.test(value) ? value : null;
+  const shortLabel = value => new Intl.DateTimeFormat("es-MX", {month: "short", year: "numeric", timeZone: "UTC"})
+    .format(new Date(`${value}-01T00:00:00Z`)).replace(/\.$/, "");
+  const longLabel = value => new Intl.DateTimeFormat("es-MX", {month: "long", year: "numeric", timeZone: "UTC"})
+    .format(new Date(`${value}-01T00:00:00Z`));
+  const shiftMonth = (value, delta) => {
+    const [year, month] = value.split("-").map(Number);
+    const date = new Date(Date.UTC(year, month - 1 + delta, 1));
+    return `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(2, "0")}`;
+  };
+
+  async function initSummary() {
+    const canvas = byId("summary-chart");
+    const note = byId("summary-chart-note");
+    if (!canvas) return;
+    if (typeof window.Chart !== "function") {
+      note.textContent = "No se pudo cargar Chart.js. Comprueba la conexión al CDN.";
+      return;
+    }
+    let payload;
+    try {
+      const response = await fetch(new URL("./ExploradorEcoUrb/data/articles.json", document.baseURI), {headers: {Accept: "application/json"}});
+      if (!response.ok) throw new Error(`Error ${response.status}`);
+      payload = await response.json();
+    } catch (reason) {
+      note.textContent = "No se pudieron cargar los datos del resumen.";
+      console.error("Error al cargar el resumen mensual:", reason);
+      return;
+    }
+
+    const articles = (Array.isArray(payload.articles) ? payload.articles : [])
+      .filter(article => article && monthPattern.test(article.consultation_month || ""));
+    const first = monthPattern.test(payload.window_start || "") ? payload.window_start
+      : articles.map(article => article.consultation_month).sort()[0];
+    if (!first) {
+      note.textContent = "Aún no hay artículos para resumir.";
+      return;
+    }
+    const windowSize = Number.isInteger(payload.window_months) && payload.window_months > 0 ? payload.window_months : 12;
+    const months = Array.from({length: windowSize}, (_, i) => shiftMonth(first, i));
+    const monthIndex = new Map(months.map((month, i) => [month, i]));
+    const inWindow = articles.filter(article => monthIndex.has(article.consultation_month));
+    const monthTotals = months.map(month => inWindow.filter(article => article.consultation_month === month).length);
+    let selected = months.reduce((acc, _, i) => monthTotals[i] > 0 ? i : acc, months.length - 1);
+    const colorOf = code => hex(payload.categories?.[code]?.color);
+    const fromCategory = category => category?.code ? {
+      code: String(category.code),
+      name: String(category.name || payload.categories?.[category.code]?.name || category.code),
+      color: hex(category.color) || colorOf(category.code)
+    } : null;
+    const dimensions = {
+      primary: article => fromCategory(article.category_primary),
+      secondary: article => fromCategory(article.category_secondary),
+      journal: article => typeof article.journal === "string" && article.journal.trim()
+        ? {code: article.journal.trim(), name: article.journal.trim(), color: null} : null
+    };
+    const notes = {
+      total: "Total mensual de artículos por mes de consulta. Haz clic en un punto para cambiar el mes del resumen.",
+      primary: "Cada artículo cuenta una vez en su categoría principal. Se muestran las 6 categorías con más artículos; el resto se agrupa en «Otras».",
+      secondary: "Cada artículo cuenta una vez en su categoría secundaria; los artículos sin categoría secundaria no se incluyen. Se muestran las 6 con más artículos.",
+      journal: "Artículos por revista. Se muestran las 6 revistas con más artículos; el resto se agrupa en «Otras»."
+    };
+
+    const cache = {};
+    const buildSeries = dimension => {
+      if (cache[dimension]) return cache[dimension];
+      const groups = new Map();
+      for (const article of inWindow) {
+        const info = dimensions[dimension](article);
+        if (!info) continue;
+        if (!groups.has(info.code)) groups.set(info.code, {info, counts: new Array(months.length).fill(0), total: 0});
+        const group = groups.get(info.code);
+        group.counts[monthIndex.get(article.consultation_month)] += 1;
+        group.total += 1;
+      }
+      const ordered = [...groups.values()].sort((a, b) => b.total - a.total || a.info.name.localeCompare(b.info.name, "es"));
+      const rest = ordered.slice(LIMIT);
+      const series = ordered.slice(0, LIMIT).map((group, i) => ({
+        label: group.info.name,
+        color: group.info.color || palette[i % palette.length],
+        data: group.counts
+      }));
+      if (rest.length) {
+        series.push({
+          label: "Otras",
+          color: "#b8c0bb",
+          data: months.map((_, i) => rest.reduce((sum, group) => sum + group.counts[i], 0))
+        });
+      }
+      cache[dimension] = series;
+      return series;
+    };
+
+    const datasetsFor = mode => mode === "total"
+      ? [{label: "Total de artículos", data: monthTotals, borderColor: "#365c48",
+          backgroundColor: "rgb(54 92 72 / 12%)", fill: true, tension: 0.35, borderWidth: 2.5}]
+      : buildSeries(mode).map(series => ({
+          label: series.label, data: series.data, borderColor: series.color,
+          backgroundColor: series.color, tension: 0.35, borderWidth: 2
+        }));
+
+    const chart = new Chart(canvas, {
+      type: "line",
+      data: {labels: months.map(shortLabel), datasets: []},
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {mode: "index", intersect: false},
+        scales: {
+          y: {beginAtZero: true, ticks: {precision: 0, color: "#68766e"}, grid: {color: "#eef2ef"}},
+          x: {ticks: {color: "#68766e"}, grid: {display: false}}
+        },
+        plugins: {
+          legend: {position: "bottom", labels: {usePointStyle: true, boxWidth: 8, color: "#68766e"}}
+        },
+        onClick: (_event, elements) => {
+          if (elements.length) select(elements[0].index);
+        }
+      }
+    });
+    let mode = "total";
+    const paint = () => {
+      chart.data.datasets.forEach(dataset => {
+        dataset.pointRadius = months.map((_, i) => i === selected ? 6 : 3);
+        dataset.pointHoverRadius = 7;
+      });
+      chart.update();
+    };
+
+    const setKpi = (valueId, noteId, value, details) => {
+      byId(valueId).textContent = value;
+      byId(noteId).textContent = details;
+    };
+
+    const topOf = (rows, dimension) => {
+      const map = new Map();
+      rows.forEach(article => {
+        const info = dimensions[dimension](article);
+        if (!info) return;
+        const entry = map.get(info.code) || {info, n: 0};
+        entry.n += 1;
+        map.set(info.code, entry);
+      });
+      return [...map.values()].sort((a, b) => b.n - a.n || a.info.name.localeCompare(b.info.name, "es"))[0] || null;
+    };
+
+    const renderKpis = () => {
+      const month = months[selected];
+      const monthArticles = inWindow.filter(article => article.consultation_month === month);
+      const total = monthTotals[selected];
+      const previous = selected > 0 ? monthTotals[selected - 1] : null;
+      byId("kpi-total").textContent = String(total);
+      const delta = byId("kpi-delta");
+      delta.className = "";
+      if (previous === null) {
+        delta.textContent = "Primer mes de la ventana";
+      } else {
+        const diff = total - previous;
+        const percent = previous ? Math.round((diff / previous) * 100) : null;
+        const sign = diff > 0 ? "+" : "";
+        delta.textContent = `${sign}${diff} vs. ${shortLabel(months[selected - 1])}`
+          + (percent === null ? "" : ` (${sign}${percent} %)`);
+        delta.classList.add(diff >= 0 ? "kpi-delta-up" : "kpi-delta-down");
+      }
+      setKpi("kpi-window", "kpi-window-note", String(inWindow.length),
+        `${shortLabel(months[0])} – ${shortLabel(months[months.length - 1])}`);
+      const primary = topOf(monthArticles, "primary");
+      setKpi("kpi-top-category", "kpi-top-category-note",
+        primary ? primary.info.name : "Sin datos",
+        primary ? `${primary.n} de ${total} artículos` : "");
+      const journal = topOf(monthArticles, "journal");
+      setKpi("kpi-top-journal", "kpi-top-journal-note",
+        journal ? journal.info.name : "Sin datos",
+        journal ? `${journal.n} de ${total} artículos` : "");
+    };
+
+    function select(index) {
+      selected = index;
+      byId("summary-month").value = String(index);
+      renderKpis();
+      paint();
+    }
+
+    const setMode = next => {
+      mode = next;
+      chart.data.datasets = datasetsFor(next);
+      document.querySelectorAll("#summary-breakdown button").forEach(button => {
+        button.setAttribute("aria-pressed", String(button.dataset.mode === next));
+      });
+      note.textContent = notes[next];
+      paint();
+    };
+
+    const monthSelect = byId("summary-month");
+    months.forEach((month, i) => {
+      const option = document.createElement("option");
+      option.value = String(i);
+      option.textContent = longLabel(month);
+      monthSelect.append(option);
+    });
+    monthSelect.addEventListener("change", () => select(Number(monthSelect.value)));
+    document.querySelectorAll("#summary-breakdown button").forEach(button => {
+      button.addEventListener("click", () => setMode(button.dataset.mode));
+    });
+
+    setMode(mode);
+    select(selected);
+  }
+
+  initSummary();
+});
+</script>
+```

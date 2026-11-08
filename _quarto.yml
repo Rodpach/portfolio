@@ -1,0 +1,48 @@
+project:
+  type: website
+
+website:
+  title: "Ecología y estrategia"
+  google-analytics: 
+   tracking-id: "G-HVF2WPFB5W"
+   anonymize-ip: true
+  open-graph: true
+  twitter-card: true
+  navbar:
+    search: true
+    right:
+      - text: Home
+        file: index.qmd
+      - text: Acerca de mí
+        file: about.qmd
+      - text: Proyectos
+        file: proyectos.qmd
+      - text: Comunicación científica
+        file: divulgacion.qmd
+      - text: Publicaciones
+        file: publicaciones_cientificas.qmd
+      - text: Contacto
+        href: mailto:rodpachecom@gmail.com
+      - text: Explorados Académico de Eco. Urbana
+        file: ExploradorEcoUrb.qmd
+        
+    tools:
+    left: 
+      - icon: bi-google
+        href: https://scholar.google.com/citations?pli=1&authuser=1&user=b4BxmRwAAAAJ
+      - icon: github
+        href: https://github.com/Rodpach/
+      - icon: envelope-at
+        href: mailto:rodpachecom@gmail.com
+  page-footer: "<br />Copyright 2026, Rodrigo Pacheco Muñoz.<br />[Home](../../../../../index.html) | [About](../../../../../about.html) | [Proyectos](../../../../../proyectos.html) | [Comunicación Científica](../../../../../divulgacion.html) | [Publicaciones](../../../../../publicaciones_cientificas.html) | [Contacto](mailto:rodpachecom@gmail.com) | [Bibliografía de Ecología Urbana](../../../../../ExploradorEcoUrb.html) " 
+  page-navigation: false
+
+format:
+  html:
+    theme: solar
+    css: styles.css
+    toc: true
+    page-layout: article
+
+editor: visual
+
